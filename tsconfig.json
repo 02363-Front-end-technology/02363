@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,14 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": "./",
-    "paths": {
-      "@SampleData/*": ["./utils/*"],
-      "@Components/*": ["./components/*"],
-      "@Interfaces/*": ["./interfaces/*"],
-      "@Styles/*": ["./styles/*"]
-    }
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
