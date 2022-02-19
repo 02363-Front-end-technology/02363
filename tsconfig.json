@@ -17,7 +17,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@Components/*": [
+        "./src/components/*"
+      ],
+      "@Pages/*": [
+        "./src/pages/*"
+      ],
+      "@Styles/*": [
+        "./src/styles/*"
+      ],
+      "@Interfaces/*": [
+        "./interfaces/*"
+      ],
+      "@Utils/*": [
+        "./utils/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",

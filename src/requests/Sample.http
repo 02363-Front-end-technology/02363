@@ -1,0 +1,24 @@
+### GET request get all users
+GET http://localhost:3000/api/users
+Accept: application/json
+
+### GET reyqest with parameter
+#TODO Not working with generated UUID
+GET http://localhost:3000/api/users/174fbbca-ad00-4fa0-8d34-7e5d36c702c6
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Loui"
+}
+
+
+
+
+
+
+
+
