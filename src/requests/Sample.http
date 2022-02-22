@@ -2,9 +2,9 @@
 GET http://localhost:3000/api/users
 Accept: application/json
 
-### GET reyqest with parameter
+### GET request single user
 #TODO Not working with generated UUID
-GET http://localhost:3000/api/users/174fbbca-ad00-4fa0-8d34-7e5d36c702c6
+GET http://localhost:3000/api/users/71dd4c67-523b-4ddd-a180-e18f6d01af6a
 Accept: application/json
 
 ### Send POST request with json body
@@ -14,6 +14,11 @@ Content-Type: application/json
 {
   "name": "Loui"
 }
+
+### Delete request single user
+DELETE http://localhost:3000/api/users/71dd4c67-523b-4ddd-a180-e18f6d01af6a
+Accept: application/json
+
 
 
 

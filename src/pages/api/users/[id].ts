@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { sampleUserData } from "../../../utils/sample-data";
 
-const crypto = require("crypto");
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     return await getSingleUserResolver(req, res);
@@ -11,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return await updateUserResolver(req, res);
   }
   if (req.method === "DELETE") {
-    return res.status(405).json({ message: "TBA" });
+    return await deleteUserResolver(req, res);
   }
   return res.status(405).json({ message: "HTTP method not allowed" });
 }
@@ -45,8 +43,12 @@ const updateUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 const deleteUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id.toString();
   try {
-
-  } catch (e) {
-
+    const user = sampleUserData.find((u) => u.id === id);
+    const index = sampleUserData.findIndex((u) => u.id === id);
+    sampleUserData.splice(index,1);
+    res.status(200).json(user);
+    throw new Error(`Could not find user with id: ${id}`);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

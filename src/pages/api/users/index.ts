@@ -25,7 +25,7 @@ const getAllUsersResolver = async (res: NextApiResponse) => {
 };
 
 const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name } = req.body;
+  const name = req.body.name;
   try {
     const user = {
       id: crypto.randomUUID(),
