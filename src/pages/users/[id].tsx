@@ -54,7 +54,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const id = params?.id;
     const user = await axios.get<IUser>(`http://localhost:3000/api/users/${id}`)
       .then((res) => res.data);
-    console.log('user', user);
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { user } };

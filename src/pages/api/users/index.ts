@@ -18,7 +18,7 @@ const getAllUsersResolver = async (res: NextApiResponse) => {
     const allUsers = await supabase
       .from<IUser[]>("users")
       .select("*");
-    if (allUsers) res.status(allUsers.status).json(allUsers.data);
+    if (allUsers) return res.status(allUsers.status).json(allUsers.data);
   } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
@@ -31,6 +31,6 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
     .insert([{
       name: name
     }]);
-  if (data) res.status(201).json(data);
-  res.status(500).json({ message: error.message });
+  if (data) return res.status(201).json(data);
+  return res.status(500).json({ message: error.message });
 };

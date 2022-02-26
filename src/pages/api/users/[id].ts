@@ -21,10 +21,10 @@ const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) 
       .from("users")
       .select("*")
       .match({ id: id });
-    if (user) res.status(user.status).json(user.data.flat(1)); //TODO need to return only JSON not array
+    if (user) return res.status(user.status).json(user.data.reduce((user) => user));
     throw new Error(`Could not find user with id: ${id}`);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -36,10 +36,10 @@ const updateUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
       .from("users")
       .update({ name: name })
       .match({ id: id });
-    if (user) res.status(user.status).json(user.data);
+    if (user) return res.status(user.status).json(user.data);
     throw new Error(`Could not find user with id: ${id}`);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
