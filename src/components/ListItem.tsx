@@ -1,10 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-import { User } from '../interfaces/index'
+import { IUser } from "../interfaces";
 
 type Props = {
-  data: User
+  data: IUser
 }
 
 const ListItem = ({ data }: Props) => (
@@ -13,6 +13,6 @@ const ListItem = ({ data }: Props) => (
       {data.id}: {data.name}
     </a>
   </Link>
-)
+);
 
-export default ListItem
+export default ListItem;

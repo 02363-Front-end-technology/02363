@@ -1,61 +1,64 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps, GetStaticPaths } from "next";
 
-import { User } from "../../interfaces"
-import { sampleUserData } from '../../utils/sample-data'
-import Layout from '@Components/Layout'
-import ListDetail from '@Components/ListDetail'
+import { IUser } from "../../interfaces";
+import Layout from "@Components/Layout";
+import axios from "axios";
+import ListDetail from "@Components/ListDetail";
 
 type Props = {
-  item?: User
+  user?: IUser
   errors?: string
 }
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const StaticPropsDetail = ({ user, errors }: Props) => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
         <p>
-          <span style={{ color: 'red' }}>Error:</span> {errors}
+          <span style={{ color: "red" }}>Error:</span> {errors}
         </p>
       </Layout>
-    )
+    );
   }
 
   return (
     <Layout
       title={`${
-        item ? item.name : 'User Detail'
+        user ? user.name : "User Detail"
       } | Next.js + TypeScript Example`}
     >
-      {item && <ListDetail item={item} />}
+      {user && <ListDetail user={user} />}
     </Layout>
-  )
-}
+  );
+};
 
-export default StaticPropsDetail
+export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
-    params: { id: user.id.toString() },
-  }))
-
+  const paths = await axios.get<IUser[]>("http://localhost:3000/api/users")
+    .then((res) => res.data.map((user) => ({
+      params: { id: user.id.toString() }
+    }))).catch(() => []);
+  console.log("paths", paths);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
-}
+  return { paths, fallback: false };
+};
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const id = params?.id
-    const item = sampleUserData.find((data) => data.id === id)
+    const id = params?.id;
+    const user = await axios.get<IUser>(`http://localhost:3000/api/users/${id}`)
+      .then((res) => res.data);
+    console.log('user', user);
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
-    return { props: { item } }
+    return { props: { user } };
   } catch (err: any) {
-    return { props: { errors: err.message } }
+    return { props: { errors: err.message } };
   }
-}
+};

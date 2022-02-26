@@ -1,4 +1,10 @@
-export type User = {
-  id: string
-  name: string
+export type IUser = {
+  id: string;
+  name: string;
+  createdAt: Date;
+}
+
+export type IUpgrades = {
+  id: string;
+  user_id: string;
 }

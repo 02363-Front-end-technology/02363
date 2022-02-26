@@ -3,20 +3,19 @@ import Link from "next/link";
 
 import Layout from "@Components/Layout";
 import List from "@Components/List";
-import { User } from "../../interfaces";
-import { sampleUserData } from "../../utils/sample-data";
+import { IUser } from "../../interfaces";
 import axios from "axios";
 import { useState } from "react";
 
 type Props = {
-  items: User[]
+  users: IUser[] | []
 }
 
 const onSubmit = (name: string) => {
   axios.post("http://localhost:3000/api/users", { name: name }).then(() => console.log("added")).catch(() => console.log("failed"));
 };
 
-const WithStaticProps = ({ items }: Props) => {
+const WithStaticProps = ({ users }: Props) => {
   const [name, setName] = useState("");
 
   return (
@@ -26,11 +25,11 @@ const WithStaticProps = ({ items }: Props) => {
         Example fetching data from inside <code>getStaticProps()</code>.
       </p>
       <p>You are currently on: /users</p>
-      <List items={items} />
+      <List items={users} />
       <form>
         <label>Add user</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <button type='submit' onClick={() => onSubmit(name)}>Submit</button>
+        <button type="submit" onClick={() => onSubmit(name)}>Submit</button>
       </form>
       <p>
         <Link href="/">
@@ -42,11 +41,12 @@ const WithStaticProps = ({ items }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Example for including static props in a Next.js function component page.
-  // Don't forget to include the respective types for any props passed into
-  // the component.
-  const items: User[] = sampleUserData;
-  return { props: { items } };
+
+  const users: IUser[] | [] = await axios.get<IUser[]>("http://localhost:3000/api/users")
+    .then((r) => r.data)
+    .catch((err) => []);
+
+  return { props: { users } };
 };
 
 export default WithStaticProps;

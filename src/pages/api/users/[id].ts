@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { sampleUserData } from "../../../utils/sample-data";
+import { supabase } from "@Pages/api/users/index";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
@@ -17,8 +17,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id.toString();
   try {
-    const user = sampleUserData.find((u) => u.id === id); //TODO Not working with generated UUID
-    if (user) res.status(200).json(user);
+    const user = await supabase
+      .from("users")
+      .select("*")
+      .match({ id: id });
+    if (user) res.status(user.status).json(user.data.flat(1)); //TODO need to return only JSON not array
     throw new Error(`Could not find user with id: ${id}`);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -29,11 +32,11 @@ const updateUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
   const id = req.query.id.toString();
   const { name } = req.body;
   try {
-    const user = sampleUserData.find((u) => u.id === id);
-    if (user) {
-      user.name = name;
-      res.status(200).json(user);
-    }
+    const user = await supabase
+      .from("users")
+      .update({ name: name })
+      .match({ id: id });
+    if (user) res.status(user.status).json(user.data);
     throw new Error(`Could not find user with id: ${id}`);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -42,13 +45,10 @@ const updateUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 
 const deleteUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id.toString();
-  try {
-    const user = sampleUserData.find((u) => u.id === id);
-    const index = sampleUserData.findIndex((u) => u.id === id);
-    sampleUserData.splice(index,1);
-    res.status(200).json(user);
-    throw new Error(`Could not find user with id: ${id}`);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  const { data, error } = await supabase
+    .from("users")
+    .delete()
+    .match({ id: id });
+  if (data) res.status(200).json(data);
+  if (error) res.status(500).json({ message: error.message });
 };
