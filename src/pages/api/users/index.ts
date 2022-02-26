@@ -1,10 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { createClient } from "@supabase/supabase-js";
 import { IUser } from "../../../interfaces";
-
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabaseUrl = "https://gznsilntacyfjqclldsz.supabase.co";
-export const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabase } from "../../../utils/supabaseClient";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
