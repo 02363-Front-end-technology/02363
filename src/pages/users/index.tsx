@@ -1,12 +1,10 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-
 import Layout from "@Components/Layout";
 import List from "@Components/List";
 import { IUser } from "../../interfaces";
 import axios from "axios";
 import { useState } from "react";
-
 type Props = {
   users: IUser[] | []
 }
@@ -26,10 +24,10 @@ const WithStaticProps = ({ users }: Props) => {
       </p>
       <p>You are currently on: /users</p>
       <List items={users} />
-      <form>
+      <form className='my-4'>
         <label>Add user</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <button type="submit" onClick={() => onSubmit(name)}>Submit</button>
+        <input className='border border-blue-400 rounded-2xl mx-2' type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button className='py-2 px-3 bg-indigo-500 text-white text-sm font-semibold rounded-md shadow-lg shadow-indigo-500/50 focus:outline-none' type="submit" onClick={() => onSubmit(name)}>Submit</button>
       </form>
       <p>
         <Link href="/">

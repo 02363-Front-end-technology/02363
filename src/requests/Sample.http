@@ -20,6 +20,13 @@ DELETE http://localhost:3000/api/users/0b890047-c2a3-41ab-9b5e-11b71aa2ecdd
 Accept: application/json
 
 
+### Update request user
+PATCH http://localhost:3000/api/users/93149f2e-505f-49ca-8e67-7bbf23e1aa54
+Content-Type: application/json
+
+{
+  "name": "Hans"
+}
 
 
 

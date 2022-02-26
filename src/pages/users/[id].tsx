@@ -1,12 +1,13 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { IUser } from "../../interfaces";
+import { IUpgrade, IUser } from "../../interfaces";
 import Layout from "@Components/Layout";
 import axios from "axios";
 import ListDetail from "@Components/ListDetail";
 
 type Props = {
   user?: IUser
+  upgrade?: IUpgrade;
   errors?: string
 }
 
@@ -40,7 +41,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .then((res) => res.data.map((user) => ({
       params: { id: user.id.toString() }
     }))).catch(() => []);
-  console.log("paths", paths);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
