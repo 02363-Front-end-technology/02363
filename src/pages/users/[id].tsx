@@ -11,7 +11,7 @@ type Props = {
   errors?: string
 }
 
-const StaticPropsDetail = ({ user, errors }: Props) => {
+const StaticPropsDetail = ({ user, upgrade,errors }: Props) => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">

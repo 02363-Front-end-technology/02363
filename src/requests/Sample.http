@@ -4,7 +4,7 @@ Accept: application/json
 
 ### GET request single user
 #TODO Not working with generated UUID
-GET http://localhost:3000/api/users/767c5683-02ae-46c3-ab30-b282838cf971
+GET http://localhost:3000/api/users/93149f2e-505f-49ca-8e67-7bbf23e1aa54
 Accept: application/json
 
 ### Send POST request with json body
@@ -12,20 +12,20 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-  "name": "Loui"
+  "name": "Gül"
 }
 
 ### Delete request single user
-DELETE http://localhost:3000/api/users/0b890047-c2a3-41ab-9b5e-11b71aa2ecdd
+DELETE http://localhost:3000/api/users/068438f2-2c87-45c1-b516-99051dfd1f31
 Accept: application/json
 
 
 ### Update request user
-PATCH http://localhost:3000/api/users/93149f2e-505f-49ca-8e67-7bbf23e1aa54
+PATCH http://localhost:3000/api/users/767c5683-02ae-46c3-ab30-b282838cf971
 Content-Type: application/json
 
 {
-  "name": "Hans"
+  "name": "Jacob"
 }
 
 
