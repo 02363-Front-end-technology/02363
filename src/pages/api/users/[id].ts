@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../../utils/supabaseClient";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     return await getSingleUserResolver(req, res);
   }
@@ -16,31 +16,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id.toString();
-  try {
-    const user = await supabase
-      .from("users")
-      .select("*")
-      .match({ id: id });
-    if (user) return res.status(user.status).json(user.data.reduce((user) => user));
-    throw new Error(`Could not find user with id: ${id}`);
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
-  }
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .match({ id: id });
+  if (data) return res.status(200).json(data.reduce((user) => user));
+  return res.status(404).json({ message: error.message, code: error.code });
 };
 
 const updateUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id.toString();
   const { name } = req.body;
-  try {
-    const user = await supabase
-      .from("users")
-      .update({ name: name })
-      .match({ id: id });
-    if (user) return res.status(user.status).json(user.data);
-    throw new Error(`Could not find user with id: ${id}`);
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
-  }
+  const { data, error } = await supabase
+    .from("users")
+    .update({ name: name })
+    .match({ id: id });
+  if (data) return res.status(200).json(data);
+  return res.status(404).json({ message: error.message });
 };
 
 const deleteUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -49,6 +41,7 @@ const deleteUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
     .from("users")
     .delete()
     .match({ id: id });
-  if (data) res.status(200).json(data);
-  if (error) res.status(500).json({ message: error.message });
+  if (data) return res.status(200).json(data);
+  return res.status(500).json({ message: error.message });
 };
+export default handler;

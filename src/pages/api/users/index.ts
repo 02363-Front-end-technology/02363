@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { IUser } from "../../../interfaces";
 import { supabase } from "../../../utils/supabaseClient";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     return await getAllUsersResolver(res);
   }
@@ -14,14 +14,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const getAllUsersResolver = async (res: NextApiResponse) => {
-  try {
-    const allUsers = await supabase
+    const { data, error } = await supabase
       .from<IUser[]>("users")
       .select("*");
-    if (allUsers) return res.status(allUsers.status).json(allUsers.data);
-  } catch (err: any) {
-    res.status(500).json({ message: err.message });
-  }
+    if (data) return res.status(200).json(data);
+    res.status(500).json({ message: error.message });
 };
 
 const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -34,3 +31,4 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
   if (data) return res.status(201).json(data);
   return res.status(500).json({ message: error.message });
 };
+export default handler;
