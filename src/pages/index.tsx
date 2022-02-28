@@ -1,15 +1,19 @@
 import Link from 'next/link';
-import Layout from "../components/Layout";
 
-const IndexPage = () => (
-  <Layout title='Home | Next.js + TypeScript Example'>
-    <h1>Hello Next.js   👋</h1>
-    <p>
-      <Link href='/about'>
-        <a>About stuff</a>
-      </Link>
-    </p>
-  </Layout>
-);
+const IndexPage = () => {
+	return (
+		<div className='flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-700'>
+			<div className='space-x-6'>
+				<Link href='/new-game'>
+					<a className='my-button'>New Game</a>
+				</Link>
+
+				<Link href='/load-game'>
+					<a className='my-button'>Load Game</a>
+				</Link>
+			</div>
+		</div>
+	);
+};
 
 export default IndexPage;
