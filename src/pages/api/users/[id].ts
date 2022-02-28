@@ -19,8 +19,8 @@ const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) 
   const { data, error } = await supabase
     .from("users")
     .select("*")
-    .match({ id: id });
-  if (data) return res.status(200).json(data.reduce((user) => user));
+    .match({ id: id }).single();
+  if (data) return res.status(200).json(data);
   return res.status(404).json({ message: error.message, code: error.code });
 };
 

@@ -4,6 +4,7 @@ import { IUpgrade, IUser } from "../../interfaces";
 import Layout from "@Components/Layout";
 import axios from "axios";
 import ListDetail from "@Components/ListDetail";
+import { supabase } from "../../utils/supabaseClient";
 
 type Props = {
   user?: IUser
@@ -11,7 +12,7 @@ type Props = {
   errors?: string
 }
 
-const StaticPropsDetail = ({ user, upgrade,errors }: Props) => {
+const StaticPropsDetail = ({ user, upgrade, errors }: Props) => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
@@ -37,10 +38,14 @@ export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
-  const paths = await axios.get<IUser[]>("http://localhost:3000/api/users")
-    .then((res) => res.data.map((user) => ({
-      params: { id: user.id.toString() }
-    }))).catch(() => []);
+  //TODO get static paths https://github.com/dijonmusters/build-a-saas-with-next-js-supabase-and-stripe/blob/master/18-query-dynamic-supabase-data-in-static-pages-using-next-js/pages/%5Bid%5D.js
+  const { data: users } = await supabase.from("users").select("id");
+
+  const paths = users.map(({ id }) => ({
+    params: {
+      id: id.toString(),
+    },
+  }));
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
@@ -52,8 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id;
-    const user = await axios.get<IUser>(`http://localhost:3000/api/users/${id}`)
-      .then((res) => res.data);
+    const { data: user } = await supabase.from("users").select("*").match({ id: id }).single();
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { user } };
