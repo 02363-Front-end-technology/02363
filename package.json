@@ -17,6 +17,7 @@
     "framer-motion": "^6.2.8",
     "next": "^12.0.9",
     "react": "^17.0.2",
+    "react-awesome-shapes": "^0.1.9",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.1"
   },

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Shapes from "@Components/shapes/Shapes";
 
 const IndexPage = () => {
 	return (
@@ -12,6 +13,7 @@ const IndexPage = () => {
 					<a className='my-button'>Load Game</a>
 				</Link>
 			</div>
+			<Shapes/>
 		</div>
 	);
 };
