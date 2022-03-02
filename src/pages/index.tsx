@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import Shapes from "@Components/shapes/Shapes";
+import Layout from "@Components/Layouts/Layout";
 
 const IndexPage = () => {
 	return (
-		<div className='flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-700'>
+		<Layout>
 			<div className='space-x-6'>
 				<Link href='/new-game'>
 					<a className='my-button'>New Game</a>
@@ -13,8 +13,7 @@ const IndexPage = () => {
 					<a className='my-button'>Load Game</a>
 				</Link>
 			</div>
-			<Shapes/>
-		</div>
+		</Layout>
 	);
 };
 

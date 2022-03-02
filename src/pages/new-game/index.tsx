@@ -1,32 +1,39 @@
-import { SubmitHandler, Controller, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@chakra-ui/input';
+import Layout from '@Components/Layouts/Layout';
+import { axiosInstance } from "@Utils/axiosInstance";
 import { Button } from '@chakra-ui/react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { EApiStatus } from "@Interfaces/apiStates";
 
 interface IFormInput {
 	name: string;
 }
 
 const IndexPage = () => {
-	const { control, handleSubmit } = useForm<IFormInput>();
+	const { control, handleSubmit, register, formState: {errors, isValid} } = useForm<IFormInput>();
+	const [apiStatus, setApiStatus] = useState<EApiStatus>(EApiStatus.ready);
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ name }) => {
-		axios
-			.post('http://localhost:3000/api/users', { name: name })
-			.then(() => console.log('added'))
-			.catch(() => console.log('failed'));
+		setApiStatus(EApiStatus.loading);
+		axiosInstance
+			.post('users', { name: name })
+			.then(() => setApiStatus(EApiStatus.succes))
+			.catch(() => setApiStatus(EApiStatus.error));
 	};
 
 	return (
-		<div className='flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-700'>
+		<Layout title='Create new game'>
 			<form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-				<div>
+				<div className='flex flex-col'>
 				<label htmlFor='name'>Name</label>
-				<Controller name='name' control={control} defaultValue='' render={({ field }) => <Input {...field} />} />
+					<input {...register("name", { required: true })} className='focus:outline-none border rounded-2xl px-2' />
+					{errors.name && <span>This field is required</span>}
+
 				</div>
-				<Button type='submit'>Start Game</Button>
+				<Button type='submit' className='my-button disbaled:cursor-not-allowed' disabled={!isValid} isLoading={apiStatus === EApiStatus.loading}>Start game</Button>
 			</form>
-		</div>
+		</Layout>
 	);
 };
 

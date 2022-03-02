@@ -1,18 +1,17 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import Layout from "@Components/Layout";
-import List from "@Components/List";
 import { IUser } from "../../interfaces";
-import axios from "axios";
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
+import Layout from "@Components/Layouts/Layout";
+import { axiosInstance } from "../../utils/axiosInstance";
 
 type Props = {
   users: IUser[]
 }
 
 const onSubmit = (name: string) => {
-  axios.post("http://localhost:3000/api/users", { name: name })
+  axiosInstance.post('users', { name: name })
     .then(() => console.log("added"))
     .catch(() => console.log("failed"));
 };
@@ -27,7 +26,9 @@ const WithStaticProps = ({ users }: Props) => {
         Example fetching data from inside <code>getStaticProps()</code>.
       </p>
       <p>You are currently on: /users</p>
-      <List users={users} />
+      {users.map((u) => (
+        <li key={u.id}>u</li>
+      ))}
       <form className="my-4">
         <label>Add user</label>
         <input
