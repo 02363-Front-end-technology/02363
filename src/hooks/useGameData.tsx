@@ -24,6 +24,11 @@ type UpgradeItem = {
 	price: number;
 };
 
+/**
+ * 
+ * @param userID 
+ * @returns 
+ */
 const useGameData = ({ userId }: Props) => {
 	const filter = useFilter<GameData>((query) => query.eq('userId', userId), [userId]);
 	const [result] = useRealtime<GameData>('upgrades',
