@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@Components/Button";
 
 type IProps = {
@@ -11,7 +11,7 @@ type IProps = {
 const SingleUpgrade: React.FC<IProps> = ({title,price, onClickCallback, isBought}) => {
 
   return (
-    <div className='flex justify-between items-center border drop-shadow-md p-2'>
+    <div className='flex justify-between items-center p-2'>
       <span>{title}</span>
       <div className='flex inline-flex space-x-2 items-center'>
         <span className='font-bold'>${price}</span>

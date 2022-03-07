@@ -1,12 +1,9 @@
-import Layout from '@Components/Layouts/Layout';
-import React from 'react';
-
+import React, { useState } from 'react';
 import { IUpgrade, IUser } from '@Interfaces/index';
 import UpgradeList from '@Components/upgrades/UpgradeList';
-
-interface IFormInput {
-	uuid: string;
-}
+import TopGameBar from '@Components/TopGameBar/TopGameBar';
+import Categories from '@Components/Categories';
+import { Tab } from '@Interfaces/enums';
 
 type Props = {
 	users: IUser[];
@@ -30,9 +27,20 @@ const mockUpgrade: IUpgrade[] = [
 ];
 
 const IndexPage: React.FC<Props> = ({ users }) => {
+	const [activeTab, setActiveTab] = useState<Tab>(Tab.FRONTEND);
+
 	return (
 		<>
-			<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log("test")} />
+			<TopGameBar/>
+			<div className='flex'>
+			<div className='w-1/3 p-4'>
+				<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
+					<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log("test")} />
+				</Categories>
+			</div>
+			<div className='w-2/3 bg-blue-600'>
+			</div>
+			</div>
 		</>
 	);
 };

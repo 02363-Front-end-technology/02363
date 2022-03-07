@@ -1,21 +1,23 @@
 import { Button } from "@chakra-ui/react"
 import { Tab } from "@Interfaces/enums"
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 type Props = {
 	activeTab: Tab;
   setActiveTab: Dispatch<SetStateAction<Tab>>;
 }
 
-const Categories: React.FC<Props> = (props) => {
+const Categories: React.FC<Props> = ({setActiveTab, activeTab,children}) => {
     return (
       <div className='categories'>
-        
-        <Button className={`${props.activeTab === Tab.FRONTEND ? "active" : ""}`} onClick={() => props.setActiveTab(Tab.FRONTEND)}>Frontend</Button>
-        <Button className={`${props.activeTab === Tab.BACKEND ? "active" : ""}`} onClick={() => props.setActiveTab(Tab.BACKEND)}>Backend</Button>
-        <Button className={`${props.activeTab === Tab.ADS ? "active" : ""}`} onClick={() => props.setActiveTab(Tab.ADS)}>Ads</Button>
+        <div className='flex justify-evenly'>
+          <Button className={`${activeTab === Tab.FRONTEND ? "active" : ""}`} onClick={() => setActiveTab(Tab.FRONTEND)}>Frontend</Button>
+          <Button className={`${activeTab === Tab.BACKEND ? "active" : ""}`} onClick={() => setActiveTab(Tab.BACKEND)}>Backend</Button>
+          <Button className={`${activeTab === Tab.ADS ? "active" : ""}`} onClick={() => setActiveTab(Tab.ADS)}>Ads</Button>
+        </div>
+        {children}
       </div>
     )
   }
-  
+
   export default Categories
