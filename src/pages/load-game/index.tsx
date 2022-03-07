@@ -1,5 +1,4 @@
 import Layout from '@Components/Layouts/Layout';
-import { SubmitHandler, useForm } from "react-hook-form";
 import { EApiStatus } from "@Interfaces/apiStates";
 import React, { useState } from "react";
 import { axiosInstance } from "@Utils/axiosInstance";
@@ -8,6 +7,7 @@ import { supabase } from "@Utils/supabaseClient";
 import { IUser } from "@Interfaces/index";
 import dayjs from "dayjs";
 import Button from "@Components/Button";
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface IFormInput {
 	uuid: string;

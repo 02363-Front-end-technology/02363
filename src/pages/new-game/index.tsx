@@ -1,9 +1,10 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+
 import Layout from '@Components/Layouts/Layout';
 import { axiosInstance } from "@Utils/axiosInstance";
-import { Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { EApiStatus } from "@Interfaces/apiStates";
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Button } from '@chakra-ui/react';
 
 interface IFormInput {
 	name: string;
