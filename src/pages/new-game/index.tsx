@@ -1,5 +1,4 @@
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Input } from '@chakra-ui/input';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Layout from '@Components/Layouts/Layout';
 import { axiosInstance } from "@Utils/axiosInstance";
 import { Button } from '@chakra-ui/react';
@@ -11,7 +10,7 @@ interface IFormInput {
 }
 
 const IndexPage = () => {
-	const { control, handleSubmit, register, formState: {errors, isValid} } = useForm<IFormInput>();
+	const { handleSubmit, register, formState: {errors, isValid} } = useForm<IFormInput>();
 	const [apiStatus, setApiStatus] = useState<EApiStatus>(EApiStatus.ready);
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ name }) => {
