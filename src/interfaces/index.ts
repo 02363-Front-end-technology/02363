@@ -10,8 +10,5 @@ export type IUpgrade = {
 	user_id: string;
 	upgrades: {
 		item1: number;
-		item2: number;
-		item3: number;
-		item4: [{ item51: number }, { item52: number }, { item53: number }, { item54: number }];
 	};
 };

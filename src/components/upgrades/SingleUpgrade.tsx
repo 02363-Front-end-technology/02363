@@ -8,14 +8,14 @@ type IProps = {
   isBought: boolean;
 }
 
-const SingleUpgrade: React.FC<IProps> = ({title,price, isBought}) => {
+const SingleUpgrade: React.FC<IProps> = ({title,price, onClickCallback, isBought}) => {
 
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between items-center border drop-shadow-md p-2'>
       <span>{title}</span>
-      <div className='flex inline-flex'>
-        <span>${price}</span>
-        <Button disabled={isBought}>
+      <div className='flex inline-flex space-x-2 items-center'>
+        <span className='font-bold'>${price}</span>
+        <Button className='border border-red-600 rounded-xl px-6 py-1' disabled={isBought} onClick={onClickCallback}>
           {isBought ? 'Bought' : 'Buy'}
         </Button>
       </div>
