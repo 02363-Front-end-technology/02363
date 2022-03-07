@@ -22,7 +22,7 @@
 	@apply rounded-md py-2 px-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/50 focus:outline-none;
 }
 
-.categories button {
+button {
 	font-weight: bold;
 	color: #ff4a4a;
 	height: 40px;
@@ -33,10 +33,10 @@
 	margin: 0 5px;
 	border: 1px solid #ff4a4a69;
 }
-.categories button.active {
+button.active {
 	color: white;
 	background: #ff4a4a;
 }
-.categories button:not(.active):hover {
+button:not(.active):hover {
 	background: #e2e2e2;
 }
