@@ -29,7 +29,6 @@ const IndexPage = () => {
 				<label htmlFor='name'>Name</label>
 					<input {...register("name", { required: true })} className='focus:outline-none border rounded-2xl px-2' />
 					{errors.name && <span>This field is required</span>}
-
 				</div>
 				<Button type='submit' className='my-button disbaled:cursor-not-allowed' disabled={!isValid} isLoading={apiStatus === EApiStatus.loading}>Start game</Button>
 			</form>
