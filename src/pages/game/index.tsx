@@ -3,6 +3,7 @@ import React from 'react';
 
 import { IUpgrade, IUser } from '@Interfaces/index';
 import UpgradeList from '@Components/upgrades/UpgradeList';
+import NavBar from '@Components/Layouts/NavBar';
 
 interface IFormInput {
 	uuid: string;
@@ -31,9 +32,7 @@ const mockUpgrade: IUpgrade[] = [
 
 const IndexPage: React.FC<Props> = ({ users }) => {
 	return (
-		<>
-			<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log("test")} />
-		</>
+		<NavBar/>
 	);
 };
 
