@@ -12,3 +12,21 @@ export type IUpgrade = {
 		item1: number;
 	};
 };
+
+export type GameData = {
+	id: number;
+	userId: string;
+	items: Array<CategoryData>;
+};
+
+export type CategoryData = {
+	label: string;
+	upgrades: Array<UpgradeItem>;
+};
+
+export type UpgradeItem = {
+	label: string;
+	isBought: boolean;
+	multiplier: number;
+	price: number;
+};
