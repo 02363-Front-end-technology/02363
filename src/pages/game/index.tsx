@@ -1,54 +1,48 @@
-import Layout from '@Components/Layouts/Layout';
-import { SubmitHandler, useForm } from "react-hook-form";
-import { EApiStatus } from "@Interfaces/apiStates";
-import React, { useState } from "react";
-import { axiosInstance } from "@Utils/axiosInstance";
-import { GetStaticProps } from "next";
-import { supabase } from "@Utils/supabaseClient";
-import { IUser } from "@Interfaces/index";
-import dayjs from "dayjs";
-import Button from "@Components/Button";
-
-interface IFormInput {
-	uuid: string;
-}
+import React, { useState } from 'react';
+import { IUpgrade, IUser } from '@Interfaces/index';
+import UpgradeList from '@Components/upgrades/UpgradeList';
+import TopGameBar from '@Components/TopGameBar/TopGameBar';
+import Categories from '@Components/Categories';
+import { Tab } from '@Interfaces/enums';
 
 type Props = {
-	users: IUser[]
-}
-
-const IndexPage: React.FC<Props> = ({users}) => {
-	const { handleSubmit, register, formState: {errors, isValid} } = useForm<IFormInput>();
-	const [apiStatus, setApiStatus] = useState<EApiStatus>(EApiStatus.ready);
-
-	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
-		setApiStatus(EApiStatus.loading);
-		axiosInstance
-			.get(`users/${uuid}`)
-			.then(() => setApiStatus(EApiStatus.succes))
-			.catch(() => setApiStatus(EApiStatus.error));
-	};
-
-	return (
-		<Layout title='Load game'>
-			<form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-				<div className='flex flex-col'>
-					<label htmlFor='uuid'>Name</label>
-					<select {...register('uuid', {required: true})} className='focus:outline-none '>
-						{users.map((u) =><option key={u.id} value={u.id}>{u.name} {dayjs(u.createdAt).format('DD-MM-YYYY').toString()}</option>)} {/*TODO should be last login date and balance*/}
-					</select>
-				</div>
-				<Button type='submit' isLoading={EApiStatus.loading === apiStatus} disabled={!isValid} className='my-button'>Start game</Button>
-				{errors.uuid && <span>This field is required</span>}
-			</form>
-		</Layout>
-	);
+	users: IUser[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const { data: users } = await supabase.from('users').select('*');
+const mockUpgrade: IUpgrade[] = [
+	{
+		id: '1',
+		user_id: 's',
+		upgrades: {
+			item1: 1
+		}
+	},
+	{
+		id: '1',
+		user_id: 's',
+		upgrades: {
+			item1: 1
+		}
+	}
+];
 
-	return { props: { users } };
+const IndexPage: React.FC<Props> = ({ users }) => {
+	const [activeTab, setActiveTab] = useState<Tab>(Tab.FRONTEND);
+
+	return (
+		<>
+			<TopGameBar/>
+			<div className='flex'>
+			<div className='w-1/3 p-4'>
+				<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
+					<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log("test")} />
+				</Categories>
+			</div>
+			<div className='w-2/3 bg-blue-600'>
+			</div>
+			</div>
+		</>
+	);
 };
 
 export default IndexPage;
