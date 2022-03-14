@@ -38,9 +38,6 @@ jobs:
         with:
           build: npm run build
           start: npm run start
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ env.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
   print-envs:
     runs-on: ubuntu-latest
