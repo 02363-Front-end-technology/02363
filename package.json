@@ -5,12 +5,24 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
+    "@chakra-ui/react": "^1.8.5",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@supabase/supabase-js": "^1.31.0",
+    "axios": "^0.26.0",
+    "dayjs": "^1.10.8",
+    "framer-motion": "^6.2.8",
     "next": "^12.0.9",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-awesome-shapes": "^0.1.9",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.27.1",
+    "react-supabase": "^0.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.9",
@@ -19,6 +31,8 @@
     "@types/react-dom": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
+    "autoprefixer": "^10.4.2",
+    "cypress": "^9.5.1",
     "eslint": "^8.8.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.0.9",
@@ -27,10 +41,11 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.7",
     "postcss-preset-env": "^7.3.0",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.5",
-    "tailwindcss": "^3.0.18",
+    "tailwindcss": "^3.0.23",
     "typescript": "^4.3.2"
   }
 }
