@@ -2,12 +2,14 @@ import React from 'react';
 
 import { Box, Flex, Text, IconButton, Stack, Collapse, useColorModeValue, useBreakpointValue, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { useGameData } from 'src/hooks/useGameData';
 
-type Props = {};
+type Props = {
+	balance: number
+};
 
-export default function TopGameBar() {
+export default function TopGameBar({balance} : Props){
 	const { isOpen, onToggle } = useDisclosure();
-
 	return (
 		<Box>
 			<Flex
@@ -30,50 +32,59 @@ export default function TopGameBar() {
 					</Text>
 
 					<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-						<DesktopNav />
+						<DesktopNav balance={balance}  />
 					</Flex>
 				</Flex>
 			</Flex>
 
 			<Collapse in={isOpen} animateOpacity>
-				<MobileNav />
+				<MobileNav balance={balance} />
 			</Collapse>
 		</Box>
 	);
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({balance} : Props) => {
 	const labelColor = useColorModeValue('white', 'gray.200');
 	const subLabelColor = useColorModeValue('gray.800', 'white');
-
 	const dataBgColor = useColorModeValue('white', 'black');
 
 	return (
 		<Stack direction={'row'} spacing={4}>
-			{NAV_ITEMS.map((navItem) => (
-				<Stack direction={'row'} spacing={4} key={navItem.label}>
+			<Stack direction={'row'} spacing={4}>
 					<Box>
 						<Text p={2} fontSize={'sm'} fontWeight={'bold'} color={labelColor}>
-							{navItem.label}
+							Cash
 						</Text>
 					</Box>
 					<Box width={'16'} alignContent={'center'} textAlign={'center'} bgColor={dataBgColor} borderRadius={'full'}>
 						<Text p={2} fontSize={'sm'} fontWeight={500} color={subLabelColor}>
-							{'$ ' + navItem.subLabel}
+							{'$ ' + balance}
 						</Text>
 					</Box>
 				</Stack>
-			))}
+				<Stack direction={'row'} spacing={4} >
+					<Box>
+						<Text p={2} fontSize={'sm'} fontWeight={'bold'} color={labelColor}>
+							CPS
+						</Text>
+					</Box>
+					<Box width={'16'} alignContent={'center'} textAlign={'center'} bgColor={dataBgColor} borderRadius={'full'}>
+						<Text p={2} fontSize={'sm'} fontWeight={500} color={subLabelColor}>
+							{'$ ' + "0"}
+						</Text>
+					</Box>
+				</Stack>
 		</Stack>
 	);
 };
 
-const MobileNav = () => {
+const MobileNav = ({balance} : Props) => {
 	return (
 		<Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
-			{NAV_ITEMS.map((navItem) => (
-				<MobileNavItem key={navItem.label} {...navItem} />
-			))}
+				<MobileNavItem label={"Cash"} subLabel={balance.toString()} />
+				<MobileNavItem label={"CPS"} subLabel={"0"} />
+
 		</Stack>
 	);
 };
@@ -106,14 +117,3 @@ interface DataItem {
 	label: string;
 	subLabel?: string;
 }
-
-const NAV_ITEMS: Array<DataItem> = [
-	{
-		label: 'Cash',
-		subLabel: '100'
-	},
-	{
-		label: 'CPS',
-		subLabel: '20'
-	}
-];
