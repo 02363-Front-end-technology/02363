@@ -8,7 +8,6 @@ import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
 import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import useGameData from '../../hooks/useGameData';
 import { useRouter } from 'next/router';
 
 interface IFormInput {
@@ -29,6 +28,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
+		localStorage.setItem("currentUser", uuid)
 		router.push({ pathname: '/game', query: { uuid: uuid } });
 	};
 
