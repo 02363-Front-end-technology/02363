@@ -16,17 +16,11 @@ type Props = {
  */
 const useGameData = ({ userId }: Props) : [IGameData[], boolean, PostgrestError] => {
 	const filter = useFilter<IGameData>((query) => query.eq('userId', userId), [userId]);
-	const [result, ] = useRealtime<IGameData>('upgrades',
-    { 
-        select: {
-          filter: filter
-        }
-      },
-      (data, payload) => data.userId === payload.userId,
+	const [result, reexecute] = useRealtime<IGameData>('upgrades'
    )
-   console.log(filter);
-   
-    const { data, fetching, error } = result
+   console.log(result);
+
+    const { data,  error, fetching } = result
 	return [data, fetching, error ];
 };
 

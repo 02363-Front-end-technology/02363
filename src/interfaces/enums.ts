@@ -1,5 +1,5 @@
 export enum Tab {
-	Frontend,
-	Backend,
-	Ads
+	Frontend = "Frontend",
+	Backend = "Backend",
+	Ads = "Ads"
 }

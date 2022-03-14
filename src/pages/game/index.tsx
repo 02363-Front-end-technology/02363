@@ -30,23 +30,31 @@ const mockUpgrade: IUpgrade[] = [
 
 const IndexPage: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
-	const [activeTab, setActiveTab] = useState<Tab>(Tab.Frontend);
+
 	const [data, fetching, error] = useGameData({ userId: router.query.uuid as string });
+	const [activeTab, setActiveTab] = useState<Tab>(Tab.Frontend);
+	
+	
+	if (fetching) return <> Loading... </>;
+	
 	if (error) {
 		return <> {error.message} </>;
 	}
-	console.log(router.query.uuid as string);
 
-	if (fetching) return <> Loading... </>;
+	if(data === undefined){
+		return <> data is undefined </>
+	}
 
 	const gameData = data[0];
+	console.log(data[0]);
+	
 	return (
 		<>
 			<TopGameBar />
 			<div className='flex'>
 				<div className='w-1/3 p-4'>
 					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
-						<UpgradeList upgrades={gameData.items.find((e) => e.label == activeTab.toString())} onClickCallback={() => console.log('test')} />
+						<UpgradeList categoryData={gameData.items.find((e) => e.label == activeTab)} onClickCallback={() => console.log('test')} />
 					</Categories>
 				</div>
 				<div className='w-2/3 bg-blue-600'></div>
