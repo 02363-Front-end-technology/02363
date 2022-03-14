@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IUpgrade, IUser } from "@Interfaces/index";
+import { IUpgrade, IUser } from '@Interfaces/index';
 import UpgradeList from '@Components/upgrades/UpgradeList';
 import TopGameBar from '@Components/TopGameBar/TopGameBar';
 import Categories from '@Components/Categories';
@@ -33,8 +33,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 
 	const router = useRouter();
 
-	const data = useGameData({userId: router?.query?.uuid as string})[0];
-
+	const data = useGameData({ userId: router?.query?.uuid as string })[0];
 
 	return (
 		<>

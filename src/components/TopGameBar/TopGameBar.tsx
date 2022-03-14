@@ -1,16 +1,6 @@
 import React from 'react';
 
-import {
-	Box,
-	Flex,
-	Text,
-	IconButton,
-	Stack,
-	Collapse,
-	useColorModeValue,
-	useBreakpointValue,
-	useDisclosure
-} from '@chakra-ui/react';
+import { Box, Flex, Text, IconButton, Stack, Collapse, useColorModeValue, useBreakpointValue, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 type Props = {};

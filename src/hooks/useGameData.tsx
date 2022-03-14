@@ -13,16 +13,17 @@ type Props = {
  */
 const useGameData = ({ userId }: Props) => {
 	const filter = useFilter<GameData>((query) => query.eq('userId', userId), [userId]);
-	const [result] = useRealtime<GameData>('upgrades',
-    {
-        select: {
-          filter: filter
-        }
-      },
-      (data, payload) => data.userId === payload.userId,
-   )
-    const { data, fetching, error } = result
-	return [data, fetching, error ];
+	const [result] = useRealtime<GameData>(
+		'upgrades',
+		{
+			select: {
+				filter: filter
+			}
+		},
+		(data, payload) => data.userId === payload.userId
+	);
+	const { data, fetching, error } = result;
+	return [data, fetching, error];
 };
 
 export default useGameData;
