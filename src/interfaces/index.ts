@@ -15,6 +15,7 @@ export type IUpgrade = {
 
 export type IGameData = {
 	id: number;
+	balance: number;
 	userId: string;
 	items: Array<ICategoryData>;
 };

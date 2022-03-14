@@ -50,7 +50,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	
 	return (
 		<>
-			<TopGameBar />
+			<TopGameBar balance={gameData.balance} />
 			<div className='flex'>
 				<div className='w-1/3 p-4'>
 					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
