@@ -4,7 +4,12 @@ import UpgradeList from '@Components/upgrades/UpgradeList';
 import TopGameBar from '@Components/TopGameBar/TopGameBar';
 import Categories from '@Components/Categories';
 import { Tab } from '@Interfaces/enums';
+<<<<<<< HEAD
 import { useGameData } from 'src/hooks/useGameData';
+=======
+import useGameData from '../../hooks/useGameData';
+import { useRouter } from 'next/router';
+>>>>>>> ebdd4b514a1171d25782332f83c0311a6d48a39f
 
 type Props = {
 	users: IUser[];
@@ -41,10 +46,15 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	
 	const gameData = data[0]
 
+	const router = useRouter();
+
+	const data = useGameData({ userId: router?.query?.uuid as string })[0];
+
 	return (
 		<>
-			<TopGameBar/>
+			<TopGameBar />
 			<div className='flex'>
+<<<<<<< HEAD
 			<div className='w-1/3 p-4'>
 				<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
 					<UpgradeList upgrades={gameData.items.find((e) => e.label == activeTab.toString())} onClickCallback={() => console.log("test")} />
@@ -52,6 +62,14 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 			</div>
 			<div className='w-2/3 bg-blue-600'>
 			</div>
+=======
+				<div className='w-1/3 p-4'>
+					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
+						<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log('test')} />
+					</Categories>
+				</div>
+				<div className='w-2/3 bg-blue-600'></div>
+>>>>>>> ebdd4b514a1171d25782332f83c0311a6d48a39f
 			</div>
 		</>
 	);

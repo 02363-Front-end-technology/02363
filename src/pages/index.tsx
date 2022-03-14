@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Layout from "@Components/Layouts/Layout";
+import Layout from '@Components/Layouts/Layout';
 import Categories from '@Components/Categories';
 import { Tab } from '@Interfaces/enums';
 import { useState } from 'react';
