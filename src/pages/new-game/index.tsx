@@ -14,7 +14,7 @@ const IndexPage = () => {
 		handleSubmit,
 		register,
 		formState: { errors, isValid }
-	} = useForm<IFormInput>();
+	} = useForm<IFormInput>({mode: 'onChange'});
 	const [apiStatus, setApiStatus] = useState<EApiStatus>(EApiStatus.ready);
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ name }) => {
