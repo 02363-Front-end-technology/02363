@@ -38,9 +38,3 @@ jobs:
         with:
           build: npm run build
           start: npm run start
-
-  print-envs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Printing envs"
-        run: echo "supabase Url $NEXT_PUBLIC_SUPABASE_URL"
