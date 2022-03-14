@@ -1,5 +1,9 @@
 on: push
+env:
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 jobs:
+
   run-linters:
     name: Run linters
     runs-on: ubuntu-latest
@@ -35,6 +39,11 @@ jobs:
           build: npm run build
           start: npm run start
         env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ env.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
+  print-envs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Printing envs"
+        run: echo "supabase Url $NEXT_PUBLIC_SUPABASE_URL"
