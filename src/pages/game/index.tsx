@@ -4,6 +4,7 @@ import UpgradeList from '@Components/upgrades/UpgradeList';
 import TopGameBar from '@Components/TopGameBar/TopGameBar';
 import Categories from '@Components/Categories';
 import { Tab } from '@Interfaces/enums';
+import { useGameData } from 'src/hooks/useGameData';
 
 type Props = {
 	users: IUser[];
@@ -27,7 +28,18 @@ const mockUpgrade: IUpgrade[] = [
 ];
 
 const IndexPage: React.FC<Props> = ({ users }) => {
-	const [activeTab, setActiveTab] = useState<Tab>(Tab.FRONTEND);
+	const [activeTab, setActiveTab] = useState<Tab>(Tab.Frontend);
+	const [data, fetching, error ] = useGameData({userId: localStorage.getItem("currentUser")})
+
+	if(error) {
+		return (
+			<> {error.message} </>
+		)
+	}
+
+	if(fetching) return (<> Loading... </>)
+	
+	const gameData = data[0]
 
 	return (
 		<>
@@ -35,7 +47,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 			<div className='flex'>
 			<div className='w-1/3 p-4'>
 				<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
-					<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log("test")} />
+					<UpgradeList upgrades={gameData.items.find((e) => e.label == activeTab.toString())} onClickCallback={() => console.log("test")} />
 				</Categories>
 			</div>
 			<div className='w-2/3 bg-blue-600'>
