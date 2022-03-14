@@ -1,6 +1,6 @@
 import { GameData } from '@Interfaces/index';
 import React from 'react';
-import { useFilter, useRealtime, useSelect, useSubscription } from 'react-supabase';
+import { useFilter, useRealtime } from 'react-supabase';
 
 type Props = {
 	userId: string;
