@@ -3,3 +3,8 @@ export enum Tab {
 	Backend = "Backend",
 	Ads = "Ads"
 }
+
+export enum EView {
+	UPGRADELAYOUT = "UPGRADELAYOUT",
+	WEBSITELAYOUT = "WEBSITELAYOUT"
+}
