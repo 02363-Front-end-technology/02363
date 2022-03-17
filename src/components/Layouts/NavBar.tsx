@@ -11,7 +11,6 @@ const NavBar = () => (
             </div>
             <div className='basis-1/3 flex space-x-6'>
                 <Button>Sign in</Button>
-
                 <Button>My Cart</Button>
             </div>
         </nav>
