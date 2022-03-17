@@ -5,6 +5,8 @@ import { useGameData } from 'src/hooks/useGameData';
 import { useRouter } from 'next/router';
 import UpgradeLayout from '@Components/Layouts/UpgradeLayout';
 import WebsiteLayout from '@Components/Layouts/WebsiteLayout';
+import { FiShoppingCart } from 'react-icons/fi';
+import { CgWebsite } from 'react-icons/cg';
 
 type Props = {
 	users: IUser[];
@@ -36,11 +38,14 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 		if (selectedView === EView.UPGRADELAYOUT) setSelectedView(EView.WEBSITELAYOUT);
 	}
 	return (
-		<>
+		<div className='relative h-screen'>
 			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout gameData={gameData} activeTab={activeTab} setActiveTab={setActiveTab} />}
 			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout />}
-			<button onClick={onClick}>Switch view</button>
-		</>
+			<div className='flex fixed bottom-4 right-6 rounded-full border-2 border-black w-16 h-16 z-0 text-center items-center justify-center cursor-pointer' onClick={onClick}>
+				{selectedView === EView.WEBSITELAYOUT && <FiShoppingCart className='w-6 h-6 z-10 text-red-700'/>}
+				{selectedView === EView.UPGRADELAYOUT && <CgWebsite className='w-6 h-6 z-10 text-red-700'/>}
+			</div>
+		</div>
 	);
 };
 
