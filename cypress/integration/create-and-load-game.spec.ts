@@ -5,7 +5,7 @@ describe('Create and load game', () => {
 	beforeEach(() => {
 		cy.visit('/');
 	});
-	
+
 	it('should create new game', () => {
 		cy.contains('New Game');
 		cy.contains('Load Game');

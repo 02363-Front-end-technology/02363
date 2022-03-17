@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IUser } from '../../../interfaces';
-import { supabase } from '../../../utils/supabaseClient';
-import { IGameData } from '../../../interfaces/index';
-import { identity } from 'cypress/types/lodash';
+import { supabase } from '@Utils/supabaseClient';
+import { IGameData } from '@Interfaces/index';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === 'GET') {
