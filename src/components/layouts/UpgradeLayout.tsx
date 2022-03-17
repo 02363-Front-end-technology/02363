@@ -16,15 +16,14 @@ const UpgradeLayout: React.FC<IProps> = ({ gameData, activeTab, setActiveTab }) 
 	return (
 		<>
 			<TopGameBar balance={gameData.balance} />
-			<div className='flex'>
-				<div className='w-1/3 p-4'>
+			<div className='flex flex-wrap'>
+				<div className='w-full md:w-1/3 p-4'>
 					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
 						<UpgradeList categoryData={gameData.items.find((e) => e.label == activeTab)} onClickCallback={() => console.log('test')} />
 					</Categories>
 				</div>
-				<div className='h-screen w-2/3'>
+				<div className='w-full md:h-screen md:w-2/3'>
 					<div>
-						<RealTimeChart />
 						<RealTimeChart />
 					</div>
 				</div>

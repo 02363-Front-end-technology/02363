@@ -12,7 +12,7 @@ const RealTimeChart: React.FC<IProps> = ({}) => {
 	const [data] = useState<number[]>([]);
 
 	return (
-		<div style={{position: 'relative', height: '40vh',width: '100%'}}>
+		<div className='relative w-full h-1/2'>
 			<Line
 				data={{
 					datasets: [

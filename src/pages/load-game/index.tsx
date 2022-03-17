@@ -1,7 +1,5 @@
-import Layout from '@Components/Layouts/Layout';
-import { EApiStatus } from '@Interfaces/apiStates';
-import React, { useState } from 'react';
-import { axiosInstance } from '@Utils/axiosInstance';
+import Layout from '@Components/layouts/Layout';
+import React from 'react';
 import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
