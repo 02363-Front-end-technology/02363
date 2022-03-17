@@ -25,7 +25,7 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 		{
 			name: name
 		}
-	]);
+	]).single();
 	if (data) return res.status(201).json(data);
 	return res.status(500).json({ message: error.message });
 };
