@@ -38,10 +38,10 @@ const IndexPage = () => {
 			<form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
 				<div className='flex flex-col'>
 					<label htmlFor='name'>Name</label>
-					<input {...register('name', { required: true })} className='rounded-2xl border px-2 focus:outline-none' />
+					<input id='name' {...register('name', { required: true })} className='rounded-2xl border px-2 focus:outline-none'/>
 					{errors.name && <span>This field is required</span>}
 				</div>
-				<Button type='submit' className='my-button disbaled:cursor-not-allowed' disabled={!isValid} isLoading={apiStatus === EApiStatus.loading}>
+				<Button type='submit' className='my-button disbaled:cursor-not-allowed' disabled={!isValid} isLoading={apiStatus === EApiStatus.loading} data-cy='submit'>
 					Start game
 				</Button>
 			</form>

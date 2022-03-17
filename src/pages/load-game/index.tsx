@@ -46,7 +46,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 						{/*TODO should be last login date and balance*/}
 					</select>
 				</div>
-				<Button type='submit' disabled={!isValid} className='my-button'>
+				<Button type='submit' disabled={!isValid} className='my-button' data-cy='submit'>
 					Start game
 				</Button>
 				{errors.uuid && <span>This field is required</span>}
