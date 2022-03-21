@@ -3,6 +3,7 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 import StreamingPlugin from 'chartjs-plugin-streaming';
 import React, { useState } from 'react';
 import 'chartjs-adapter-luxon';
+import style from '@Styles/UpgradeLayout.module.css';
 
 type IProps = {};
 
@@ -12,12 +13,12 @@ const RealTimeChart: React.FC<IProps> = ({}) => {
 	const [data] = useState<number[]>([]);
 
 	return (
-		<div className='relative w-full h-1/2'>
+		<div className={style.chart}>
 			<Line
 				data={{
 					datasets: [
 						{
-							label: 'CPU usage',
+							label: 'CPU usage(TODO: Simuler så den "bruger" mere CPU, jo flere ting der købt)',
 							backgroundColor: '#152c50cf',
 							fill: false,
 							data: data
@@ -44,7 +45,7 @@ const RealTimeChart: React.FC<IProps> = ({}) => {
 						y: {
 							title: {
 								display: true,
-								text: 'Some title'
+								text: 'RealTimeChart'
 							}
 						}
 					}
