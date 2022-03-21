@@ -31,3 +31,10 @@ export type IUpgradeItem = {
 	multiplier: number;
 	price: number;
 };
+
+export type IProduct = {
+	image: string;
+	description: string;
+	price: number;
+	rating: number;
+};
