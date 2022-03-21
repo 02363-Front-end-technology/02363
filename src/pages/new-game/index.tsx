@@ -1,4 +1,4 @@
-import Layout from '@Components/Layouts/Layout';
+import Layout from '@Components/layouts/Layout';
 import { axiosInstance } from '@Utils/axiosInstance';
 import React, { useState } from 'react';
 import { EApiStatus } from '@Interfaces/apiStates';

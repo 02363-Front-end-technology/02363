@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Layout from '@Components/Layouts/Layout';
+import Layout from '@Components/layouts/Layout';
 
 const IndexPage = () => {
 	return (
