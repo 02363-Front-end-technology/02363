@@ -1,4 +1,4 @@
-import Layout from '@Components/layouts/Layout';
+import FrontpageLayout from '@Components/layouts/FrontpageLayout/FrontpageLayout';
 import { axiosInstance } from '@Utils/axiosInstance';
 import React, { useState } from 'react';
 import { EApiStatus } from '@Interfaces/apiStates';
@@ -6,6 +6,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { IUser } from '@Interfaces/index';
+import style from '@Components/layouts/FrontpageLayout/FrontpageLayout.module.css';
+import Link from 'next/link';
 
 interface IFormInput {
 	name: string;
@@ -34,18 +36,21 @@ const IndexPage = () => {
 	};
 
 	return (
-		<Layout title='Create new game'>
-			<form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-				<div className='flex flex-col'>
-					<label htmlFor='name'>Name</label>
-					<input id='name' {...register('name', { required: true })} className='rounded-2xl border px-2 focus:outline-none'/>
-					{errors.name && <span>This field is required</span>}
+		<FrontpageLayout title='Create new game'>
+			<form onSubmit={handleSubmit(onSubmit)} className={style.content}>
+				<div className={style.inputContainer}>
+					<label htmlFor='name'>Game name</label>
+					<input type="text" id='name' {...register('name', { required: true })} className={style.input} />
+					<div className={style.error}>{errors.name && <span>The game name is required</span>}</div>
 				</div>
-				<Button type='submit' className='my-button disbaled:cursor-not-allowed' disabled={!isValid} isLoading={apiStatus === EApiStatus.loading} data-cy='submit'>
-					Start game
-				</Button>
+				<div className={style.buttonContainer}>
+					<Link href='/'>
+						<button className={style.btn}><a data-cy='/'>Back</a></button>
+					</Link>
+					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Start game" />
+				</div>
 			</form>
-		</Layout>
+		</FrontpageLayout>
 	);
 };
 

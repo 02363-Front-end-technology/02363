@@ -1,19 +1,20 @@
 import Link from 'next/link';
-import Layout from '@Components/layouts/Layout';
+import FrontpageLayout from '@Components/layouts/FrontpageLayout/FrontpageLayout';
+import style from '@Components/layouts/FrontpageLayout/FrontpageLayout.module.css';
 
 const IndexPage = () => {
 	return (
-		<Layout>
-			<div className='space-x-6'>
+		<FrontpageLayout>
+			<div className={style.content}>
 				<Link href='/new-game'>
-					<a className='my-button' data-cy='new-game'>New Game</a>
+					<button className={style.btn}><a data-cy='new-game'>New Game</a></button>
 				</Link>
 
 				<Link href='/load-game'>
-					<a className='my-button' data-cy='load-game'>Load Game</a>
+					<button className={style.btn}><a data-cy='load-game'>Load Game</a></button>
 				</Link>
 			</div>
-		</Layout>
+		</FrontpageLayout>
 	);
 };
 
