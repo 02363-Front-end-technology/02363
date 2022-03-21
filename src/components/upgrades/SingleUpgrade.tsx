@@ -14,7 +14,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, onClickCallback, isBoug
 			<span>{title}</span>
 			<div className='flex inline-flex items-center space-x-2'>
 				<span className='font-bold'>${price}</span>
-				<Button className='rounded-xl border border-red-600 px-6 py-1' disabled={isBought} onClick={onClickCallback}>
+				<Button className='rounded-xl border px-6 py-1' disabled={isBought} onClick={onClickCallback}>
 					{isBought ? 'Bought' : 'Buy'}
 				</Button>
 			</div>

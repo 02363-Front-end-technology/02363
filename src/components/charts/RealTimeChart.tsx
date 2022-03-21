@@ -18,7 +18,7 @@ const RealTimeChart: React.FC<IProps> = ({}) => {
 					datasets: [
 						{
 							label: 'CPU usage',
-							backgroundColor: 'rgba(255, 99, 132, 0.5)',
+							backgroundColor: '#152c50cf',
 							fill: false,
 							data: data
 						}
