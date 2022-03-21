@@ -1,4 +1,4 @@
-import FrontpageLayout from '@Components/layouts/FrontpageLayout/FrontpageLayout';
+import FrontpageLayout from '@Components/layouts/FrontpageLayout';
 import { axiosInstance } from '@Utils/axiosInstance';
 import React, { useState } from 'react';
 import { EApiStatus } from '@Interfaces/apiStates';
@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { IUser } from '@Interfaces/index';
-import style from '@Components/layouts/FrontpageLayout/FrontpageLayout.module.css';
+import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
 
 interface IFormInput {
@@ -47,7 +47,7 @@ const IndexPage = () => {
 					<Link href='/'>
 						<button className={style.btn}><a data-cy='/'>Back</a></button>
 					</Link>
-					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Start game" />
+					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Start" />
 				</div>
 			</form>
 		</FrontpageLayout>

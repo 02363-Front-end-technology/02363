@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import FrontpageLayout from '@Components/layouts/FrontpageLayout/FrontpageLayout';
-import style from '@Components/layouts/FrontpageLayout/FrontpageLayout.module.css';
+import FrontpageLayout from '@Components/layouts/FrontpageLayout';
+import style from '@Styles/FrontpageLayout.module.css';
 
 const IndexPage = () => {
 	return (

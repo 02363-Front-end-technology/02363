@@ -1,4 +1,4 @@
-import FrontpageLayout from '@Components/layouts/FrontpageLayout/FrontpageLayout';
+import FrontpageLayout from '@Components/layouts/FrontpageLayout';
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import style from '@Components/layouts/FrontpageLayout/FrontpageLayout.module.css';
+import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
 
 interface IFormInput {
@@ -50,7 +50,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 					<Link href='/'>
 						<button className={style.btn}><a data-cy='/'>Back</a></button>
 					</Link>
-					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Load selected game" />
+					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Load" />
 					{errors.uuid && <span>This field is required</span>}
 				</div>
 			</form>
