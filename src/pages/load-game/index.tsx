@@ -4,7 +4,6 @@ import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
-import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
@@ -48,9 +47,9 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
-						<button className={style.btn}><a data-cy='/'>Back</a></button>
+						<button className={"btn"}><a data-cy='/'>Back</a></button>
 					</Link>
-					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Load" />
+					<input type='submit' className={"btn"} disabled={!isValid} data-cy='submit' value="Load" />
 					{errors.uuid && <span>This field is required</span>}
 				</div>
 			</form>

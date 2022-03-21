@@ -31,3 +31,37 @@ input[type='text'] {
 	background: transparent;
 	outline: none;
 }
+
+.btn {
+	background-color: #274d87;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+	min-width: 150px;
+	height: 36px;
+}
+.btn.inactive {
+	opacity: 0.65;
+	cursor: default;
+}
+.btn:not(.inactive):not(.active):hover {
+	background-color: #0062cc;
+}
+.btn.danger {
+	background-color: #dc3545;
+}
+.btn.danger:not(.inactive):not(.active):hover {
+	background-color: #c82333;
+}
+.btn.small {
+	min-width: 80px;
+}
+.btn.medium {
+	min-width: 120px;
+}
+.btn.active {
+	background-color: #007bff;
+}
