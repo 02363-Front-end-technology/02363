@@ -1,20 +1,29 @@
+
+import style from '@Styles/WebsiteLayout.module.css';
+import Image from 'next/image'
+
+
 const NavBar = () => (
-	<div className='bg-gradient-to-tl from-blue-700'>
-        <nav className='flex flex-row items-center py-4'>
-            <div className='basis-1/3 px-5'>
-                02363 shop
+    <div className={style.navbar}>
+        <div className={style.navbarLogo}>
+            <Image src='/ff.png' width='24' height='24' />
+        </div>
+        <div className={style.title}>
+            02363 Shop
+        </div>
+        <div className={style.search}>
+            <input type="text" className={style.input} placeholder="Search" />
+            <button className='btn small alternative'>Search</button>
+        </div>
+        <div className={style.flexEnd}>
+            <div className={style.item}>
+                <button className='btn alternative'>Sign in</button>
             </div>
-            <div className='basis-1/3'>
-                <input className='rounded-full' type='text' placeholder='Search'/>
+            <div className={style.item}>
+                <button className='btn alternative'>My Cart</button>
             </div>
-            <div className='basis-1/3 flex space-x-6'>
-                <button className='btn'>Sign in</button>
-                <button className='btn'>My Cart</button>
-            </div>
-        </nav>
-
-
-	</div>
+        </div>
+    </div>
 );
 
 export default NavBar;

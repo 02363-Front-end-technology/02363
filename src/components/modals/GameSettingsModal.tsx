@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/modal';
-import { Stack } from '@chakra-ui/react';
+import { Link, Stack } from '@chakra-ui/react';
 
 type IProps = {
 	isOpen: boolean;
@@ -23,9 +23,9 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose, onResetGameData 
 						<button className={"btn"}>
 							Button
 						</button>
-						<button className={"btn"}>
-							Button
-						</button>
+						<Link href='/'>
+							<button className={"btn warning"}>Leave Game</button>
+						</Link>
 						<button className={"btn danger"} onClick={onResetGameData}>
 							Reset Game
 						</button>

@@ -9,38 +9,6 @@
 	background: #f9f9f9;
 }
 
-.layout .titleBar {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	background-color: #152c50;
-	color: white;
-	width: 100%;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	padding: 5px 20px;
-	height: 34px;
-}
-.layout .titleBar .title {
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-.layout .titleBar .item {
-	display: flex;
-	margin-left: 50px;
-}
-.layout .titleBar .item .value {
-	margin-left: 5px;
-	background-color: white;
-	color: #152c50;
-	font-weight: bold;
-	text-align: center;
-	width: 100px;
-	height: 24px;
-	border-radius: 10px;
-}
-
 .layout .container {
 	display: flex;
 	flex-direction: row;
