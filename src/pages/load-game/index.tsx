@@ -56,7 +56,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 export const getStaticProps: GetStaticProps = async () => {
 	const { data: users } = await supabase.from('users').select('*');
 
-	return { props: { users } };
+	return { props: { users }, revalidate: 600 };
 };
 
 export default IndexPage;
