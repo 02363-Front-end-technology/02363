@@ -1,52 +1,57 @@
 import React, { useState } from 'react';
-import { IUpgrade, IUser } from '@Interfaces/index';
-import UpgradeList from '@Components/upgrades/UpgradeList';
-import TopGameBar from '@Components/TopGameBar/TopGameBar';
-import Categories from '@Components/Categories';
-import { Tab } from '@Interfaces/enums';
-import useGameData from '../../hooks/useGameData';
+import { IUser } from '@Interfaces/index';
+import { EView, Tab } from '@Interfaces/enums';
+import { useGameData } from 'src/hooks/useGameData';
 import { useRouter } from 'next/router';
+import UpgradeLayout from '@Components/layouts/UpgradeLayout';
+import WebsiteLayout from '@Components/layouts/WebsiteLayout';
+import { FiShoppingCart } from 'react-icons/fi';
+import { CgWebsite } from 'react-icons/cg';
+import GameSettingsModal from '@Components/modals/GameSettingsModal';
+import { BsGear } from 'react-icons/bs';
 
 type Props = {
 	users: IUser[];
 };
 
-const mockUpgrade: IUpgrade[] = [
-	{
-		id: '1',
-		user_id: 's',
-		upgrades: {
-			item1: 1
-		}
-	},
-	{
-		id: '1',
-		user_id: 's',
-		upgrades: {
-			item1: 1
-		}
-	}
-];
-
 const IndexPage: React.FC<Props> = ({ users }) => {
-	const [activeTab, setActiveTab] = useState<Tab>(Tab.FRONTEND);
-
 	const router = useRouter();
 
-	const data = useGameData({ userId: router?.query?.uuid as string })[0];
+	const [data, fetching, error] = useGameData({ userId: router.query.uuid as string });
+	const [activeTab, setActiveTab] = useState<Tab>(Tab.Frontend);
+	const [selectedView, setSelectedView] = useState<EView>(EView.UPGRADELAYOUT);
+	const [isGameSettingsOpen, setIsGameSettingsOpen] = useState(false);
+
+	if (fetching) return <> Loading... </>;
+
+	if (error) {
+		return <> {error.message} </>;
+	}
+
+	if (data === undefined) {
+		return <> data is undefined </>;
+	}
+
+	const gameData = data[0];
+
+	const onClick = () => {
+		if (selectedView === EView.WEBSITELAYOUT) setSelectedView(EView.UPGRADELAYOUT);
+		if (selectedView === EView.UPGRADELAYOUT) setSelectedView(EView.WEBSITELAYOUT);
+	};
 
 	return (
-		<>
-			<TopGameBar />
-			<div className='flex'>
-				<div className='w-1/3 p-4'>
-					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
-						<UpgradeList upgrades={mockUpgrade} onClickCallback={() => console.log('test')} />
-					</Categories>
-				</div>
-				<div className='w-2/3 bg-blue-600'></div>
+		<div className='relative h-screen max-h-screen overflow-y-hidden'>
+			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout gameData={gameData} activeTab={activeTab} setActiveTab={setActiveTab} />}
+			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout frontendItems={gameData.items[0].upgrades} />}
+			<div className='fixed bottom-6 right-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center' onClick={onClick}>
+				{selectedView === EView.WEBSITELAYOUT && <FiShoppingCart className='z-10 h-6 w-6 text-red-700' />}
+				{selectedView === EView.UPGRADELAYOUT && <CgWebsite className='z-10 h-6 w-6 text-red-700' />}
 			</div>
-		</>
+			<div className='fixed bottom-6 left-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center' onClick={() => setIsGameSettingsOpen(true)}>
+				 <BsGear className='z-10 h-6 w-6 text-red-700' />
+			</div>
+			<GameSettingsModal isOpen={isGameSettingsOpen} onClose={() => setIsGameSettingsOpen(false)} onResetGameData={() => console.log(localStorage.getItem('currentUser'))}/>
+		</div>
 	);
 };
 

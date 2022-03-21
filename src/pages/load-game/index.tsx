@@ -1,14 +1,11 @@
-import Layout from '@Components/Layouts/Layout';
-import { EApiStatus } from '@Interfaces/apiStates';
-import React, { useState } from 'react';
-import { axiosInstance } from '@Utils/axiosInstance';
+import Layout from '@Components/layouts/Layout';
+import React from 'react';
 import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
 import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import useGameData from '../../hooks/useGameData';
 import { useRouter } from 'next/router';
 
 interface IFormInput {
@@ -29,6 +26,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
+		localStorage.setItem("currentUser", uuid)
 		router.push({ pathname: '/game', query: { uuid: uuid } });
 	};
 
@@ -46,7 +44,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 						{/*TODO should be last login date and balance*/}
 					</select>
 				</div>
-				<Button type='submit' disabled={!isValid} className='my-button'>
+				<Button type='submit' disabled={!isValid} className='my-button' data-cy='submit'>
 					Start game
 				</Button>
 				{errors.uuid && <span>This field is required</span>}

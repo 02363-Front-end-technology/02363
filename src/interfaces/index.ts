@@ -13,18 +13,19 @@ export type IUpgrade = {
 	};
 };
 
-export type GameData = {
+export type IGameData = {
 	id: number;
+	balance: number;
 	userId: string;
-	items: Array<CategoryData>;
+	items: Array<ICategoryData>;
 };
 
-export type CategoryData = {
+export type ICategoryData = {
 	label: string;
-	upgrades: Array<UpgradeItem>;
+	upgrades: Array<IUpgradeItem>;
 };
 
-export type UpgradeItem = {
+export type IUpgradeItem = {
 	label: string;
 	isBought: boolean;
 	multiplier: number;

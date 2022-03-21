@@ -1,6 +1,7 @@
-import { GameData } from '@Interfaces/index';
-import React from 'react';
-import { useFilter, useRealtime } from 'react-supabase';
+import { IGameData } from '@Interfaces/index';
+import { supabase } from '@Utils/supabaseClient';
+import React, { useEffect, useState } from 'react';
+import { PostgrestError, useFilter, useRealtime, useSelect, useSubscription } from 'react-supabase';
 
 type Props = {
 	userId: string;
@@ -11,19 +12,13 @@ type Props = {
  * @param userID
  * @returns
  */
-const useGameData = ({ userId }: Props) => {
-	const filter = useFilter<GameData>((query) => query.eq('userId', userId), [userId]);
-	const [result] = useRealtime<GameData>(
-		'upgrades',
-		{
-			select: {
-				filter: filter
-			}
-		},
-		(data, payload) => data.userId === payload.userId
-	);
-	const { data, fetching, error } = result;
+const useGameData = ({ userId }: Props): [IGameData[], boolean, PostgrestError] => {
+	const filter = useFilter<IGameData>((query) => query.eq('userId', userId), [userId]);
+	const [result] = useRealtime<IGameData>('upgrades', {
+		select: { filter }
+	});
+	const { data, error, fetching } = result;
 	return [data, fetching, error];
 };
 
-export default useGameData;
+export { useGameData };
