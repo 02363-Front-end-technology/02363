@@ -1,6 +1,7 @@
 import React from 'react';
 import { IUpgradeItem } from '@Interfaces/index';
 import NavBar from '@Components/layouts/NavBar';
+import Add from './Add';
 
 type IProps = {
 	frontendItems: IUpgradeItem[];
@@ -11,6 +12,8 @@ const UpgradeLayout: React.FC<IProps> = ({ frontendItems }) => {
 
 	return <>
 		{frontendItems[0].isBought && <NavBar />}
+		<Add src='/AddblockAdd.png'/> 
+		<Add src='/InvisibleAd.png'/>
 	</>;
 };
 
