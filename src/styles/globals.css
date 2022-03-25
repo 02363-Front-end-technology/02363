@@ -31,3 +31,103 @@ input[type='text'] {
 	background: transparent;
 	outline: none;
 }
+
+/*
+	Buttons
+*/
+.btn {
+	background-color: #274d87;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+	min-width: 150px;
+	height: 36px;
+}
+.btn.inactive {
+	opacity: 0.65;
+	cursor: default;
+}
+.btn:not(.inactive):not(.active):hover {
+	background-color: #0062cb;
+}
+.btn.warning {
+	background-color: #ffc106;
+}
+.btn.warning:not(.inactive):not(.active):hover {
+	background-color: #e0a800;
+}
+.btn.danger {
+	background-color: #dc3544;
+}
+.btn.danger:not(.inactive):not(.active):hover {
+	background-color: #c82333;
+}
+.btn.alternative {
+	background-color: #b94340;
+}
+.btn.alternative:not(.inactive):not(.active):hover {
+	background-color: rgb(226, 39, 58);
+}
+.btn.small {
+	min-width: 80px;
+}
+.btn.medium {
+	min-width: 120px;
+}
+.btn.active {
+	background-color: #007bff;
+}
+
+/*
+	Loading (Global loading)
+	Source: https://codepen.io/DariaIvK/pen/EpjPRM
+*/
+.loading {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	background: rgb(228, 228, 228);
+	opacity: 0.9;
+	position: absolute;
+}
+.loading .lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.loading .lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid #fff;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #fff transparent transparent transparent;
+}
+.loading .lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.loading .lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.loading .lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

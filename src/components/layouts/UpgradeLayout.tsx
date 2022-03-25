@@ -15,17 +15,19 @@ type IProps = {
 
 const UpgradeLayout: React.FC<IProps> = ({ gameData, activeTab, setActiveTab }) => {
 	return (
-		<div className={style.layout}>
+		<div style={{"height": "100%"}}>
 			<TopGameBar balance={gameData.balance} />
-			<div className={style.container}>
-				<div className='w-full md:w-1/3 p-4'>
-					<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
-						<UpgradeList categoryData={gameData.items.find((e) => e.label == activeTab)} onClickCallback={() => console.log('test')} />
-					</Categories>
-				</div>
-				<div className='w-full md:h-screen md:w-2/3'>
-					<div>
-						<RealTimeChart />
+			<div className={style.layout}>
+				<div className={style.container}>
+					<div className={style.left}>
+						<Categories activeTab={activeTab} setActiveTab={setActiveTab}>
+							<UpgradeList categoryData={gameData.items.find((e) => e.label == activeTab)} onClickCallback={() => console.log('test')} />
+						</Categories>
+					</div>
+					<div className={style.right}>
+						<div>
+							<RealTimeChart />
+						</div>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,6 @@ import { axiosInstance } from '@Utils/axiosInstance';
 import React, { useState } from 'react';
 import { EApiStatus } from '@Interfaces/apiStates';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { IUser } from '@Interfaces/index';
 import style from '@Styles/FrontpageLayout.module.css';
@@ -45,9 +44,9 @@ const IndexPage = () => {
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
-						<button className={style.btn}><a data-cy='/'>Back</a></button>
+						<button className={"btn"}><a data-cy='/'>Back</a></button>
 					</Link>
-					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Start" />
+					<input type='submit' className={"btn"} disabled={!isValid} data-cy='submit' value="Start" />
 				</div>
 			</form>
 		</FrontpageLayout>

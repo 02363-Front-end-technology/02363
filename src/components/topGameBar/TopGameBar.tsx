@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex, Text, IconButton, Stack, Collapse, useColorModeValue, useBreakpointValue, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useGameData } from 'src/hooks/useGameData';
-import style from '@Styles/UpgradeLayout.module.css';
+import style from '@Styles/TopBar.module.css';
 
 type Props = {
 	balance: number
@@ -12,7 +12,7 @@ type Props = {
 export default function TopGameBar({balance} : Props){
 	//const { isOpen, onToggle } = useDisclosure();
 	return (
-		<div className={style.titleBar}>
+		<div className={style.topBar}>
 			<div className={style.title}>
 				IDLE GAME
 			</div>

@@ -22,7 +22,18 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const [selectedView, setSelectedView] = useState<EView>(EView.UPGRADELAYOUT);
 	const [isGameSettingsOpen, setIsGameSettingsOpen] = useState(false);
 
-	if (fetching) return <> Loading... </>;
+	if (fetching) {
+		return (
+			<div className='loading'>
+				<div className='lds-ring'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		);
+	}
 
 	if (error) {
 		return <> {error.message} </>;
