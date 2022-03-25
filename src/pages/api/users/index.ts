@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IGameData, IUser } from '../../../interfaces';
-import { supabase } from '../../../utils/supabaseClient';
+import { IGameData, IUser } from '@Interfaces/index';
+import { supabase } from '@Utils/supabaseClient';
 import defaultGameDate from '@Utils/defaultGameData';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -15,7 +15,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const getAllUsersResolver = async (res: NextApiResponse) => {
-	const { data, error } = await supabase.from<IUser[]>('users').select('*');
+	const { data, error } = await supabase.from<IUser[]>('users').select(`
+	name,
+	last_logi`);
 	if (data) return res.status(200).json(data);
 	res.status(500).json({ message: error.message });
 };

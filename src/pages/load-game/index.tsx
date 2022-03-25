@@ -28,7 +28,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
-		localStorage.setItem("currentUser", uuid)
+		localStorage.setItem('currentUser', uuid);
 		router.push({ pathname: '/game', query: { uuid: uuid } });
 	};
 
@@ -40,7 +40,8 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 					<select {...register('uuid', { required: true })}>
 						{users.map((u) => (
 							<option key={u.id} value={u.id}>
-								{u.name} {dayjs(u.createdAt).format('DD-MM-YYYY').toString()}
+								{u.name} {dayjs(u.last_login).format('DD/MM/YYYY')}
+								{u.balance}
 							</option>
 						))}{' '}
 						{/*TODO should be last login date and balance*/}
@@ -48,9 +49,11 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
-						<button className={style.btn}><a data-cy='/'>Back</a></button>
+						<button className={style.btn}>
+							<a data-cy='/'>Back</a>
+						</button>
 					</Link>
-					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value="Load" />
+					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value='Load' />
 					{errors.uuid && <span>This field is required</span>}
 				</div>
 			</form>

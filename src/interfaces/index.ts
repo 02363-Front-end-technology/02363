@@ -3,6 +3,7 @@ export type IUser = {
 	name: string;
 	createdAt: Date;
 	last_login: Date | null;
+	balance?: number;
 };
 
 export type IUpgrade = {
