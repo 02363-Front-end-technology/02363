@@ -4,11 +4,13 @@ import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
-import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { currentNameQuery } from '../../selectors/user';
+import { currentUserIdState } from '../../atoms';
 
 interface IFormInput {
 	uuid: string;
@@ -19,6 +21,7 @@ type Props = {
 };
 
 const IndexPage: React.FC<Props> = ({ users }) => {
+
 	const {
 		handleSubmit,
 		register,

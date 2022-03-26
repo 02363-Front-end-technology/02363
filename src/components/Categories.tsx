@@ -1,22 +1,29 @@
-import { Tab } from '@Interfaces/enums';
+import { ETab } from '@Interfaces/enums';
 import React, { Dispatch, SetStateAction } from 'react';
+import { useRecoilState } from 'recoil';
+import { upgradeFilterState } from '../atoms';
 
-type Props = {
-	activeTab: Tab;
-	setActiveTab: Dispatch<SetStateAction<Tab>>;
+const Categories: React.FC = ({ children }) => {
+
+	const [activeTab, setActiveTab] = useRecoilState(upgradeFilterState);
+
+
+	return (
+		<div className='categories'>
+			<div className='flex justify-evenly'>
+				<button className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
+					Frontend
+				</button>
+				<button className={`btn medium ${activeTab === ETab.Backend && 'active'}`} onClick={() => setActiveTab(ETab.Backend)}>
+					Backend
+				</button>
+				<button className={`btn medium ${activeTab === ETab.Ads && 'active'}`} onClick={() => setActiveTab(ETab.Ads)}>
+					Ads
+				</button>
+			</div>
+			{children}
+		</div>
+	);
 };
-
-const Categories: React.FC<Props> = ({setActiveTab, activeTab,children}) => {
-    return (
-      <div className='categories'>
-        <div className='flex justify-evenly'>
-          <button className={`${"btn medium"} ${activeTab === Tab.Frontend && "active"}`} onClick={() => setActiveTab(Tab.Frontend)}>Frontend</button>
-          <button className={`${"btn medium"} ${activeTab === Tab.Backend  && "active"}`} onClick={() => setActiveTab(Tab.Backend)}>Backend</button>
-          <button className={`${"btn medium"} ${activeTab === Tab.Ads  && "active"}`} onClick={() => setActiveTab(Tab.Ads)}>Ads</button>
-        </div>
-        {children}
-      </div>
-    )
-  }
 
 export default Categories;

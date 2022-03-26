@@ -2,7 +2,7 @@ export type IUser = {
 	id: string;
 	name: string;
 	createdAt: Date;
-	last_login: Date | null;
+	last_login?: Date;
 	balance?: number;
 };
 

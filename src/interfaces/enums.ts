@@ -1,4 +1,4 @@
-export enum Tab {
+export enum ETab {
 	Frontend = "Frontend",
 	Backend = "Backend",
 	Ads = "Ads"
