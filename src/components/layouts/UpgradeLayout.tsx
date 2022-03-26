@@ -8,13 +8,13 @@ import RealTimeChart from '@Components/charts/RealTimeChart';
 import style from '@Styles/UpgradeLayout.module.css';
 import { useRecoilValue } from 'recoil';
 import { filteredUpgradesState } from '../../selectors/upgrades';
+import { currentNameQuery } from '../../selectors';
 
 type IProps = {
 	gameData: IGameData;
 };
 
 const UpgradeLayout: React.FC<IProps> = ({ gameData }) => {
-
 	return (
 		<div style={{"height": "100%"}}>
 			<TopGameBar balance={gameData.balance} />

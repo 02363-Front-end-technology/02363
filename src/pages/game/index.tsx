@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IUser } from '@Interfaces/index';
 import { EView } from '@Interfaces/enums';
 import { useGameData } from 'src/hooks/useGameData';
@@ -9,6 +9,8 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import GameSettingsModal from '@Components/modals/GameSettingsModal';
 import { BsGear } from 'react-icons/bs';
+import { useSetRecoilState } from 'recoil';
+import { currentUserIdState } from '../../atoms';
 
 type Props = {
 	users: IUser[];
@@ -20,6 +22,11 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const [data, fetching, error] = useGameData({ userId: router.query.uuid as string });
 	const [selectedView, setSelectedView] = useState<EView>(EView.UPGRADELAYOUT);
 	const [isGameSettingsOpen, setIsGameSettingsOpen] = useState(false);
+	const setCurrentUserId = useSetRecoilState(currentUserIdState);
+
+	useEffect(() => {
+		setCurrentUserId(router.query.uuid as string);
+	}, [router.query.uuid, setCurrentUserId]);
 
 	if (fetching) {
 		return (
@@ -33,7 +40,6 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 			</div>
 		);
 	}
-
 	if (error) {
 		return <> {error.message} </>;
 	}
@@ -41,6 +47,8 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	if (data === undefined) {
 		return <> data is undefined </>;
 	}
+
+
 
 	const gameData = data[0];
 
