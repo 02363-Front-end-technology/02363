@@ -20,6 +20,11 @@ export const currentUserIdState = atom<string>({
 	effects: [localStorageEffect('CurrentUserId')],
 });
 
+export const currentUserGameData = atom({
+	key: 'CurrentUserGameData',
+	default: null,
+	effects: [localStorageEffect('CurrentUserGameData')],
+})
 export const currentUserGameDataId = atom<string>({
 	key: 'CurrentUserGameDataId',
 	default: null

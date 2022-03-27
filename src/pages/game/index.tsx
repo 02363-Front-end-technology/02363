@@ -9,7 +9,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import GameSettingsModal from '@Components/modals/GameSettingsModal';
 import { BsGear } from 'react-icons/bs';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { currentUserIdState } from '../../atoms';
 
 type Props = {
@@ -23,6 +23,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const [selectedView, setSelectedView] = useState<EView>(EView.UPGRADELAYOUT);
 	const [isGameSettingsOpen, setIsGameSettingsOpen] = useState(false);
 	const setCurrentUserId = useSetRecoilState(currentUserIdState);
+	const [userBalance,setUserBalance] = useRecoilState()
 
 	useEffect(() => {
 		setCurrentUserId(router.query.uuid as string);

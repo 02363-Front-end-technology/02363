@@ -1,22 +1,24 @@
 import { selector } from 'recoil';
-import { currentUserIdState, upgradeFilterState } from '../atoms';
+import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../atoms';
 import defaultGameDate from '@Utils/defaultGameData';
 import { ETab } from '@Interfaces/enums';
 import { supabase } from '@Utils/supabaseClient';
 
-export const currentUserGameDataQuery = selector<string | null>({
+export const currentUserBalanceQuery = selector<string | null>({
 	key: 'currentUserGameDataQuery',
-	get: async ({ get }) => {
-		const { data, error } = await supabase
-			.from('upgrades')
-			.select('*')
-			.match({ userId: get(currentUserIdState) })
-			.single();
-		if (error) {
-			console.error(error);
-			return error;
-		}
-		return data;
+	get: ({ get }) => {
+		const gameData = get(currentUserGameData);
+		if (!gameData) return null;
+		const { balance } = gameData;
+		return balance;
+	},
+	set: ({ get }) => {
+		const gameData = get(currentUserGameData);
+		const multiplier = 1.0;
+		if (!gameData) return null;
+		const { balance } = gameData;
+		if (!multiplier) return balance;
+		return balance * multiplier;
 	}
 });
 
