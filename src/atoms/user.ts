@@ -23,7 +23,6 @@ export const currentUserIdState = atom<string>({
 
 export const currentUserGameData = atom<Partial<IGameData> | null>({
 	key: 'CurrentUserGameData',
-	effects: [localStorageEffect('CurrentUserGameData')],
 	default: defaultGameDate,
 	effects: [localStorageEffect('CurrentUserGameData')]
 });
