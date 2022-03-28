@@ -4,12 +4,13 @@ import { Box, Flex, Text, IconButton, Stack, Collapse, useColorModeValue, useBre
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useGameData } from 'src/hooks/useGameData';
 import style from '@Styles/TopBar.module.css';
+import { useRecoilValue } from 'recoil';
+import { currentUserBalanceQuery } from '../../selectors/upgrades';
 
-type Props = {
-	balance: number
-};
 
-export default function TopGameBar({balance} : Props){
+const TopGameBar = () => {
+	const currentUserBalance = useRecoilValue(currentUserBalanceQuery)
+
 	//const { isOpen, onToggle } = useDisclosure();
 	return (
 		<div className={style.topBar}>
@@ -17,7 +18,7 @@ export default function TopGameBar({balance} : Props){
 				IDLE GAME
 			</div>
 			<div className={style.item}>
-				Balance <div className={style.value}>${balance}</div>
+				Balance <div className={style.value}>${currentUserBalance}</div>
 			</div>
 			<div className={style.item}>
 				CPS <div className={style.value}>${0}</div>
@@ -130,3 +131,5 @@ export default function TopGameBar({balance} : Props){
 // 	label: string;
 // 	subLabel?: string;
 // }
+
+export default TopGameBar;

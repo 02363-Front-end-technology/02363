@@ -9,25 +9,24 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import GameSettingsModal from '@Components/modals/GameSettingsModal';
 import { BsGear } from 'react-icons/bs';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { currentUserIdState } from '../../atoms';
+import { useSetRecoilState } from 'recoil';
+import { currentUserGameData, currentUserIdState } from '../../atoms';
 
-type Props = {
-	users: IUser[];
-};
-
-const IndexPage: React.FC<Props> = ({ users }) => {
+const IndexPage = () => {
 	const router = useRouter();
 
 	const [data, fetching, error] = useGameData({ userId: router.query.uuid as string });
 	const [selectedView, setSelectedView] = useState<EView>(EView.UPGRADELAYOUT);
 	const [isGameSettingsOpen, setIsGameSettingsOpen] = useState(false);
 	const setCurrentUserId = useSetRecoilState(currentUserIdState);
-	const [userBalance,setUserBalance] = useRecoilState()
+	const setCurrentUserGameData = useSetRecoilState(currentUserGameData);
 
 	useEffect(() => {
 		setCurrentUserId(router.query.uuid as string);
-	}, [router.query.uuid, setCurrentUserId]);
+		if (data) {
+			setCurrentUserGameData(data[0]);
+		}
+	}, [router.query.uuid, setCurrentUserId, setCurrentUserGameData, data]);
 
 	if (fetching) {
 		return (
@@ -49,10 +48,6 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 		return <> data is undefined </>;
 	}
 
-
-
-	const gameData = data[0];
-
 	const onClick = () => {
 		if (selectedView === EView.WEBSITELAYOUT) setSelectedView(EView.UPGRADELAYOUT);
 		if (selectedView === EView.UPGRADELAYOUT) setSelectedView(EView.WEBSITELAYOUT);
@@ -60,8 +55,8 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 
 	return (
 		<div className='relative h-screen max-h-screen overflow-y-hidden'>
-			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout gameData={gameData} />}
-			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout frontendItems={gameData.items[0].upgrades} />}
+			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout />}
+			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout />}
 			<div className='fixed bottom-6 right-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center' onClick={onClick}>
 				{selectedView === EView.WEBSITELAYOUT && <FiShoppingCart className='z-10 h-6 w-6' />}
 				{selectedView === EView.UPGRADELAYOUT && <CgWebsite className='z-10 h-6 w-6' />}

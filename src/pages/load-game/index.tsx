@@ -21,7 +21,7 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ users }) => {
 
-	const setUserId = useSetRecoilState(currentUserIdState)
+	const setUserId = useSetRecoilState(currentUserIdState);
 	const {
 		handleSubmit,
 		register,

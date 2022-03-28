@@ -2,9 +2,8 @@ import { selector } from 'recoil';
 import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../atoms';
 import defaultGameDate from '@Utils/defaultGameData';
 import { ETab } from '@Interfaces/enums';
-import { supabase } from '@Utils/supabaseClient';
 
-export const currentUserBalanceQuery = selector<string | null>({
+export const currentUserBalanceQuery = selector<number | null>({
 	key: 'currentUserGameDataQuery',
 	get: ({ get }) => {
 		const gameData = get(currentUserGameData);

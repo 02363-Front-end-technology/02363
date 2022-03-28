@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-
+import { IGameData } from '@Interfaces/index';
 
 // https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence
 const localStorageEffect = key => ({setSelf, onSet}) => {
@@ -20,12 +20,8 @@ export const currentUserIdState = atom<string>({
 	effects: [localStorageEffect('CurrentUserId')],
 });
 
-export const currentUserGameData = atom({
+export const currentUserGameData = atom<IGameData | null>({
 	key: 'CurrentUserGameData',
 	default: null,
 	effects: [localStorageEffect('CurrentUserGameData')],
-})
-export const currentUserGameDataId = atom<string>({
-	key: 'CurrentUserGameDataId',
-	default: null
 });
