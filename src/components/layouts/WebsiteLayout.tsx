@@ -11,7 +11,6 @@ const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
 	return (
 	<div style={{"height": "100%"}}>
-		{/* TODO vis den rigtige balance på denne side også */}
 		<TopGameBar />
 		<div className={style.layout}>
 			{frontendItems[0].isBought && <NavBar />}
