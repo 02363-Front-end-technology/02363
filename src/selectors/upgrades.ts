@@ -2,7 +2,7 @@ import { selector } from 'recoil';
 import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../atoms';
 import defaultGameDate from '@Utils/defaultGameData';
 import { ETab } from '@Interfaces/enums';
-import { IGameData } from '@Interfaces/index';
+import { IGameData, IUpgradeItem } from '@Interfaces/index';
 
 export const currentUserBalanceQuery = selector<number | null>({
 	key: 'currentUserGameDataQuery',
@@ -22,7 +22,7 @@ export const currentUserBalanceQuery = selector<number | null>({
 	}
 });
 
-export const filteredUpgradesState = selector<IGameData>({
+export const filteredUpgradesState = selector<IUpgradeItem[]>({
 	key: 'FilteredUpgrades',
 	get: ({ get }) => {
 		const gamedata = get(currentUserGameData);
@@ -35,7 +35,7 @@ export const filteredUpgradesState = selector<IGameData>({
 			case 'Ads':
 				return gamedata.items.find((item) => item.label === ETab.Ads).upgrades;
 			default:
-				return gamedata;
+				return [];
 		}
 	}
 });
