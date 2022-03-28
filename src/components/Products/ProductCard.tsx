@@ -10,9 +10,7 @@ type IProps = {
 const ProductCard: React.FC<IProps> = ({ product }) => {
 
 
-	return <div>
-
-	
+	return <div className='max-w-max'>
         <Image
       alt="Product"
       src={product.image}
@@ -29,10 +27,10 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
         <p>{product.rating}</p>
     </div>
 
-	
+
 </div>;
 
-    
+
 };
 
 export default ProductCard;

@@ -4,7 +4,6 @@ import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
-import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
