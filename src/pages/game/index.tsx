@@ -70,8 +70,7 @@ const IndexPage = () => {
 			>
 				<BsGear className='z-10 h-6 w-6' />
 			</div>
-			<GameSettingsModal isOpen={isGameSettingsOpen} onClose={() => setIsGameSettingsOpen(false)}
-												 onResetGameData={() => console.log(localStorage.getItem('currentUser'))} />
+			<GameSettingsModal isOpen={isGameSettingsOpen} onClose={() => setIsGameSettingsOpen(false)} />
 		</div>
 	);
 };

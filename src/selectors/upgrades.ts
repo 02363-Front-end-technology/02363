@@ -31,7 +31,7 @@ export const filteredUpgradesState = selector({
 			case 'Frontend':
 				return gamedata.items.find((item) => item.label === ETab.Frontend).upgrades;
 			case 'Backend':
-				return gamedata.items.find((item) => item.label === ETab.Backend).upgrades;
+				return gamedata.items.find((item) => item.label === ETab.Server).upgrades;
 			case 'Ads':
 				return gamedata.items.find((item) => item.label === ETab.Ads).upgrades;
 			default:

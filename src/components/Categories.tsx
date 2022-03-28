@@ -14,7 +14,7 @@ const Categories: React.FC = ({ children }) => {
 				<button className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
 					Frontend
 				</button>
-				<button className={`btn medium ${activeTab === ETab.Backend && 'active'}`} onClick={() => setActiveTab(ETab.Backend)}>
+				<button className={`btn medium ${activeTab === ETab.Server && 'active'}`} onClick={() => setActiveTab(ETab.Server)}>
 					Backend
 				</button>
 				<button className={`btn medium ${activeTab === ETab.Ads && 'active'}`} onClick={() => setActiveTab(ETab.Ads)}>

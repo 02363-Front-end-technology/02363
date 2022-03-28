@@ -9,15 +9,11 @@ const getTotalMultiplier = (gameData: IGameData): number => {
 		return acc + curr.multiplier;
 	}, 0);
 
-	const backendMultiplier = gameData.items.find((i) => i.label === ETab.Backend).upgrades.reduce((acc, curr) => {
-		return acc + curr.multiplier;
-	}, 0);
-
 	const adsMultiplier = gameData.items.find((i) => i.label === ETab.Ads).upgrades.reduce((acc, curr) => {
 		return acc + curr.multiplier;
 	}, 0);
 
-	return frontendMultiplier + backendMultiplier + adsMultiplier;
+	return frontendMultiplier + adsMultiplier;
 }
 export const currentNameQuery = selector<string | null>({
 	key: 'currentName',
