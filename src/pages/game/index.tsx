@@ -21,10 +21,11 @@ const IndexPage = () => {
 	const setCurrentUserGameData = useSetRecoilState(currentUserGameData);
 
 	useEffect(() => {
-		if (router.isReady) {
 			setCurrentUserId(router.query.uuid as string);
+		if (data) {
+			setCurrentUserGameData(data[0]);
 		}
-	}, [router.query.uuid, setCurrentUserId, setCurrentUserGameData, data, router.isReady]);
+	}, [router.query.uuid, setCurrentUserId, setCurrentUserGameData, data]);
 
 	if (fetching) {
 		return (
