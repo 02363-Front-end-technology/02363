@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IUser } from '@Interfaces/index';
 import { EView, Tab } from '@Interfaces/enums';
-import { useGameData } from 'src/hooks/useGameData';
+import { useGameData } from '@Hooks/useGameData';
 import { useRouter } from 'next/router';
 import UpgradeLayout from '@Components/layouts/UpgradeLayout';
 import WebsiteLayout from '@Components/layouts/WebsiteLayout';
@@ -14,7 +14,7 @@ type Props = {
 	users: IUser[];
 };
 
-const IndexPage: React.FC<Props> = ({ users }) => {
+const Game: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const [data, fetching, error] = useGameData({ userId: router.query.uuid as string });
@@ -66,4 +66,4 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	);
 };
 
-export default IndexPage;
+export default Game;
