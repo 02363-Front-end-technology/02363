@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { IUser } from '@Interfaces/index';
 import { EView } from '@Interfaces/enums';
 import { useGameData } from 'src/hooks/useGameData';
 import { useRouter } from 'next/router';
