@@ -23,7 +23,11 @@ type QueryType = {
     itemlabel: string;
 }
 
-
+/**
+ *  @api {post} /api/buy/:uid/:category/:itemlabel Buy an item
+ * @param req  NextApiRequest
+ * @param res NextApiResponse<string>
+ */
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string>) {
     const { uid, category, itemlabel } = req.query as QueryType
     try {
