@@ -1,25 +1,13 @@
 import React from 'react';
-
-import {
-	Box,
-	Flex,
-	Text,
-	IconButton,
-	Stack,
-	Collapse,
-	useColorModeValue,
-	useBreakpointValue,
-	useDisclosure
-} from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { useGameData } from 'src/hooks/useGameData';
 import style from '@Styles/TopBar.module.css';
 import { useRecoilValue } from 'recoil';
 import { currentUserBalanceQuery } from '../../selectors/upgrades';
+import { currentUserMultiplier } from '../../selectors';
 
 
 const TopGameBar = () => {
-	const currentUserBalance = useRecoilValue(currentUserBalanceQuery);
+	const balance = useRecoilValue(currentUserBalanceQuery);
+	const multiplier = useRecoilValue(currentUserMultiplier)
 
 	return (
 		<div className={style.topBar}>
@@ -27,10 +15,15 @@ const TopGameBar = () => {
 				IDLE GAME
 			</div>
 			<div className={style.item}>
-				Balance <div className={style.value}>${currentUserBalance}</div>
+				Balance <div className={style.value}>${balance}</div>
 			</div>
 			<div className={style.item}>
 				CPS <div className={style.value}>${0}</div>
+			</div>
+			<div>
+				<div className={style.item}>
+					Multiplier <div className={style.value}>{multiplier}</div>
+				</div>
 			</div>
 		</div>
 

@@ -17,6 +17,23 @@ const defaultGameDate = [
 		]
 	},
 	{
+		label: 'Server',
+		upgrades: [
+			{
+				label: 'Shit server',
+				level: 0,
+				multiplier: 0.25,
+				price: 100
+			},
+			{
+				label: 'Less shit server',
+				level: 0,
+				multiplier: 0.5,
+				price: 100
+			}
+		]
+	},
+	{
 		label: 'Ads',
 		upgrades: [
 			{
@@ -27,23 +44,6 @@ const defaultGameDate = [
 			},
 			{
 				label: 'Ad 2',
-				isBought: false,
-				multiplier: 0.5,
-				price: 100
-			}
-		]
-	},
-	{
-		label: 'Backend',
-		upgrades: [
-			{
-				label: 'Shit server',
-				isBought: true,
-				multiplier: 0.25,
-				price: 100
-			},
-			{
-				label: 'Less shit server',
 				isBought: false,
 				multiplier: 0.5,
 				price: 100

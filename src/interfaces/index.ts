@@ -28,7 +28,8 @@ export type ICategoryData = {
 
 export type IUpgradeItem = {
 	label: string;
-	isBought: boolean;
+	isBought?: boolean;
+	level?: number;
 	multiplier: number;
 	price: number;
 };

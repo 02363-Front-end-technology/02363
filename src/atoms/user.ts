@@ -25,3 +25,4 @@ export const currentUserGameData = atom<IGameData | null>({
 	default: null,
 	effects: [localStorageEffect('CurrentUserGameData')],
 });
+

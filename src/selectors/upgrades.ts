@@ -24,18 +24,18 @@ export const currentUserBalanceQuery = selector<number | null>({
 export const filteredUpgradesState = selector({
 	key: 'FilteredUpgrades',
 	get: ({ get }) => {
-		const list = defaultGameDate;
+		const gamedata = get(currentUserGameData);
 		const filter = get(upgradeFilterState);
 
 		switch (filter) {
 			case 'Frontend':
-				return list.find((item) => item.label === ETab.Frontend).upgrades;
+				return gamedata.items.find((item) => item.label === ETab.Frontend).upgrades;
 			case 'Backend':
-				return list.find((item) => item.label === ETab.Backend).upgrades;
+				return gamedata.items.find((item) => item.label === ETab.Backend).upgrades;
 			case 'Ads':
-				return list.find((item) => item.label === ETab.Ads).upgrades;
+				return gamedata.items.find((item) => item.label === ETab.Ads).upgrades;
 			default:
-				return list;
+				return gamedata;
 		}
 	}
 });
