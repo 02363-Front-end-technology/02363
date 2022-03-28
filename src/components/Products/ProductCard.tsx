@@ -11,12 +11,14 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
 
 
 	return <div>
+
+	
         <Image
       alt="Product"
       src={product.image}
       layout="fixed"
-      width={700}
-      height={475}
+      width={150}
+      height={175}
     />
 
     <div>
@@ -27,7 +29,8 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
         <p>{product.rating}</p>
     </div>
 
-	</div>;
+	
+</div>;
 
     
 };
