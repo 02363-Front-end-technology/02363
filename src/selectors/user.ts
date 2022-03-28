@@ -4,7 +4,7 @@ import { currentUserGameData, currentUserIdState } from '../atoms';
 import { IGameData } from '@Interfaces/index';
 import { ETab } from '@Interfaces/enums';
 
-const getTotalMultiplier = (gameData: IGameData): number => {
+const getTotalMultiplier = (gameData: Partial<IGameData>): number => {
 	const frontendMultiplier = gameData.items.find((i) => i.label === ETab.Frontend).upgrades.reduce((acc, curr) => {
 		return acc + curr.multiplier;
 	}, 0);

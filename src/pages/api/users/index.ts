@@ -37,7 +37,7 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 	if (data) {
 		await supabase.from<IGameData>('upgrades').insert({
 			userId: data.id,
-			items: defaultGameDate
+			items: defaultGameDate.items
 		});
 		return res.status(201).json(data);
 	}

@@ -16,7 +16,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
 	const id = req.query.id.toString();
-	const { data, error } = await supabase.from('users').select('*').match({ id: id }).single();
+	const { data, error } = await supabase
+		.from('users')
+		.select(
+			`
+	id,
+	name,
+	upgradeId
+	`
+		)
+		.match({ id: id })
+		.single();
 
 	if (data) {
 		return res.status(200).json(data);

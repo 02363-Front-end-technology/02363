@@ -6,14 +6,6 @@ export type IUser = {
 	balance?: number;
 };
 
-export type IUpgrade = {
-	id: string;
-	user_id: string;
-	upgrades: {
-		item1: number;
-	};
-};
-
 export type IGameData = {
 	id: number;
 	balance: number;
