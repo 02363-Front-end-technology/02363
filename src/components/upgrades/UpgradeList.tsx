@@ -12,7 +12,8 @@ const UpgradeList = () => {
 	const onclick = (label: string) => {
 		const item = userGameData.items.find((item) => item.label === filter).upgrades;
 		const upgradeItem = item.find((upgrade) => upgrade.label === label);
-		setUserGameData({ ...userGameData,items : [...userGameData.items, userGameData.items[filter].upgrades]  });
+		const upgradeItemIndex = item.findIndex((upgrade) => upgrade.label === label);
+		console.log({ item,upgradeItem, upgradeItemIndex });
 	};
 	return (
 		<div className='flex flex-col space-y-6 divide-y rounded-xl bg-white p-6 shadow-lg'>
