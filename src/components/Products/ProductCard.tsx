@@ -10,7 +10,7 @@ type IProps = {
 const ProductCard: React.FC<IProps> = ({ product }) => {
 
 
-	return <div className='max-w-max'>
+	return <div className='max-w-max box-border border-2 border-red-100 shadow-lg'>
         <Image
       alt="Product"
       src={product.image}
@@ -19,12 +19,12 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
       height={175}
     />
 
-    <div>
-        <p>{product.description}</p>
+    <div className='space-y-3 space-x-2'>
+        <p className='text-orange-700'>{product.description}</p>
 
-        <p>{product.price}</p>
+        <p className='text-green-500'>{product.price}$</p>
 
-        <p>{product.rating}</p>
+        <p className='text-amber-500 font-bold'>{product.rating}★</p>
     </div>
 
 

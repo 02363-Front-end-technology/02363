@@ -11,7 +11,7 @@ type IProps = {
 const ProductList: React.FC<IProps> = ({ products }) => {
 
 
-	return <div className="w-full grid grid-cols-1 sm:grid-cols-4" >
+	return <div className="w-full grid grid-cols-1 sm:grid-cols-4 space-y-3" >
         {products.map((p,index)=>(<ProductCard key={index} product={p}/>))}
 
 	</div>;
