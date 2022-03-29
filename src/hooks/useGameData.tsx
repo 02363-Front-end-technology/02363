@@ -1,7 +1,6 @@
 import { IGameData } from '@Interfaces/index';
-import { supabase } from '@Utils/supabaseClient';
-import React, { useEffect, useState } from 'react';
-import { PostgrestError, useFilter, useRealtime, useSelect, useSubscription } from 'react-supabase';
+import React from 'react';
+import { PostgrestError, useFilter, useRealtime } from 'react-supabase';
 
 type Props = {
 	userId: string;

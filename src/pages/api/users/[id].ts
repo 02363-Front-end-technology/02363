@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../../../utils/supabaseClient';
-import dayjs from 'dayjs';
+import { supabase } from '@Utils/supabaseClient';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === 'GET') {
@@ -17,7 +16,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
 	const id = req.query.id.toString();
-	const { data, error } = await supabase.from('users').select('*').match({ id: id }).single();
+	const { data, error } = await supabase
+		.from('users')
+		.select(
+			`
+	id,
+	name,
+	upgradeId
+	`
+		)
+		.match({ id: id })
+		.single();
 
 	if (data) {
 		return res.status(200).json(data);
