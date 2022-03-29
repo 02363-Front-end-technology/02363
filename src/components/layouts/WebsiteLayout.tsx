@@ -10,19 +10,89 @@ import ProductCard from '@Components/Products/ProductCard';
 import ProductList from '@Components/Products/ProductList';
 
 const UpgradeLayout = () => {
-
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
 	return (
-	<div style={{"height": "100%"}}>
-		<TopGameBar />
-		<div className={style.layout}>
-			{frontendItems[0].isBought && <NavBar />}
-			<div className={style.container}>
-				<Add src='/AddblockAdd.png'/>
-				<Add src='/InvisibleAd.png'/>
+		<div style={{ height: '100%' }}>
+			<TopGameBar />
+			<div className={style.layout}>
+				{frontendItems[0].isBought && <NavBar />}
+				<div className={style.container}>
+					<Add src='/AddblockAdd.png' />
+					<Add src='/InvisibleAd.png' />
+				</div>
+					<ProductList products={products} />
 			</div>
 		</div>
-	</div>);
+	);
 };
 
 export default UpgradeLayout;
+
+const products: IProduct[] = [
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	},
+	{
+		image: '/ducks.jpg',
+		description: 'ducks',
+		price: 1000,
+		rating: 10
+	}
+];
