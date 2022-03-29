@@ -1,6 +1,6 @@
-export enum Tab {
+export enum ETab {
 	Frontend = "Frontend",
-	Backend = "Backend",
+	Server = "Server",
 	Ads = "Ads"
 }
 

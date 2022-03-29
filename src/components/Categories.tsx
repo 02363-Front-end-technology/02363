@@ -1,23 +1,27 @@
-import { Button } from '@chakra-ui/react';
-import { Tab } from '@Interfaces/enums';
+import { ETab } from '@Interfaces/enums';
 import React, { Dispatch, SetStateAction } from 'react';
+import { useRecoilState } from 'recoil';
+import { upgradeFilterState } from '../atoms';
 
-type Props = {
-	activeTab: Tab;
-	setActiveTab: Dispatch<SetStateAction<Tab>>;
+const Categories: React.FC = ({ children }) => {
+	const [activeTab, setActiveTab] = useRecoilState(upgradeFilterState);
+	 
+	return (
+		<div className='categories'>
+			<div className='flex justify-evenly'>
+				<button className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
+					{ETab.Frontend}
+				</button>
+				<button className={`btn medium ${activeTab === ETab.Server && 'active'}`} onClick={() => setActiveTab(ETab.Server)}>
+					{ETab.Server}
+				</button>
+				<button className={`btn medium ${activeTab === ETab.Ads && 'active'}`} onClick={() => setActiveTab(ETab.Ads)}>
+					{ETab.Ads}
+				</button>
+			</div>
+			{children}
+		</div>
+	);
 };
-
-const Categories: React.FC<Props> = ({setActiveTab, activeTab,children}) => {
-    return (
-      <div className='categories'>
-        <div className='flex justify-evenly'>
-          <Button className={`${activeTab === Tab.Frontend && "active"}`} onClick={() => setActiveTab(Tab.Frontend)}>Frontend</Button>
-          <Button className={`${activeTab === Tab.Backend  && "active"}`} onClick={() => setActiveTab(Tab.Backend)}>Backend</Button>
-          <Button className={`${activeTab === Tab.Ads  && "active"}`} onClick={() => setActiveTab(Tab.Ads)}>Ads</Button>
-        </div>
-        {children}
-      </div>
-    )
-  }
 
 export default Categories;
