@@ -1,8 +1,7 @@
 import { selector } from 'recoil';
-import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../atoms';
-import defaultGameDate from '@Utils/defaultGameData';
+import { currentUserGameData, upgradeFilterState } from '../atoms';
 import { ETab } from '@Interfaces/enums';
-import { IGameData, IUpgradeItem } from '@Interfaces/index';
+import { IUpgradeItem } from '@Interfaces/index';
 
 export const currentUserBalanceQuery = selector<number | null>({
 	key: 'currentUserGameDataQuery',
@@ -12,13 +11,9 @@ export const currentUserBalanceQuery = selector<number | null>({
 		const { balance } = gameData;
 		return balance;
 	},
-	set: ({ get }) => {
-		const gameData = get(currentUserGameData);
+	set: ({ get, set }, newValue: number = 0) => {
 		const multiplier = 1.0;
-		if (!gameData) return null;
-		const { balance } = gameData;
-		if (!multiplier) return balance;
-		return balance * multiplier;
+		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue * multiplier });
 	}
 });
 
@@ -28,11 +23,11 @@ export const filteredUpgradesState = selector<IUpgradeItem[]>({
 		const gamedata = get(currentUserGameData);
 		const filter = get(upgradeFilterState);
 		switch (filter) {
-			case 'Frontend':
+			case ETab.Frontend:
 				return gamedata.items.find((item) => item.label === ETab.Frontend).upgrades;
-			case 'Server':
+			case ETab.Server:
 				return gamedata.items.find((item) => item.label === ETab.Server).upgrades;
-			case 'Ads':
+			case ETab.Ads:
 				return gamedata.items.find((item) => item.label === ETab.Ads).upgrades;
 			default:
 				return [];

@@ -19,6 +19,7 @@ export type ICategoryData = {
 };
 
 export type IUpgradeItem = {
+	id: number;
 	label: string;
 	isBought?: boolean;
 	level?: number;

@@ -30,14 +30,15 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 		.insert([
 			{
 				name: name,
-				last_login: dayjs().toDate(),
+				last_login: dayjs().toDate()
 			}
 		])
 		.single();
 	if (data) {
 		await supabase.from<IGameData>('upgrades').insert({
 			userId: data.id,
-			items: defaultGameDate.items
+			items: defaultGameDate.items,
+			balance: 100
 		});
 		return res.status(201).json(data);
 	}
