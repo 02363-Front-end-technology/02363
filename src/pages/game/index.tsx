@@ -23,7 +23,6 @@ const IndexPage = () => {
 	useEffect(() => {
 			setCurrentUserId(router.query.uuid as string);
 		if (data) {
-			console.log({data})
 			setCurrentUserGameData(data[0]);
 		}
 	}, [router.query.uuid, setCurrentUserId, setCurrentUserGameData, data]);

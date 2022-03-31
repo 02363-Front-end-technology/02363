@@ -28,7 +28,6 @@ const IndexPage = () => {
 			.post<IUser>('users', { name: name })
 			.then((r) => {
 				setApiStatus(EApiStatus.succes);
-				localStorage.setItem("currentUser", r.data.id)
 				router.push({ pathname: '/game', query: { uuid: r.data.id } });
 			})
 			.catch(() => setApiStatus(EApiStatus.error));
