@@ -32,7 +32,7 @@ const TopGameBar = () => {
 				</div>
 				<div>
 					<div className={style.item}>
-						Multiplier <div className={style.value}>{multiplier}</div>
+						Multiplier <div className={style.value}>{multiplier.toFixed(2)}</div>
 					</div>
 				</div>
 			</div>

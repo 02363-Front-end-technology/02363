@@ -1,6 +1,6 @@
 import { IGameData } from '@Interfaces/index';
 
-const defaultGameDate: Partial<IGameData> = {
+const defaultGameData: Partial<IGameData> = {
 	balance: 100,
 	items: [
 		{
@@ -61,7 +61,7 @@ const defaultGameDate: Partial<IGameData> = {
 				{
 					id: 0,
 					label: 'Ad 1',
-					isBought: true,
+					isBought: false,
 					multiplier: 0.25,
 					price: 100
 				},
@@ -77,4 +77,4 @@ const defaultGameDate: Partial<IGameData> = {
 	]
 };
 
-export default defaultGameDate;
+export default defaultGameData;

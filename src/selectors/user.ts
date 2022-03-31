@@ -5,16 +5,17 @@ import { IGameData } from '@Interfaces/index';
 import { ETab } from '@Interfaces/enums';
 
 const getTotalMultiplier = (gameData: Partial<IGameData>): number => {
-	const frontendMultiplier = gameData.items.find((i) => i.label === ETab.Frontend).upgrades.reduce((acc, curr) => {
+	console.log({ gameData });
+	const frontendMultiplier = gameData.items.find((i) => i.label === ETab.Frontend).upgrades.filter((i) => i.isBought === true).reduce((acc, curr) => {
 		return acc + curr.multiplier;
 	}, 0);
 
-	const adsMultiplier = gameData.items.find((i) => i.label === ETab.Ads).upgrades.reduce((acc, curr) => {
+	const adsMultiplier = gameData.items.find((i) => i.label === ETab.Ads).upgrades.filter((i) => i.isBought === true).reduce((acc, curr) => {
 		return acc + curr.multiplier;
 	}, 0);
 
 	return frontendMultiplier + adsMultiplier;
-}
+};
 export const currentNameQuery = selector<string | null>({
 	key: 'currentName',
 	get: async ({ get }) => {
@@ -33,8 +34,8 @@ export const currentNameQuery = selector<string | null>({
 
 export const currentUserMultiplier = selector<number>({
 	key: 'CurrentUserMultiplier',
-	get: ({get}) => {
-		const gameData = get(currentUserGameData)
+	get: ({ get }) => {
+		const gameData = get(currentUserGameData);
 		return getTotalMultiplier(gameData);
 	}
 });

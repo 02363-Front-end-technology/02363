@@ -32,19 +32,30 @@ type QueryType = {
  * @param req  NextApiRequest
  * @param res NextApiResponse<string>
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{ message: string, data: IGameData }>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { uuid, category, itemId } = req.query as QueryType;
 	try {
 		const categories = await getItems(uuid);
+
+		//TODO quick fix for balance
+		const {
+			data,
+			error
+		} = await supabase.from('upgrades').select('balance').match({ userId: uuid }).single();
+
+		if (error) throw error;
+		const balance = data.balance;
 
 		const upgrades = categories.find(i => i.label === category).upgrades;
 		const upgrade = upgrades.find(i => i.id === Number(itemId));
 		if (upgrade == undefined) throw new Error('Item not found');
 		const user = await getUser(uuid);
+
 		//TODO User har ikke balance
-		if (user.balance < upgrade.price) throw new Error('Not enough money');
-		const newBalance = user.balance - upgrade.price;
-		await supabase.from<IUser>('users').update({ balance: newBalance }).match({ uuid: uuid });
+		if (balance < upgrade.price) return res.send({ message: 'Not enough balance', balance });
+
+		const newBalance = balance - upgrade.price;
+		await supabase.from('upgrades').update({ balance: newBalance }).match({ userId: uuid });
 		if (upgrade.isBought === false) {
 			upgrade.isBought = true;
 		} else {
