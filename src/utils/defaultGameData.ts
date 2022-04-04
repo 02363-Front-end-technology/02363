@@ -54,7 +54,7 @@ const defaultGameData: Partial<IGameData> = {
 					price: 300
 				},
 				{
-					id: 1,
+					id: 2,
 					label: 'Network',
 					level: 0,
 					multiplier: 0.05,

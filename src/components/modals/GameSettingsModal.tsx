@@ -27,8 +27,6 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 				<ModalCloseButton />
 				<ModalBody className='my-6'>
 					<Stack direction='column' spacing={4} align='center'>
-						<button className='btn'>Button</button>
-						<button className='btn'>Button</button>
 						<Link href='/'>
 							<button className='btn warning'>Leave Game</button>
 						</Link>

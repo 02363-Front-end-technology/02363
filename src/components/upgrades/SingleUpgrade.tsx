@@ -23,9 +23,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 		axiosInstance
 			.get(`api/buy?uuid=${currentUserId}&category=${filter}&itemId=${id}`)
 			.then((res) => {
-				if (res.data) {
-					setCurrentUserBalance(res.data.balance);
-				}
+				if (res.data) setCurrentUserBalance(res.data.balance);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -36,7 +34,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 		<div className='flex items-center justify-between p-2'>
 			<div className='flex flex-col'>
 				<span>{title}</span>
-				{level && <span>Level: {level}</span>}
+				{level >= 0 && <span>Level: {level}</span>}
 			</div>
 			<div className='flex inline-flex items-center space-x-2'>
 				<span className='font-bold'>${price.toFixed(0)}</span>
