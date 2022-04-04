@@ -1,6 +1,5 @@
 import { selector } from 'recoil';
-import { supabase } from '@Utils/supabaseClient';
-import { currentUserGameData, currentUserIdState } from '../atoms';
+import { currentUserGameData } from '../atoms';
 import { IGameData } from '@Interfaces/index';
 import { ETab } from '@Interfaces/enums';
 
@@ -34,6 +33,7 @@ export const currentUserCPS = selector<number>({
 	key: 'CurrentUserCPS',
 	get: ({ get }) => {
 		const gameData = get(currentUserGameData);
+
 		return gameData.items.find((i) => i.label === ETab.Ads)
 			.upgrades.filter((u) => u.isBought === true)
 			.reduce((acc, curr) => {

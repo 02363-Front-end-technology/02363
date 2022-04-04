@@ -12,10 +12,10 @@ const TopGameBar = () => {
 	//TODO update balance every second
 		useEffect(() => {
 				const interval = setInterval(() => {
-					setBalance(balance + (cps * multiplier));
+					setBalance(balance + (cps * (1 + multiplier)));
 				}, 1000);
 				return () => clearInterval(interval);
-			}, [balance, cps,setBalance]);
+			}, [balance, cps, multiplier, setBalance]);
 
 	return (
 		<div className={style.topBar}>
