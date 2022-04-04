@@ -1,5 +1,4 @@
 import { IGameData } from '@Interfaces/index';
-import React from 'react';
 import { PostgrestError, useFilter, useRealtime } from 'react-supabase';
 
 type Props = {

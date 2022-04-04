@@ -13,6 +13,7 @@
 	border: 1px solid rgba(0, 0, 0, 0.068);
 	border-radius: 5px;
 	background: rgb(249, 249, 249);
+	overflow-y: scroll;
 }
 
 .layout .navbar {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/modal';
 import { Link, Stack } from '@chakra-ui/react';
-import { useRecoilValue } from 'recoil';
-import { currentUserIdState } from '../../atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { currentUserGameData, currentUserIdState } from '../../atoms';
 import { axiosInstance } from '@Utils/axiosInstance';
 
 type IProps = {
@@ -12,9 +12,10 @@ type IProps = {
 
 const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 	const currentGameUserId = useRecoilValue(currentUserIdState);
+	const setCurrentUserGamedata = useSetRecoilState(currentUserGameData);
 	const onResetGameData = () => {
-		axiosInstance.patch(`reset/${currentGameUserId}`).then(r =>{
-			console.log(r);
+		axiosInstance.patch(`api/reset/${currentGameUserId}`).then((r) => {
+			setCurrentUserGamedata(r.data);
 		});
 	};
 
@@ -26,12 +27,8 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 				<ModalCloseButton />
 				<ModalBody className='my-6'>
 					<Stack direction='column' spacing={4} align='center'>
-						<button className='btn'>
-							Button
-						</button>
-						<button className='btn'>
-							Button
-						</button>
+						<button className='btn'>Button</button>
+						<button className='btn'>Button</button>
 						<Link href='/'>
 							<button className='btn warning'>Leave Game</button>
 						</Link>

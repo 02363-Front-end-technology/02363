@@ -10,9 +10,7 @@ type Props = {
 const FrontpageLayout = ({ children, title = 'This is the default title' }: Props) => (
 	<div className={style.layout}>
 		<div className={style.titleBar}>
-			<span className={style.title}>
-				IDLE GAME
-			</span>
+			<span className={style.title}>IDLE GAME</span>
 		</div>
 		<Head>
 			<title>{title}</title>

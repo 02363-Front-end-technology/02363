@@ -19,9 +19,18 @@ export type ICategoryData = {
 };
 
 export type IUpgradeItem = {
+	id: number;
 	label: string;
+	multiplier?: number;
+	price: number;
 	isBought?: boolean;
 	level?: number;
-	multiplier: number;
+	cps?: number
+};
+
+export type IProduct = {
+	image: string;
+	description: string;
 	price: number;
+	rating: number;
 };

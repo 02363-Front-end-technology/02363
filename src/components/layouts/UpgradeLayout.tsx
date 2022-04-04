@@ -5,17 +5,15 @@ import UpgradeList from '@Components/upgrades/UpgradeList';
 import RealTimeChart from '@Components/charts/RealTimeChart';
 import style from '@Styles/UpgradeLayout.module.css';
 
-
 const UpgradeLayout = () => {
-
 	return (
-		<div style={{"height": "100%"}}>
+		<div style={{ height: '100%' }}>
 			<TopGameBar />
 			<div className={style.layout}>
 				<div className={style.container}>
 					<div className={style.left}>
 						<Categories>
-							<UpgradeList/>
+							<UpgradeList />
 						</Categories>
 					</div>
 					<div className={style.right}>

@@ -1,11 +1,11 @@
 import { ETab } from '@Interfaces/enums';
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import { upgradeFilterState } from '../atoms';
 
 const Categories: React.FC = ({ children }) => {
 	const [activeTab, setActiveTab] = useRecoilState(upgradeFilterState);
-	 
+
 	return (
 		<div className='categories'>
 			<div className='flex justify-evenly'>

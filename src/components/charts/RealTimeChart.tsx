@@ -5,9 +5,8 @@ import React, { useState } from 'react';
 import 'chartjs-adapter-luxon';
 import style from '@Styles/UpgradeLayout.module.css';
 
-type IProps = {};
 
-const RealTimeChart: React.FC<IProps> = ({}) => {
+const RealTimeChart = () => {
 	ChartJS.register(...registerables, StreamingPlugin);
 
 	const [data] = useState<number[]>([]);
