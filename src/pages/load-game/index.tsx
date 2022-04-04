@@ -52,7 +52,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 				<div className={style.buttonContainer}>
 					<Link href='/'>
 						<button className={style.btn}>
-							<a data-cy='/'>Back</a>
+							<a data-cy='back'>Back</a>
 						</button>
 					</Link>
 					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value='Load' />
