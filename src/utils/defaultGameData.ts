@@ -41,14 +41,21 @@ const defaultGameData: Partial<IGameData> = {
 			upgrades: [
 				{
 					id: 0,
-					label: 'Shit server',
+					label: 'RAM',
 					level: 0,
 					multiplier: 0.25,
 					price: 100
 				},
 				{
 					id: 1,
-					label: 'Less shit server',
+					label: 'CPU',
+					level: 0,
+					multiplier: 0.5,
+					price: 100
+				},
+				{
+					id: 1,
+					label: 'Network',
 					level: 0,
 					multiplier: 0.5,
 					price: 100
@@ -60,7 +67,7 @@ const defaultGameData: Partial<IGameData> = {
 			upgrades: [
 				{
 					id: 0,
-					label: 'Ad 1',
+					label: 'Adblocker',
 					isBought: false,
 					multiplier: 0.25,
 					price: 100
