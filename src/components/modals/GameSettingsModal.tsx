@@ -14,7 +14,7 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 	const currentGameUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserGamedata = useSetRecoilState(currentUserGameData);
 	const onResetGameData = () => {
-		axiosInstance.patch(`reset/${currentGameUserId}`).then((r) => {
+		axiosInstance.patch(`api/reset/${currentGameUserId}`).then((r) => {
 			setCurrentUserGamedata(r.data);
 		});
 	};

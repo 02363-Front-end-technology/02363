@@ -10,29 +10,29 @@ const defaultGameData: Partial<IGameData> = {
 					id: 0,
 					label: 'Navigation Bar',
 					isBought: false,
-					multiplier: 0.25,
-					price: 100
+					multiplier: 0.025,
+					price: 150
 				},
 				{
 					id: 1,
 					label: 'User Profile',
 					isBought: false,
-					multiplier: 0.5,
-					price: 100
+					multiplier: 0.05,
+					price: 300
 				},
 				{
 					id: 2,
 					label: 'Sidebar',
 					isBought: false,
-					multiplier: 0.5,
-					price: 100
+					multiplier: 0.05,
+					price: 300
 				},
 				{
 					id: 3,
 					label: 'Footer',
 					isBought: false,
-					multiplier: 0.5,
-					price: 100
+					multiplier: 0.05,
+					price: 300
 				}
 			]
 		},
@@ -43,22 +43,22 @@ const defaultGameData: Partial<IGameData> = {
 					id: 0,
 					label: 'RAM',
 					level: 0,
-					multiplier: 0.25,
-					price: 100
+					multiplier: 0.025,
+					price: 150
 				},
 				{
 					id: 1,
 					label: 'CPU',
 					level: 0,
-					multiplier: 0.5,
-					price: 100
+					multiplier: 0.05,
+					price: 300
 				},
 				{
 					id: 1,
 					label: 'Network',
 					level: 0,
-					multiplier: 0.5,
-					price: 100
+					multiplier: 0.05,
+					price: 300
 				}
 			]
 		},
@@ -69,15 +69,29 @@ const defaultGameData: Partial<IGameData> = {
 					id: 0,
 					label: 'Adblocker',
 					isBought: false,
-					multiplier: 0.25,
+					cps: 1.5,
 					price: 100
 				},
 				{
 					id: 1,
 					label: 'Ad 2',
 					isBought: false,
-					multiplier: 0.5,
-					price: 100
+					cps: 2,
+					price: 150
+				},
+				{
+					id: 2,
+					label: 'Ad 3',
+					isBought: false,
+					cps: 3,
+					price: 200
+				},
+				{
+					id: 3,
+					label: 'Ad 4',
+					isBought: false,
+					cps: 4,
+					price: 300
 				}
 			]
 		}

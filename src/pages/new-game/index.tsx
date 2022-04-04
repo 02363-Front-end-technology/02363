@@ -25,7 +25,7 @@ const IndexPage = () => {
 	const onSubmit: SubmitHandler<IFormInput> = ({ name }) => {
 		setApiStatus(EApiStatus.loading);
 		axiosInstance
-			.post<IUser>('users', { name: name })
+			.post<IUser>('/api/users', { name: name })
 			.then((r) => {
 				setApiStatus(EApiStatus.succes);
 				router.push({ pathname: '/game', query: { uuid: r.data.id } });

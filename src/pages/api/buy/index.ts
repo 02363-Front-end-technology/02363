@@ -51,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			upgrade.isBought = true;
 		} else {
 			upgrade.level++;
-			upgrade.price = upgrade.price * 1.15;
+			upgrade.price = upgrade.price * 2;
 			upgrade.multiplier = upgrade.multiplier * 1.025;
 		}
 

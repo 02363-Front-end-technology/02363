@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from '@Styles/TopBar.module.css';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { currentUserBalanceQuery } from '../../selectors/upgrades';
-import { currentUserMultiplier } from '../../selectors';
+import { currentUserCPS, currentUserMultiplier } from '../../selectors';
 
 const TopGameBar = () => {
 	const [balance, setBalance] = useRecoilState(currentUserBalanceQuery);
 	const multiplier = useRecoilValue(currentUserMultiplier);
+	const cps = useRecoilValue(currentUserCPS);
 
 	//TODO update balance every second
-	/*
 		useEffect(() => {
 				const interval = setInterval(() => {
-					setBalance(((balance + 1) * (1+ multiplier)));
-				}, 30000);
+					setBalance(balance + (cps * multiplier));
+				}, 1000);
 				return () => clearInterval(interval);
-			}, [balance, multiplier,setBalance]);
-	*/
+			}, [balance, cps,setBalance]);
+
 	return (
 		<div className={style.topBar}>
 			<div className={style.title}>IDLE GAME</div>
@@ -24,7 +24,7 @@ const TopGameBar = () => {
 				Balance <div className={style.value}>${balance.toFixed(2)}</div>
 			</div>
 			<div className={style.item}>
-				CPS <div className={style.value}>${0}</div>
+				CPS <div className={style.value}>${cps}</div>
 			</div>
 			<div>
 				<div className={style.item}>

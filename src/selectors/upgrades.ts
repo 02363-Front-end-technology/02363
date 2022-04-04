@@ -12,8 +12,7 @@ export const currentUserBalanceQuery = selector<number | null>({
 		return balance;
 	},
 	set: ({ get, set }, newValue: number = 0) => {
-		const multiplier = 1.0;
-		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue * multiplier });
+		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue});
 	}
 });
 
