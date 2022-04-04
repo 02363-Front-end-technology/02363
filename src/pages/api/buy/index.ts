@@ -1,31 +1,25 @@
-import { IGameData, IUser } from '@Interfaces/index';
+import { IUser } from '@Interfaces/index';
 import { supabase } from '@Utils/supabaseClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-
 async function getItems(uuid: string) {
-	const {
-		data,
-		error
-	} = await supabase.from('upgrades').select('items').match({ userId: uuid }).single();
+	const { data, error } = await supabase.from('upgrades').select('items').match({ userId: uuid }).single();
 	if (data) {
 		return data.items;
-	} else
-		return error;
+	} else return error;
 }
 
 async function getUser(uuid: string) {
 	const { data, error } = await supabase.from<IUser>('users').select('*').match({ id: uuid }).single();
 	if (data) return data;
-	throw (error);
-
+	throw error;
 }
 
 type QueryType = {
 	uuid: string;
 	category: string;
 	itemId: string;
-}
+};
 
 /**
  *  @api {post} /api/buy/:uid/:category/:itemlabel Buy an item
@@ -38,16 +32,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		const categories = await getItems(uuid);
 
 		//TODO quick fix for balance
-		const {
-			data,
-			error
-		} = await supabase.from('upgrades').select('balance').match({ userId: uuid }).single();
+		const { data, error } = await supabase.from('upgrades').select('balance').match({ userId: uuid }).single();
 
 		if (error) throw error;
 		const balance = data.balance;
 
-		const upgrades = categories.find(i => i.label === category).upgrades;
-		const upgrade = upgrades.find(i => i.id === Number(itemId));
+		const upgrades = categories.find((i) => i.label === category).upgrades;
+		const upgrade = upgrades.find((i) => i.id === Number(itemId));
 		if (upgrade == undefined) throw new Error('Item not found');
 		const user = await getUser(uuid);
 
@@ -70,7 +61,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			message: 'You bought the item: ' + upgrade.label + ' for ' + upgrade.price + ' $',
 			data: result.data
 		});
-
 	} catch (error) {
 		res.status(500).send(error);
 	}

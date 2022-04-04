@@ -6,13 +6,19 @@ import { ETab } from '@Interfaces/enums';
 
 const getTotalMultiplier = (gameData: Partial<IGameData>): number => {
 	console.log({ gameData });
-	const frontendMultiplier = gameData.items.find((i) => i.label === ETab.Frontend).upgrades.filter((i) => i.isBought === true).reduce((acc, curr) => {
-		return acc + curr.multiplier;
-	}, 0);
+	const frontendMultiplier = gameData.items
+		.find((i) => i.label === ETab.Frontend)
+		.upgrades.filter((i) => i.isBought === true)
+		.reduce((acc, curr) => {
+			return acc + curr.multiplier;
+		}, 0);
 
-	const adsMultiplier = gameData.items.find((i) => i.label === ETab.Ads).upgrades.filter((i) => i.isBought === true).reduce((acc, curr) => {
-		return acc + curr.multiplier;
-	}, 0);
+	const adsMultiplier = gameData.items
+		.find((i) => i.label === ETab.Ads)
+		.upgrades.filter((i) => i.isBought === true)
+		.reduce((acc, curr) => {
+			return acc + curr.multiplier;
+		}, 0);
 
 	return frontendMultiplier + adsMultiplier;
 };
@@ -39,5 +45,3 @@ export const currentUserMultiplier = selector<number>({
 		return getTotalMultiplier(gameData);
 	}
 });
-
-

@@ -25,9 +25,12 @@ const updateUpgradeResolver = async (req: NextApiRequest, res: NextApiResponse) 
 	const id = req.query.id.toString();
 	const { gameData } = req.body;
 	console.log({ gameData });
-	const { data, error } = await supabase.from('upgrades').update({
-		balance: gameData.balance
-	}).match({ id: id });
+	const { data, error } = await supabase
+		.from('upgrades')
+		.update({
+			balance: gameData.balance
+		})
+		.match({ id: id });
 
 	if (data) return res.status(200).json(data);
 	return res.status(404).json({ message: error.message });

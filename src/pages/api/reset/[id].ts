@@ -11,11 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const resetGamedataSingleUser = async (req: NextApiRequest, res: NextApiResponse) => {
 	const id = req.query.id.toString();
-	const { data, error } = await supabase
-		.from('upgrades')
-		.update({ items: defaultGameData.items, balance: defaultGameData.balance })
-		.match({ userId: id })
-		.single();
+	const { data, error } = await supabase.from('upgrades').update({ items: defaultGameData.items, balance: defaultGameData.balance }).match({ userId: id }).single();
 	if (data) {
 		return res.status(200).json({ message: 'Successfully reset gamedata' });
 	}

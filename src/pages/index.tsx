@@ -7,11 +7,15 @@ const IndexPage = () => {
 		<FrontpageLayout>
 			<div className={style.content}>
 				<Link href='/new-game'>
-					<button className={"btn"}><a data-cy='new-game'>New Game</a></button>
+					<button className={'btn'}>
+						<a data-cy='new-game'>New Game</a>
+					</button>
 				</Link>
 
 				<Link href='/load-game'>
-					<button className={"btn"}><a data-cy='load-game'>Load Game</a></button>
+					<button className={'btn'}>
+						<a data-cy='load-game'>Load Game</a>
+					</button>
 				</Link>
 			</div>
 		</FrontpageLayout>

@@ -12,9 +12,9 @@ type IProps = {
 
 const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 	const currentGameUserId = useRecoilValue(currentUserIdState);
-	const setCurrentUserGamedata = useSetRecoilState(currentUserGameData)
+	const setCurrentUserGamedata = useSetRecoilState(currentUserGameData);
 	const onResetGameData = () => {
-		axiosInstance.patch(`reset/${currentGameUserId}`).then(r =>{
+		axiosInstance.patch(`reset/${currentGameUserId}`).then((r) => {
 			setCurrentUserGamedata(r.data);
 		});
 	};
@@ -27,12 +27,8 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 				<ModalCloseButton />
 				<ModalBody className='my-6'>
 					<Stack direction='column' spacing={4} align='center'>
-						<button className='btn'>
-							Button
-						</button>
-						<button className='btn'>
-							Button
-						</button>
+						<button className='btn'>Button</button>
+						<button className='btn'>Button</button>
 						<Link href='/'>
 							<button className='btn warning'>Leave Game</button>
 						</Link>

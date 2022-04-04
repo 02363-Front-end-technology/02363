@@ -20,15 +20,17 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 
 	const onclick = (id: number) => {
 		axiosInstance.patch(`/upgrades/${currentGameData.id}`, { gameData: currentGameData });
-		axiosInstance.get(`/buy?uuid=${currentUserId}&category=${filter}&itemId=${id}`).then((res) => {
-			if (res.data) {
-				console.log(res.data);
-				setCurrentUserBalance(res.data.balance);
-			}
-
-		}).catch((err) => {
-			console.log(err);
-		});
+		axiosInstance
+			.get(`/buy?uuid=${currentUserId}&category=${filter}&itemId=${id}`)
+			.then((res) => {
+				if (res.data) {
+					console.log(res.data);
+					setCurrentUserBalance(res.data.balance);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
@@ -39,8 +41,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 			</div>
 			<div className='flex inline-flex items-center space-x-2'>
 				<span className='font-bold'>${price.toFixed(0)}</span>
-				<button className={isBought ? 'btn small inactive' : 'btn small'} disabled={isBought}
-								onClick={() => onclick(id)}>
+				<button className={isBought ? 'btn small inactive' : 'btn small'} disabled={isBought} onClick={() => onclick(id)}>
 					{isBought ? 'Bought' : 'Buy'}
 				</button>
 			</div>

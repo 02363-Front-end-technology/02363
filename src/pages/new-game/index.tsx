@@ -17,7 +17,7 @@ const IndexPage = () => {
 		handleSubmit,
 		register,
 		formState: { errors, isValid }
-	} = useForm<IFormInput>({mode: 'onChange'});
+	} = useForm<IFormInput>({ mode: 'onChange' });
 	const [apiStatus, setApiStatus] = useState<EApiStatus>(EApiStatus.ready);
 
 	const router = useRouter();
@@ -38,14 +38,16 @@ const IndexPage = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className={style.content}>
 				<div className={style.inputContainer}>
 					<label htmlFor='name'>Game name</label>
-					<input type="text" id='name' {...register('name', { required: true })} className={style.input} />
+					<input type='text' id='name' {...register('name', { required: true })} className={style.input} />
 					<div className={style.error}>{errors.name && <span>The game name is required</span>}</div>
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
-						<button className={"btn"}><a data-cy='/'>Back</a></button>
+						<button className={'btn'}>
+							<a data-cy='/'>Back</a>
+						</button>
 					</Link>
-					<input type='submit' className={"btn"} disabled={!isValid} data-cy='submit' value="Start" />
+					<input type='submit' className={'btn'} disabled={!isValid} data-cy='submit' value='Start' />
 				</div>
 			</form>
 		</FrontpageLayout>

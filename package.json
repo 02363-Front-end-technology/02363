@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "lint": "next lint",
+    "lint": "npx prettier --write src && echo 'Eslint running..' && npx eslint src && echo 'done.'",
     "cypress:open": "cypress open"
   },
   "dependencies": {
