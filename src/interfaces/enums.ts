@@ -1,10 +1,10 @@
-export enum Tab {
-	Frontend = "Frontend",
-	Backend = "Backend",
-	Ads = "Ads"
+export enum ETab {
+	Frontend = 'Frontend',
+	Server = 'Server',
+	Ads = 'Ads'
 }
 
 export enum EView {
-	UPGRADELAYOUT = "UPGRADELAYOUT",
-	WEBSITELAYOUT = "WEBSITELAYOUT"
+	UPGRADELAYOUT = 'UPGRADELAYOUT',
+	WEBSITELAYOUT = 'WEBSITELAYOUT'
 }

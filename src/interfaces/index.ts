@@ -2,16 +2,8 @@ export type IUser = {
 	id: string;
 	name: string;
 	createdAt: Date;
-	last_login: Date | null;
+	last_login?: Date;
 	balance?: number;
-};
-
-export type IUpgrade = {
-	id: string;
-	user_id: string;
-	upgrades: {
-		item1: number;
-	};
 };
 
 export type IGameData = {
@@ -27,8 +19,18 @@ export type ICategoryData = {
 };
 
 export type IUpgradeItem = {
+	id: number;
 	label: string;
-	isBought: boolean;
-	multiplier: number;
+	multiplier?: number;
 	price: number;
+	isBought?: boolean;
+	level?: number;
+	cps?: number
+};
+
+export type IProduct = {
+	image: string;
+	description: string;
+	price: number;
+	rating: number;
 };

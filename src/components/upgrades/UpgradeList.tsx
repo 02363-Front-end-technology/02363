@@ -1,19 +1,15 @@
 import React from 'react';
-import { ICategoryData, IUpgrade, IUpgradeItem } from '@Interfaces/index';
 import SingleUpgrade from '@Components/upgrades/SingleUpgrade';
+import { useRecoilValue } from 'recoil';
+import { filteredUpgradesState } from '../../selectors/upgrades';
 
-type IProps = {
-	categoryData: ICategoryData;
-	onClickCallback: () => void;
-};
+const UpgradeList = () => {
+	const selectedUpgradesTab = useRecoilValue(filteredUpgradesState);
 
-const UpgradeList: React.FC<IProps> = ({ categoryData, onClickCallback }) => {
-	console.log(categoryData);
-	
 	return (
-		<div className='flex flex-col p-6 space-y-6 bg-white divide-y shadow-lg rounded-xl'>
-			{categoryData.upgrades.map((u) => (
-				<SingleUpgrade key={u.label} title={u.label} price={u.price} onClickCallback={onClickCallback} isBought={u.isBought} />
+		<div className='flex flex-col space-y-6 divide-y rounded-xl bg-white p-6 shadow-lg'>
+			{selectedUpgradesTab.map((u) => (
+				<SingleUpgrade key={u.label} id={u.id} title={u.label} price={u.price} isBought={u.isBought} level={u.level} />
 			))}
 		</div>
 	);

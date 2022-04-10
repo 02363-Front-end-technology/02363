@@ -4,11 +4,12 @@ import { GetStaticProps } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IUser } from '@Interfaces/index';
 import dayjs from 'dayjs';
-import Button from '@Components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
+import { useSetRecoilState } from 'recoil';
+import { currentUserIdState } from '../../atoms';
 
 interface IFormInput {
 	uuid: string;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 const IndexPage: React.FC<Props> = ({ users }) => {
+	const setUserId = useSetRecoilState(currentUserIdState);
 	const {
 		handleSubmit,
 		register,
@@ -28,7 +30,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
-		localStorage.setItem('currentUser', uuid);
+		setUserId(uuid);
 		router.push({ pathname: '/game', query: { uuid: uuid } });
 	};
 
@@ -38,19 +40,19 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 				<div className={style.inputContainer}>
 					<label htmlFor='uuid'>Name</label>
 					<select {...register('uuid', { required: true })}>
-						{users.map((u) => (
-							<option key={u.id} value={u.id}>
-								{u.name} {dayjs(u.last_login).format('DD/MM/YYYY')}
-								{u.balance}
-							</option>
-						))}{' '}
-						{/*TODO should be last login date and balance*/}
+						{users
+							.sort((a, b) => (a.last_login < b.last_login ? 1 : -1))
+							.map((user) => (
+								<option key={user.id} value={user.id}>
+									{user.name} {user.last_login && `(${dayjs(user.last_login).format('DD/MM/YYYY')})`}
+								</option>
+							))}
 					</select>
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
 						<button className={style.btn}>
-							<a data-cy='/'>Back</a>
+							<a data-cy='back'>Back</a>
 						</button>
 					</Link>
 					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value='Load' />

@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IGameData, IUser } from '@Interfaces/index';
 import { supabase } from '@Utils/supabaseClient';
-import defaultGameDate from '@Utils/defaultGameData';
+import defaultGameData from '@Utils/defaultGameData';
+import dayjs from 'dayjs';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === 'GET') {
@@ -17,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 const getAllUsersResolver = async (res: NextApiResponse) => {
 	const { data, error } = await supabase.from<IUser[]>('users').select(`
 	name,
-	last_logi`);
+	last_login`);
 	if (data) return res.status(200).json(data);
 	res.status(500).json({ message: error.message });
 };
@@ -28,14 +29,16 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 		.from<IUser>('users')
 		.insert([
 			{
-				name: name
+				name: name,
+				last_login: dayjs().toDate()
 			}
 		])
 		.single();
 	if (data) {
 		await supabase.from<IGameData>('upgrades').insert({
 			userId: data.id,
-			items: defaultGameDate
+			items: defaultGameData.items,
+			balance: 100
 		});
 		return res.status(201).json(data);
 	}

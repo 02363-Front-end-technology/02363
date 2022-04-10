@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
-describe('Create and load game', () => {
+const userId = '';
+
+describe('Upgrade items', () => {
 	beforeEach(() => {
-		cy.visit('/');
+		cy.visit(`game/?userId=${userId}`);
 	});
 
-	it('should create new game', () => {
+	it('should upgrade Ads', () => {
 		cy.contains('New Game');
 		cy.contains('Load Game');
 		cy.get('[data-cy=new-game]').click();

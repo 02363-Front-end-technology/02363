@@ -20,11 +20,11 @@ const getAllUpgradesResolver = async (res: NextApiResponse) => {
 };
 
 const createUpgradesResolver = async (req: NextApiRequest, res: NextApiResponse) => {
-	const { userId, items,  } = req.body;
+	const { userId, items } = req.body;
 	const { data, error } = await supabase.from<IGameData>('upgrades').insert([
 		{
-            items,
-            userId
+			items,
+			userId
 		}
 	]);
 	if (data) return res.status(201).json(data);
