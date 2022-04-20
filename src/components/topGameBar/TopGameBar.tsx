@@ -21,14 +21,14 @@ const TopGameBar = () => {
 		<div className={style.topBar}>
 			<div className={style.title}>IDLE GAME</div>
 			<div className={style.item}>
-				Balance <div className={style.value}>${balance.toFixed(2)}</div>
+				Balance <div data-cy='currentBalance' className={style.value}>${balance.toFixed(2)}</div>
 			</div>
 			<div className={style.item}>
-				CPS <div className={style.value}>${cps}</div>
+				CPS <div data-cy='currentCPS' className={style.value}>${cps}</div>
 			</div>
 			<div>
 				<div className={style.item}>
-					Multiplier <div className={style.value}>{multiplier.toFixed(3)}</div>
+					Multiplier <div data-cy='currentMultiplier' className={style.value}>{multiplier.toFixed(3)}</div>
 				</div>
 			</div>
 		</div>

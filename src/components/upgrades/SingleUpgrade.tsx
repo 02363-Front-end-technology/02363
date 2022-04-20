@@ -40,11 +40,11 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 		<div className='flex items-center justify-between p-2'>
 			<div className='flex flex-col'>
 				<span>{title}</span>
-				{level >= 0 && <span>Level: {level}</span>}
+				{level >= 0 && <span data-cy={`${title}-level`}>Level: {level}</span>}
 			</div>
 			<div className='flex inline-flex items-center space-x-2'>
 				<span className='font-bold'>${price.toFixed(0)}</span>
-				<button data-cy={title} className={isBought ? 'btn small inactive' : 'btn small'} disabled={isBought} onClick={() => onclick(id)}>
+				<button data-cy={title.replace(' ','')} className={isBought ? 'btn small inactive' : 'btn small'} disabled={isBought} onClick={() => onclick(id)}>
 					{isBought ? 'Bought' : 'Buy'}
 				</button>
 			</div>
