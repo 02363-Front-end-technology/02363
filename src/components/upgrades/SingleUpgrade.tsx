@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../../atoms';
 import { axiosInstance } from '@Utils/axiosInstance';
 import { currentUserBalanceQuery } from '../../selectors/upgrades';
@@ -16,14 +16,20 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 	const filter = useRecoilValue(upgradeFilterState);
 	const currentUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserBalance = useSetRecoilState(currentUserBalanceQuery);
-	const currentGameData = useRecoilValue(currentUserGameData);
-
+	const [currentGameData, setCurrentGameData] = useRecoilState(currentUserGameData);
 	const onclick = (id: number) => {
+		// update current user balance
 		axiosInstance.patch(`api/upgrades/${currentGameData.id}`, { gameData: currentGameData });
+
 		axiosInstance
 			.get(`api/buy?uuid=${currentUserId}&category=${filter}&itemId=${id}`)
 			.then((res) => {
-				if (res.data) setCurrentUserBalance(res.data.balance);
+				if (res.data) {
+					setCurrentUserBalance(res.data.balance);
+					if(res.data.data) {
+						setCurrentGameData(res.data.data);
+					}
+				}
 			})
 			.catch((err) => {
 				console.log(err);

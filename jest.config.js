@@ -11,13 +11,14 @@ const customJestConfig = {
 	// setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 	// if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
 	moduleDirectories: ['node_modules', 'src'],
-	testEnvironment: 'jsdom',
+	testEnvironment: 'jest-environment-jsdom',
 	moduleNameMapper: {
 		'^@Components/(.*)$': '<rootDir>src/components/$1',
 		'^@Pages/(.*)$': '<rootDir>src/pages/$1',
 		'^@Utils/(.*)$': '<rootDir>src/utils/$1',
 		'^@Interfaces/(.*)$': '<rootDir>src/interfaces/$1'
-	}
+	},
+	testPathIgnorePatterns: ["<rootDir>/cypress/"],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

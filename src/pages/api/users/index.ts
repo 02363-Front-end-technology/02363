@@ -35,11 +35,17 @@ const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => 
 		])
 		.single();
 	if (data) {
-		await supabase.from<IGameData>('upgrades').insert({
+		const upgradeRes = await supabase.from<IGameData>('upgrades').insert({
 			userId: data.id,
 			items: defaultGameData.items,
 			balance: 100
-		});
+		}).single();
+		console.log(upgradeRes.data);
+		await supabase.from('users').update({
+			upgrades_id: upgradeRes.data.id
+		}).match({
+			id: data.id
+		}).single();
 		return res.status(201).json(data);
 	}
 	return res.status(500).json({ message: error.message });

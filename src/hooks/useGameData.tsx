@@ -11,6 +11,7 @@ type Props = {
  * @returns
  */
 const useGameData = ({ userId }: Props): [IGameData[], boolean, PostgrestError] => {
+
 	const filter = useFilter<IGameData>((query) => query.eq('userId', userId), [userId]);
 	const [result] = useRealtime<IGameData>('upgrades', {
 		select: { filter }

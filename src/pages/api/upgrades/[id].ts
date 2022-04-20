@@ -24,7 +24,6 @@ const getSingleUpgradeResolver = async (req: NextApiRequest, res: NextApiRespons
 const updateUpgradeResolver = async (req: NextApiRequest, res: NextApiResponse) => {
 	const id = req.query.id.toString();
 	const { gameData } = req.body;
-	console.log({ gameData });
 	const { data, error } = await supabase
 		.from('upgrades')
 		.update({

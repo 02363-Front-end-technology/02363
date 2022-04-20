@@ -4,6 +4,7 @@ import { Link, Stack } from '@chakra-ui/react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { currentUserGameData, currentUserIdState } from '../../atoms';
 import { axiosInstance } from '@Utils/axiosInstance';
+import { useRouter } from 'next/router';
 
 type IProps = {
 	isOpen: boolean;
@@ -13,10 +14,12 @@ type IProps = {
 const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 	const currentGameUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserGamedata = useSetRecoilState(currentUserGameData);
+	const router = useRouter();
 	const onResetGameData = () => {
 		axiosInstance.patch(`api/reset/${currentGameUserId}`).then((r) => {
 			setCurrentUserGamedata(r.data);
 		});
+		router.reload();
 	};
 
 	return (

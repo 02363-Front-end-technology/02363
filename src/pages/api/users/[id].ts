@@ -22,8 +22,7 @@ const getSingleUserResolver = async (req: NextApiRequest, res: NextApiResponse) 
 			`
 	id,
 	name,
-	upgradeId
-	`
+upgrades_id`
 		)
 		.match({ id: id })
 		.single();
