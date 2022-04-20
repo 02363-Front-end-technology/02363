@@ -1,52 +1,16 @@
 /// <reference types="cypress" />
 
-const userId = '';
+const userId = '03790a26-a8e8-40da-b53d-02665c31c2dd';
 
 describe('Upgrade items', () => {
 	beforeEach(() => {
-		cy.visit(`game/?userId=${userId}`);
+		cy.visit(`game/?uuid=${userId}`);
 	});
 
-	it('should upgrade Ads', () => {
-		cy.contains('New Game');
-		cy.contains('Load Game');
-		cy.get('[data-cy=new-game]').click();
-
-		cy.url()
-			.should('include', '/new-game');
-
-		cy.get('[data-cy=submit]')
-			.should('be.disabled');
-
-		cy.get('#name')
-			.type('CYPRESS TEST DELETE ME!', { delay: 200 });
-
-		cy.intercept(
-			{
-				method: 'POST',
-				url: '/api/users'
-			}
-		).as('createUser');
-
-		cy.get('[data-cy=submit]').click();
-		cy.url()
-			.should('include', '/game');
+	it('should upgrade Ads -> Adblocker', () => {
+		cy.get('[data-cy="Ads"]').click();
+		cy.get('[data-cy="Adblocker"]').click();
+		cy.get('[data-cy="Adblocker"]').should('be.disabled');
 	});
 
-	it('should load game', () => {
-		cy.contains('New Game');
-		cy.contains('Load Game');
-		cy.get('[data-cy=load-game]').click();
-
-		cy.url()
-			.should('include', '/load-game');
-
-		cy.get('select')
-			.select('CYPRESS TEST DELETE ME!');
-
-		cy.get('[data-cy=submit]').click();
-
-		cy.url()
-			.should('include', '/game');
-	});
 });

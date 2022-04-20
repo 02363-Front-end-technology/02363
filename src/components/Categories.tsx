@@ -9,13 +9,13 @@ const Categories: React.FC = ({ children }) => {
 	return (
 		<div className='categories'>
 			<div className='flex justify-evenly'>
-				<button className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
+				<button data-cy={ETab.Frontend} className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
 					{ETab.Frontend}
 				</button>
-				<button className={`btn medium ${activeTab === ETab.Server && 'active'}`} onClick={() => setActiveTab(ETab.Server)}>
+				<button data-cy={ETab.Server} className={`btn medium ${activeTab === ETab.Server && 'active'}`} onClick={() => setActiveTab(ETab.Server)}>
 					{ETab.Server}
 				</button>
-				<button className={`btn medium ${activeTab === ETab.Ads && 'active'}`} onClick={() => setActiveTab(ETab.Ads)}>
+				<button data-cy={ETab.Ads} className={`btn medium ${activeTab === ETab.Ads && 'active'}`} onClick={() => setActiveTab(ETab.Ads)}>
 					{ETab.Ads}
 				</button>
 			</div>

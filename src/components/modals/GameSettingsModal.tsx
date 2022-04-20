@@ -24,13 +24,13 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 			<ModalOverlay />
 			<ModalContent>
 				<ModalHeader>Game settings</ModalHeader>
-				<ModalCloseButton />
+				<ModalCloseButton data-cy='close-settings' />
 				<ModalBody className='my-6'>
 					<Stack direction='column' spacing={4} align='center'>
 						<Link href='/'>
-							<button className='btn warning'>Leave Game</button>
+							<button data-cy='leave-game' className='btn warning'>Leave Game</button>
 						</Link>
-						<button className='btn danger' onClick={onResetGameData}>
+						<button data-cy='reset-game' className='btn danger' onClick={onResetGameData}>
 							Reset Game
 						</button>
 					</Stack>

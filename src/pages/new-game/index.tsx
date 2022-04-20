@@ -43,11 +43,11 @@ const IndexPage = () => {
 				</div>
 				<div className={style.buttonContainer}>
 					<Link href='/'>
-						<button className={'btn'}>
+						<button className='btn'>
 							<a data-cy='/'>Back</a>
 						</button>
 					</Link>
-					<input type='submit' className={'btn'} disabled={!isValid} data-cy='submit' value='Start' />
+					<input type='submit' className='btn' disabled={!isValid} data-cy='submit' value='Start' />
 				</div>
 			</form>
 		</FrontpageLayout>

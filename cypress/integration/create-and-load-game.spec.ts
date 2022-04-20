@@ -40,7 +40,7 @@ describe('Create and load game', () => {
 			.should('include', '/load-game');
 
 		cy.get('select')
-			.select('CYPRESS TEST DELETE ME!');
+			.select(0);
 
 		cy.get('[data-cy=submit]').click();
 
