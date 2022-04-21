@@ -1,6 +1,6 @@
 import { selector } from 'recoil';
-import { currentUserGameData, upgradeFilterState } from '../atoms';
-import { ETab } from '@Interfaces/enums';
+import { currentUserGameData, upgradeFilterState, upgradeFilterWebshopState } from '../atoms';
+import { ETab, EWebshopUpgrades } from '@Interfaces/enums';
 import { IUpgradeItem } from '@Interfaces/index';
 
 export const currentUserBalanceQuery = selector<number | null>({
@@ -12,7 +12,7 @@ export const currentUserBalanceQuery = selector<number | null>({
 		return balance;
 	},
 	set: ({ get, set }, newValue: number = 0) => {
-		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue});
+		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue });
 	}
 });
 
@@ -28,6 +28,24 @@ export const filteredUpgradesState = selector<IUpgradeItem[]>({
 				return gamedata.items.find((item) => item.label === ETab.Server).upgrades;
 			case ETab.Ads:
 				return gamedata.items.find((item) => item.label === ETab.Ads).upgrades;
+			default:
+				return [];
+		}
+	}
+});
+
+export const filteredUpgradesWebshopState = selector<IUpgradeItem[]>({
+	key: 'filteredUpgradesWebshop',
+	get: ({ get }) => {
+		const gamedata = get(currentUserGameData);
+		const filter = get(upgradeFilterWebshopState);
+		switch (filter) {
+			case EWebshopUpgrades.Color:
+				return [];
+			case EWebshopUpgrades.Category:
+				return [];
+			case EWebshopUpgrades.AmountOfProducts:
+				return [];
 			default:
 				return [];
 		}

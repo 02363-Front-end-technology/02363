@@ -9,7 +9,7 @@ import { currentUserGameData } from '../../atoms';
 import ProductList from '@Components/Products/ProductList';
 
 const UpgradeLayout = () => {
-	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
+	const frontendItems = useRecoilValue(currentUserGameData).items[1].upgrades;
 	const adds = useRecoilValue(currentUserGameData).items[2].upgrades;
 	return (
 		<div style={{ height: '100%' }}>

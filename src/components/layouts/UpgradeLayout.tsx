@@ -3,8 +3,13 @@ import TopGameBar from '@Components/topGameBar/TopGameBar';
 import Categories from '@Components/Categories';
 import UpgradeList from '@Components/upgrades/UpgradeList';
 import style from '@Styles/UpgradeLayout.module.css';
+import { useRecoilValue } from 'recoil';
+import { currentUserGameData } from '../../atoms';
+import WebshopUpgradeTabs from '@Components/WebshopUpgradeTabs';
 
 const UpgradeLayout = () => {
+	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
+
 	return (
 		<div style={{ height: '100%' }}>
 			<TopGameBar />
@@ -16,8 +21,12 @@ const UpgradeLayout = () => {
 						</Categories>
 					</div>
 					<div className={style.right}>
-						<div>
-						</div>
+						{frontendItems[0].isBought && (
+							<div className='text-center'>
+								<h1>Webshop upgrades</h1>
+								<WebshopUpgradeTabs/>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
