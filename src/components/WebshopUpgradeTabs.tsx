@@ -3,7 +3,6 @@ import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/tabs';
 import UpgradeWebshopList from '@Components/upgrades/UpgradeWebshopList';
-import { Center } from '@chakra-ui/react'
 import { upgradeFilterWebshopState } from '../atoms';
 
 const WebShopUpgadeTabs: React.FC = () => {
@@ -23,11 +22,11 @@ const WebShopUpgadeTabs: React.FC = () => {
 		}
 	};
 	return (
-		<Center h='100%'>
+		<div className='w-7/12'>
 			<Tabs onChange={index => onChange(index)}>
 				<TabList>
 					<Tab>{EWebshopUpgrades.Color}</Tab>
-					<Tab>{EWebshopUpgrades.Category}</Tab>
+					<Tab isDisabled>{EWebshopUpgrades.Category}</Tab>
 				</TabList>
 				<TabPanels>
 					<TabPanel>
@@ -38,7 +37,7 @@ const WebShopUpgadeTabs: React.FC = () => {
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
-		</Center>
+		</div>
 	);
 };
 

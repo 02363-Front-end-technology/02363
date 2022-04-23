@@ -22,7 +22,7 @@ const UpgradeLayout = () => {
 					</div>
 					<div className={style.right}>
 						{frontendItems[0].isBought && (
-							<div className='text-center'>
+							<div className='text-center flex flex-col flex-wrap items-center'>
 								<h1>Webshop upgrades</h1>
 								<WebshopUpgradeTabs/>
 							</div>

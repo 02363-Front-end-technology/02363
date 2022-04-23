@@ -11,8 +11,8 @@ export const currentUserBalanceQuery = selector<number | null>({
 		const { balance } = gameData;
 		return balance;
 	},
-	set: ({ get, set }, newValue: number = 0) => {
-		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue });
+	set: ({ get, set }, newValue = 0) => {
+		set(currentUserGameData, { ...get(currentUserGameData), balance: newValue as number });
 	}
 });
 
@@ -39,15 +39,19 @@ export const filteredUpgradesWebshopState = selector<IUpgradeItem[]>({
 	get: ({ get }) => {
 		const gamedata = get(currentUserGameData);
 		const filter = get(upgradeFilterWebshopState);
-		switch (filter) {
-			case EWebshopUpgrades.Color:
-				return [];
-			case EWebshopUpgrades.Category:
-				return [];
-			case EWebshopUpgrades.AmountOfProducts:
-				return [];
-			default:
-				return [];
+		if (gamedata.items.find((item) => item.label === EWebshopUpgrades.Color)) {
+			switch (filter) {
+				case EWebshopUpgrades.Color:
+					return gamedata.items.find((item) => item.label === EWebshopUpgrades.Color).upgrades ?? [];
+				case EWebshopUpgrades.Category:
+					return [];
+				case EWebshopUpgrades.AmountOfProducts:
+					return [];
+				default:
+					return [];
+			}
+		} else {
+			return [];
 		}
 	}
 });

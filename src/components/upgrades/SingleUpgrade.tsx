@@ -17,7 +17,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 	const currentUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserBalance = useSetRecoilState(currentUserBalanceQuery);
 	const [currentGameData, setCurrentGameData] = useRecoilState(currentUserGameData);
-	const onclick = (id: number) => {
+	const onBuy = (id: number) => {
 		// update current user balance
 		axiosInstance.patch(`api/upgrades/${currentGameData.id}`, { gameData: currentGameData });
 
@@ -26,7 +26,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 			.then((res) => {
 				if (res.data) {
 					setCurrentUserBalance(res.data.balance);
-					if(res.data.data) {
+					if (res.data.data) {
 						setCurrentGameData(res.data.data);
 					}
 				}
@@ -44,7 +44,8 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 			</div>
 			<div className='flex inline-flex items-center space-x-2'>
 				<span className='font-bold'>${price.toFixed(0)}</span>
-				<button data-cy={title.replace(' ','')} className={isBought ? 'btn small inactive' : 'btn small'} disabled={isBought} onClick={() => onclick(id)}>
+				<button data-cy={title.replace(' ', '')} className={isBought ? 'btn small inactive' : 'btn small'}
+								disabled={isBought} onClick={() => onBuy(id)}>
 					{isBought ? 'Bought' : 'Buy'}
 				</button>
 			</div>

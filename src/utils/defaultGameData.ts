@@ -101,6 +101,39 @@ const defaultGameData: Partial<IGameData> = {
 					price: 300
 				}
 			]
+		},
+		{
+			label: 'Color',
+			upgrades: [
+				{
+					id: 0,
+					label: 'Red',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 1,
+					label: 'Green',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 2,
+					label: 'Blue',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 3,
+					label: 'Yellow',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				}
+			]
 		}
 	]
 };
