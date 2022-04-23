@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
 import { useSetRecoilState } from 'recoil';
-import { currentUserIdState } from '../../atoms';
+import { currentUserIdState } from '../../atoms/user';
 
 interface IFormInput {
 	uuid: string;
@@ -19,7 +19,7 @@ type Props = {
 	users: IUser[];
 };
 
-const IndexPage: React.FC<Props> = ({ users }) => {
+const LoadGame: React.FC<Props> = ({ users }) => {
 	const setUserId = useSetRecoilState(currentUserIdState);
 	const {
 		handleSubmit,
@@ -52,7 +52,7 @@ const IndexPage: React.FC<Props> = ({ users }) => {
 				<div className={style.buttonContainer}>
 					<Link href='/'>
 						<button className={style.btn}>
-							<a data-cy='/'>Back</a>
+							<a data-cy='back'>Back</a>
 						</button>
 					</Link>
 					<input type='submit' className={style.btn} disabled={!isValid} data-cy='submit' value='Load' />
@@ -69,4 +69,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	return { props: { users }, revalidate: 600 };
 };
 
-export default IndexPage;
+export default LoadGame;

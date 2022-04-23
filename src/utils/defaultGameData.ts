@@ -8,27 +8,34 @@ const defaultGameData: Partial<IGameData> = {
 			upgrades: [
 				{
 					id: 0,
+					label: 'Webshop',
+					isBought: false,
+					multiplier: 0.020,
+					price: 125
+				},
+				{
+					id: 1,
 					label: 'Navigation Bar',
 					isBought: false,
 					multiplier: 0.025,
 					price: 150
 				},
 				{
-					id: 1,
+					id: 2,
 					label: 'User Profile',
 					isBought: false,
 					multiplier: 0.05,
 					price: 300
 				},
 				{
-					id: 2,
+					id: 3,
 					label: 'Sidebar',
 					isBought: false,
 					multiplier: 0.05,
 					price: 300
 				},
 				{
-					id: 3,
+					id: 4,
 					label: 'Footer',
 					isBought: false,
 					multiplier: 0.05,
@@ -54,7 +61,7 @@ const defaultGameData: Partial<IGameData> = {
 					price: 300
 				},
 				{
-					id: 1,
+					id: 2,
 					label: 'Network',
 					level: 0,
 					multiplier: 0.05,
@@ -92,6 +99,39 @@ const defaultGameData: Partial<IGameData> = {
 					isBought: false,
 					cps: 4,
 					price: 300
+				}
+			]
+		},
+		{
+			label: 'Color',
+			upgrades: [
+				{
+					id: 0,
+					label: 'Red',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 1,
+					label: 'Green',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 2,
+					label: 'Blue',
+					isBought: false,
+					cps: 0.2,
+					price: 100
+				},
+				{
+					id: 3,
+					label: 'Yellow',
+					isBought: false,
+					cps: 0.2,
+					price: 100
 				}
 			]
 		}

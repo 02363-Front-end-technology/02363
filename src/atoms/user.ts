@@ -3,26 +3,25 @@ import { IGameData } from '@Interfaces/index';
 import defaultGameData from '@Utils/defaultGameData';
 
 // https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence
-const localStorageEffect =
-	(key) =>
-	({ setSelf, onSet }) => {
-		const savedValue = localStorage.getItem(key);
+const sessionStorageEffect = (key) => ({ setSelf, onSet }) => {
+	if (typeof window === 'undefined') return;
+		const savedValue = sessionStorage.getItem(key);
 		if (savedValue != null) {
 			setSelf(JSON.parse(savedValue));
 		}
 		onSet((newValue, _, isReset) => {
-			isReset ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify(newValue));
+			isReset ? sessionStorage.removeItem(key) : sessionStorage.setItem(key, JSON.stringify(newValue));
 		});
 	};
 
 export const currentUserIdState = atom<string>({
 	key: 'CurrentUserId',
 	default: null,
-	effects: [localStorageEffect('CurrentUserId')]
+	effects: [sessionStorageEffect('CurrentUserId')]
 });
 
 export const currentUserGameData = atom<Partial<IGameData> | null>({
 	key: 'CurrentUserGameData',
 	default: defaultGameData,
-	effects: [localStorageEffect('CurrentUserGameData')]
+	effects: [sessionStorageEffect('CurrentUserGameData')]
 });

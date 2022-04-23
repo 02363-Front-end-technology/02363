@@ -1,6 +1,5 @@
 import { selector } from 'recoil';
-import { supabase } from '@Utils/supabaseClient';
-import { currentUserGameData, currentUserIdState } from '../atoms';
+import { currentUserGameData } from '../atoms';
 import { IGameData } from '@Interfaces/index';
 import { ETab } from '@Interfaces/enums';
 
@@ -14,7 +13,7 @@ const getTotalMultiplier = (gameData: Partial<IGameData>): number => {
 
 	const serverMultiplier = gameData.items
 		.find((i) => i.label === ETab.Server)
-		.upgrades.filter((i) => i.level > 1)
+		.upgrades.filter((i) => i.level >= 1)
 		.reduce((acc, curr) => {
 			return acc + curr.multiplier;
 		}, 0);
@@ -33,6 +32,7 @@ export const currentUserMultiplier = selector<number>({
 export const currentUserCPS = selector<number>({
 	key: 'CurrentUserCPS',
 	get: ({ get }) => {
+		if(!get(currentUserGameData)) return 0;
 		const gameData = get(currentUserGameData);
 		return gameData.items.find((i) => i.label === ETab.Ads)
 			.upgrades.filter((u) => u.isBought === true)
