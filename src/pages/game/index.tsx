@@ -60,19 +60,19 @@ const IndexPage = () => {
 		<div className='relative h-screen max-h-screen overflow-y-hidden'>
 			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout />}
 			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout />}
-			<div
+			<button
 				className='fixed bottom-6 right-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center'
 				onClick={onClick}>
 				{selectedView === EView.WEBSITELAYOUT && <FiShoppingCart className='z-10 h-6 w-6' />}
 				{selectedView === EView.UPGRADELAYOUT && <CgWebsite className='z-10 h-6 w-6' />}
-			</div>
-			<div
+			</button>
+			<button
 				className='fixed bottom-6 left-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center'
 				onClick={() => setIsGameSettingsOpen(true)}
 				data-cy='settings'
 			>
 				<BsGear className='z-10 h-6 w-6' />
-			</div>
+			</button>
 			<GameSettingsModal isOpen={isGameSettingsOpen} onClose={() => setIsGameSettingsOpen(false)} />
 		</div>
 	);

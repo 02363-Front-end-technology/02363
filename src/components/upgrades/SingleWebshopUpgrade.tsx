@@ -10,10 +10,9 @@ type IProps = {
 	price: number;
 	isBought: boolean;
 	id: number;
-	level?: number;
 };
 
-const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = undefined }) => {
+const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id = undefined }) => {
 	const filter = useRecoilValue(upgradeFilterWebshopState);
 	const currentUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserBalance = useSetRecoilState(currentUserBalanceQuery);

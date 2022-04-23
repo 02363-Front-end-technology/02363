@@ -1,4 +1,3 @@
-import { IUser } from '@Interfaces/index';
 import { supabase } from '@Utils/supabaseClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -7,12 +6,6 @@ async function getItems(uuid: string) {
 	if (data) {
 		return data.items;
 	} else return error;
-}
-
-async function getUser(uuid: string) {
-	const { data, error } = await supabase.from<IUser>('users').select('*').match({ id: uuid }).single();
-	if (data) return data;
-	throw error;
 }
 
 type QueryType = {
@@ -39,8 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 		const upgrades = categories.find((i) => i.label === category).upgrades;
 		const upgrade = upgrades.find((i) => i.id === Number(itemId));
-		if (upgrade == undefined) throw new Error('Item not found');
-		const user = await getUser(uuid);
+		if (upgrade == undefined) return res.status(503).send({message: 'Item not found'});
 
 		//TODO User har ikke balance
 		if (balance < upgrade.price) return res.send({ message: 'Not enough balance', balance });

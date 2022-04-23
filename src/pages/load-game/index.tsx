@@ -50,7 +50,7 @@ const LoadGame: React.FC<Props> = ({ users }) => {
 					</select>
 				</div>
 				<div className={style.buttonContainer}>
-					<Link href='/'>
+					<Link href='/' passHref={true}>
 						<button className={style.btn}>
 							<a data-cy='back'>Back</a>
 						</button>

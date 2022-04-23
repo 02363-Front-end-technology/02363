@@ -6,13 +6,13 @@ const IndexPage = () => {
 	return (
 		<FrontpageLayout>
 			<div className={style.content}>
-				<Link href='/new-game'>
+				<Link href='/new-game' passHref={true}>
 					<button className={'btn'}>
 						<a data-cy='new-game'>New Game</a>
 					</button>
 				</Link>
 
-				<Link href='/load-game'>
+				<Link href='/load-game' passHref={true}>
 					<button className={'btn'}>
 						<a data-cy='load-game'>Load Game</a>
 					</button>

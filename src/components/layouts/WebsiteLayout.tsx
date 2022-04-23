@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NavBar from '@Components/layouts/NavBar';
 import Add from './Add';
 import style from '@Styles/WebsiteLayout.module.css';

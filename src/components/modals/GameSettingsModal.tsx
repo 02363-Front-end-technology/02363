@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/modal';
-import { Link, Stack } from '@chakra-ui/react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { Stack } from '@chakra-ui/react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { currentUserGameData, currentUserIdState } from '../../atoms';
 import { axiosInstance } from '@Utils/axiosInstance';
 import { useRouter } from 'next/router';
