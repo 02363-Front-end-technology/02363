@@ -8,7 +8,7 @@ type IProps = {
 
 const ProductList: React.FC<IProps> = ({ products }) => {
 	return (
-		<div className='my-12 grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-3'>
+		<div className='my-12 grid w-full grid-cols-1 justify-items-center gap-4 lg:grid-cols-2 xl:grid-cols-3'>
 			{products.map((p, index) => (
 				<ProductCard key={index} product={p} />
 			))}
