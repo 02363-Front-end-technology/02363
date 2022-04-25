@@ -7,7 +7,7 @@ const makeRandomProducts = async (amount: number): Promise<IProduct[]> => {
 
 	for (let i = 0; i < amount; i++) {
 		products[i] = {
-			image: faker.image.food(720, 720, true),
+			image: faker.image.cats(720, 720, true),
 			description: faker.commerce.productName(),
 			price: Number(faker.commerce.price()),
 			rating: Math.ceil(Math.random() * 5),
@@ -18,5 +18,5 @@ const makeRandomProducts = async (amount: number): Promise<IProduct[]> => {
 
 export const randomProductState = atom<IProduct[]>({
 	key: 'randomProductState',
-	default: makeRandomProducts(30)
+	default: makeRandomProducts(200)
 });
