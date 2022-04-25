@@ -12,7 +12,7 @@ const ProductTools = (props: Props) => {
 				<label htmlFor={"sortBy"} className='label'>
 					<span className='label-text'>Sort by</span>
 				</label>
-				<select id='sortBy' className='select w-full max-w-xs'>
+				<select id='sortBy' className='select select-primary w-full max-w-xs'>
 					<option value='price'>Price</option>
 					<option value='rating'>Rating</option>
 					<option value='name'>Name</option>
@@ -22,7 +22,7 @@ const ProductTools = (props: Props) => {
 				<label htmlFor={"direction"} className='label'>
 					<span className='label-text'>Direction</span>
 				</label>
-				<select id='direction' className='select w-full max-w-xs'>
+				<select id='direction' className='select select-primary w-full max-w-xs'>
 					<option value='ascending'>Ascending ↑</option>
 					<option value='descending'>Descending ↓</option>
 				</select>
