@@ -18,5 +18,5 @@ const makeRandomProducts = async (amount: number): Promise<IProduct[]> => {
 
 export const randomProductState = atom<IProduct[]>({
 	key: 'randomProductState',
-	default: makeRandomProducts(200)
+	default: makeRandomProducts(100)
 });
