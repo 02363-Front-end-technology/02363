@@ -13,24 +13,23 @@ const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
 	const adds = useRecoilValue(currentUserGameData).items[2].upgrades;
 	const products = useRecoilValue(randomProductState);
-	
-	const [sortBy, setSortBy] = useState< "name" | "price" | "rating">("name")
-	const [sortDirection, setSortDirection] = useState<"ascending" | "descending">("ascending")
+
+	const [sortBy, setSortBy] = useState<'name' | 'price' | 'rating'>('name');
+	const [sortDirection, setSortDirection] = useState<'ascending' | 'descending'>('ascending');
 	const onSortChange = (e) => {
 		console.log(e.target.value);
 		setSortBy(e.target.value);
-	}
+	};
 
 	const onDirChange = (e) => {
 		console.log(e.target.value);
 		setSortDirection(e.target.value);
-	}
+	};
 
 	/**
-	 *  @param {string} sortBy 
+	 *  @param {string} sortBy
 	 */
-	const sortProducts = ({products, sortBy, dir} : {products: IProduct[], sortBy: "name" | "price" | "rating", dir: "ascending" | "descending"} ) => {
-
+	const sortProducts = ({ products, sortBy, dir }: { products: IProduct[]; sortBy: 'name' | 'price' | 'rating'; dir: 'ascending' | 'descending' }) => {
 		const newProducts = [...products];
 		if (sortBy === 'price') {
 			if (dir === 'ascending') {
@@ -53,7 +52,7 @@ const UpgradeLayout = () => {
 				return newProducts.sort((a, b) => b.rating - a.rating);
 			}
 		}
-	}
+	};
 
 	return (
 		<div style={{ height: '100%' }}>
@@ -68,10 +67,9 @@ const UpgradeLayout = () => {
 						}
 					</div>
 				</span>
-				{frontendItems[5].isBought && <ProductTools defaultDirValue='descending' defaultSortValue='name' onDirChange={onDirChange} onSortChange={onSortChange}/>}
+				{frontendItems[5].isBought && <ProductTools defaultDirValue='descending' defaultSortValue='name' onDirChange={onDirChange} onSortChange={onSortChange} />}
 
-				
-				{frontendItems[0].isBought && <ProductList products={sortProducts({products: products, sortBy: sortBy, dir: sortDirection})} />}
+				{frontendItems[0].isBought && <ProductList products={sortProducts({ products: products, sortBy: sortBy, dir: sortDirection })} />}
 				<div className={'w-full '}>
 					{
 						// Photo by Engin Akyurt: https://www.pexels.com/photo/a-delicious-burger-on-paper-placemat-5374421/

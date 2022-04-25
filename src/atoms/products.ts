@@ -7,7 +7,7 @@ const makeRandomProducts = async (amount: number): Promise<IProduct[]> => {
 
 	for (let i = 0; i < amount; i++) {
 		products[i] = {
-			image: faker.image.business(720, 720, true),
+			image: faker.image.food(720, 720, true),
 			description: faker.commerce.productName(),
 			price: Number(faker.commerce.price()),
 			rating: Math.ceil(Math.random() * 5),
