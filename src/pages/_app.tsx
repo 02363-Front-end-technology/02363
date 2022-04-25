@@ -4,7 +4,7 @@ import { Provider } from 'react-supabase';
 import { supabase } from '@Utils/supabaseClient';
 import { RecoilRoot } from 'recoil';
 
-const MyApp = ({ Component, pageProps }) => {
+const IdleGameApp = ({ Component, pageProps }) => {
 
 	return (
 		<RecoilRoot>
@@ -17,4 +17,4 @@ const MyApp = ({ Component, pageProps }) => {
 	);
 };
 
-export default MyApp;
+export default IdleGameApp;
