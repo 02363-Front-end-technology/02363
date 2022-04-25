@@ -40,6 +40,13 @@ const defaultGameData: Partial<IGameData> = {
 					isBought: false,
 					multiplier: 0.05,
 					price: 300
+				},
+				{
+					id: 5,
+					label: 'Product Sorting',
+					isBought: false,
+					multiplier: 0.05,
+					price: 450
 				}
 			]
 		},

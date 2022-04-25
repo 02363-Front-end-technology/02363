@@ -6,6 +6,7 @@ import TopGameBar from '@Components/topGameBar/TopGameBar';
 import { useRecoilValue } from 'recoil';
 import { currentUserGameData, randomProductState } from '../../atoms';
 import ProductList from '@Components/Products/ProductList';
+import ProductTools from '@Components/Products/ProductTools';
 
 const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
@@ -25,6 +26,9 @@ const UpgradeLayout = () => {
 						}
 					</div>
 				</span>
+				{frontendItems[5].isBought && <ProductTools/>}
+
+				
 				{frontendItems[0].isBought && <ProductList products={products} />}
 				<div className={'w-full '}>
 					{
