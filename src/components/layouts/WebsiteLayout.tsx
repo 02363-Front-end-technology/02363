@@ -28,6 +28,7 @@ const UpgradeLayout = () => {
 
 	/**
 	 *  @param {string} sortBy
+	 * author: @tobiasmaneschijn
 	 */
 	const sortProducts = ({ products, sortBy, dir }: { products: IProduct[]; sortBy: 'name' | 'price' | 'rating'; dir: 'ascending' | 'descending' }) => {
 		const newProducts = [...products];
@@ -66,16 +67,31 @@ const UpgradeLayout = () => {
 							adds[0].isBought && <Ad title={'GET YOUR CLOTHES AT OSAS'} src='/ad_2.jpg' />
 						}
 					</div>
+					<div className={'w-full '}>
+						{
+							// Photo by Te lensFix from Pexels: https://www.pexels.com/photo/photo-of-woman-sitting-on-boat-spreading-her-arms-1371360/
+							adds[2].isBought && <Ad title={'Tip Top Vacay A/S'} src='/ad_5.jpg' />
+						}
+					</div>
 				</span>
 				{frontendItems[5].isBought && <ProductTools defaultDirValue='descending' defaultSortValue='name' onDirChange={onDirChange} onSortChange={onSortChange} />}
 
 				{frontendItems[0].isBought && <ProductList products={sortProducts({ products: products, sortBy: sortBy, dir: sortDirection })} />}
-				<div className={'w-full '}>
-					{
-						// Photo by Engin Akyurt: https://www.pexels.com/photo/a-delicious-burger-on-paper-placemat-5374421/
-						adds[1].isBought && <Ad title={"Frankie's Steak House"} src='/ad_3.jpg' />
-					}
-				</div>
+
+				<span className='flex max-h-96  w-full bg-slate-800 '>
+					<div className={'w-full '}>
+						{
+							// Photo by Engin Akyurt: https://www.pexels.com/photo/a-delicious-burger-on-paper-placemat-5374421/
+							adds[1].isBought && <Ad title={"Frankie's Steak House"} src='/ad_3.jpg' />
+						}
+					</div>
+					<div className={'w-full '}>
+						{
+							// Photo by Oleksandr Pidvalnyi from Pexels: https://www.pexels.com/photo/boy-looking-on-a-tidied-desk-2781814/
+							adds[3].isBought && <Ad title={'School supplies for your kids!'} src='/ad_4.jpg' />
+						}
+					</div>
+				</span>
 			</div>
 		</div>
 	);

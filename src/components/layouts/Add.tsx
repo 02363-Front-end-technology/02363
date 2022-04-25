@@ -6,6 +6,9 @@ type IProps = {
 	width: number;
 	height: number;
 };
+/** 
+ *	author: @tobiasmaneschijn
+*/
 function Ad({ src, title }) {
 	return (
 		<div className='relative hover:cursor-pointer hover:opacity-50 transition duration-150'>
