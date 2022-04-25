@@ -7,14 +7,15 @@ import { useRecoilValue } from 'recoil';
 import { currentUserGameData, randomProductState } from '../../atoms';
 import ProductList from '@Components/Products/ProductList';
 import ProductTools from '@Components/Products/ProductTools';
+import { IProduct } from '../../interfaces/index';
 
 const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
 	const adds = useRecoilValue(currentUserGameData).items[2].upgrades;
 	const products = useRecoilValue(randomProductState);
 	
-	const [sortBy, setSortBy] = useState("name")
-	const [sortDirection, setSortDirection] = useState("ascending")
+	const [sortBy, setSortBy] = useState< "name" | "price" | "rating">("name")
+	const [sortDirection, setSortDirection] = useState<"ascending" | "descending">("ascending")
 	const onSortChange = (e) => {
 		console.log(e.target.value);
 		setSortBy(e.target.value);
@@ -25,7 +26,10 @@ const UpgradeLayout = () => {
 		setSortDirection(e.target.value);
 	}
 
-	const sortProducts = (products, sortBy, dir) => {
+	/**
+	 *  @param {string} sortBy 
+	 */
+	const sortProducts = ({products, sortBy, dir} : {products: IProduct[], sortBy: "name" | "price" | "rating", dir: "ascending" | "descending"} ) => {
 
 		const newProducts = [...products];
 		if (sortBy === 'price') {
@@ -67,7 +71,7 @@ const UpgradeLayout = () => {
 				{frontendItems[5].isBought && <ProductTools defaultDirValue='descending' defaultSortValue='name' onDirChange={onDirChange} onSortChange={onSortChange}/>}
 
 				
-				{frontendItems[0].isBought && <ProductList products={sortProducts(products, sortBy, sortDirection)} />}
+				{frontendItems[0].isBought && <ProductList products={sortProducts({products: products, sortBy: sortBy, dir: sortDirection})} />}
 				<div className={'w-full '}>
 					{
 						// Photo by Engin Akyurt: https://www.pexels.com/photo/a-delicious-burger-on-paper-placemat-5374421/
