@@ -4,8 +4,8 @@
  */
 import defaultGameData from '../../src/utils/defaultGameData';
 
-const userId = '03790a26-a8e8-40da-b53d-02665c31c2dd';
-const upgradeId = 33;
+const userId = '3396f761-994d-460f-8911-ed398a20a900';
+const upgradeId = 69;
 
 describe('Upgrade items', () => {
 	beforeEach(() => {
