@@ -2,6 +2,7 @@
  * Loui
  * Tobias
  */
+
 import { IProduct } from '@Interfaces/index';
 import faker from '@faker-js/faker';
 import { atom } from 'recoil';
@@ -14,7 +15,7 @@ const makeRandomProducts = async (amount: number): Promise<IProduct[]> => {
 			image: faker.image.cats(720, 720, true),
 			description: faker.commerce.productName(),
 			price: Number(faker.commerce.price()),
-			rating: Math.ceil(Math.random() * 5),
+			rating: Math.ceil(Math.random() * 5)
 		};
 	}
 	return products;

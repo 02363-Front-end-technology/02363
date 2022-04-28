@@ -1,8 +1,8 @@
-import Image from 'next/image';
-
 /** contributors
  * Tobias Maneschijn
  */
+
+import Image from 'next/image';
 function Ad({ src, title }) {
 	return (
 		<div className='relative hover:cursor-pointer hover:opacity-50 transition duration-150'>

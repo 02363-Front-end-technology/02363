@@ -1,14 +1,16 @@
 /** contributors
  * Loui
  */
+
 import { atom } from 'recoil';
 import { IGameData } from '@Interfaces/index';
 import defaultGameData from '@Utils/defaultGameData';
 
-
 // https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence
-const sessionStorageEffect = (key) => ({ setSelf, onSet }) => {
-	if (typeof window === 'undefined') return;
+const sessionStorageEffect =
+	(key) =>
+	({ setSelf, onSet }) => {
+		if (typeof window === 'undefined') return;
 		const savedValue = sessionStorage.getItem(key);
 		if (savedValue != null) {
 			setSelf(JSON.parse(savedValue));

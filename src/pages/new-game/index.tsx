@@ -1,4 +1,5 @@
 /** contributors
+ * Oliver Christensen
  * Loui
  */
 import FrontpageLayout from '@Components/layouts/FrontpageLayout';

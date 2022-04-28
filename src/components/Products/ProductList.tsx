@@ -1,12 +1,10 @@
+/** contributors
+ * Tobias Maneschijn
+ */
+
 import React from 'react';
 import { IProduct } from '@Interfaces/index';
 import ProductCard from './ProductCard';
-
-/** contributors
- * Tobias Maneschijn
- * 
- */
-
 
 type IProps = {
 	products: IProduct[];

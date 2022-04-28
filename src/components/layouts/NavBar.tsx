@@ -1,12 +1,13 @@
+/** contributors
+ * Oliver Christensen
+ * Tobias Maneschijn
+ * Loui
+ */
+
 import style from '@Styles/WebsiteLayout.module.css';
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { currentWebshopColorState } from '../../selectors';
-
-/** contributors
- * Tobias Maneschijn
- * Loui
- */
 
 const NavBar = () => {
 	const color = useRecoilValue(currentWebshopColorState)

@@ -1,6 +1,9 @@
 /** contributors
+ * Tobias Maneschijn
  * Loui
+ * Oliver
  */
+
 import React from 'react';
 import TopGameBar from '@Components/topGameBar/TopGameBar';
 import Categories from '@Components/Categories';
@@ -9,12 +12,6 @@ import style from '@Styles/UpgradeLayout.module.css';
 import { useRecoilValue } from 'recoil';
 import { currentUserGameData } from '../../atoms';
 import WebshopUpgradeTabs from '@Components/WebshopUpgradeTabs';
-
-/** contributors
- * Tobias Maneschijn
- * Loui
- * Oliver
- */
 
 const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;

@@ -1,3 +1,7 @@
+/** contributors
+ * Tobias Maneschijn
+ */
+
 import React from 'react';
 
 type Props = {
@@ -6,12 +10,6 @@ type Props = {
     onSortChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     onDirChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
-
-/** contributors
- * Tobias Maneschijn
- * 
- */
-
 
 const ProductTools = (props: Props) => {
     

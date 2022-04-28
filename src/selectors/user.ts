@@ -1,4 +1,5 @@
 /** contributors
+ * Oliver Christensen
  * Loui
  */
 import { selector } from 'recoil';
@@ -35,9 +36,10 @@ export const currentUserMultiplier = selector<number>({
 export const currentUserCPS = selector<number>({
 	key: 'CurrentUserCPS',
 	get: ({ get }) => {
-		if(!get(currentUserGameData)) return 0;
+		if (!get(currentUserGameData)) return 0;
 		const gameData = get(currentUserGameData);
-		return gameData.items.find((i) => i.label === ETab.Ads)
+		return gameData.items
+			.find((i) => i.label === ETab.Ads)
 			.upgrades.filter((u) => u.isBought === true)
 			.reduce((acc, curr) => {
 				return acc + curr.cps;
