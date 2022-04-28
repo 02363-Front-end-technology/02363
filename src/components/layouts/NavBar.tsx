@@ -3,6 +3,11 @@ import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { currentWebshopColorState } from '../../selectors';
 
+/** contributors
+ * Tobias Maneschijn
+ * Loui
+ */
+
 const NavBar = () => {
 	const color = useRecoilValue(currentWebshopColorState)
 

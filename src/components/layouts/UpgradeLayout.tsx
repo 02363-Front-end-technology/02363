@@ -10,6 +10,12 @@ import { useRecoilValue } from 'recoil';
 import { currentUserGameData } from '../../atoms';
 import WebshopUpgradeTabs from '@Components/WebshopUpgradeTabs';
 
+/** contributors
+ * Tobias Maneschijn
+ * Loui
+ * Oliver
+ */
+
 const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;
 

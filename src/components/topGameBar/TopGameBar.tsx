@@ -1,5 +1,6 @@
 /** contributors
  * Loui
+ * Tobias Maneschijn
  */
 import React, { useEffect } from 'react';
 import style from '@Styles/TopBar.module.css';

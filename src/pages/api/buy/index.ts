@@ -1,5 +1,6 @@
 /** contributors
  * Loui
+ * Tobias Maneschijn
  */
 import { supabase } from '@Utils/supabaseClient';
 import type { NextApiRequest, NextApiResponse } from 'next';

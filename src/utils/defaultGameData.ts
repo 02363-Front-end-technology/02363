@@ -1,5 +1,6 @@
 /** contributors
  * Loui
+ * Tobias Maneschijn
  */
 import { IGameData } from '@Interfaces/index';
 

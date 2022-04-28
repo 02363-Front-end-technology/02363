@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-/**
- *	author: @tobiasmaneschijn
-*/
+/** contributors
+ * Tobias Maneschijn
+ */
 function Ad({ src, title }) {
 	return (
 		<div className='relative hover:cursor-pointer hover:opacity-50 transition duration-150'>

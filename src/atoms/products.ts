@@ -1,5 +1,6 @@
 /** contributors
  * Loui
+ * Tobias
  */
 import { IProduct } from '@Interfaces/index';
 import faker from '@faker-js/faker';

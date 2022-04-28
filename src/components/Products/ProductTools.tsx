@@ -7,6 +7,12 @@ type Props = {
     onDirChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
+/** contributors
+ * Tobias Maneschijn
+ * 
+ */
+
+
 const ProductTools = (props: Props) => {
     
 	// return a div with selection boxes for sorting by price, rating, etc.

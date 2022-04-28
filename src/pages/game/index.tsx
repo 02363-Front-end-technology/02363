@@ -1,5 +1,6 @@
 /** contributors
  * Loui
+ * Tobias Maneschijn
  */
 import React, { useEffect, useState } from 'react';
 import { EView } from '@Interfaces/enums';

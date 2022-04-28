@@ -2,6 +2,11 @@ import React from 'react';
 import { IProduct } from '@Interfaces/index';
 import Image from 'next/image';
 
+/** contributors
+ * Tobias Maneschijn
+ * 
+ */
+
 type IProps = {
 	product: IProduct;
 };
