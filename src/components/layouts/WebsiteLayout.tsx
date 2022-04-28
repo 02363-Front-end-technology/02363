@@ -1,3 +1,9 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ * Tobias Maneschijn
+ */
+
 import React, { useState } from 'react';
 import NavBar from '@Components/layouts/NavBar';
 import Ad from './Add';
@@ -7,7 +13,7 @@ import { useRecoilValue } from 'recoil';
 import { currentUserGameData, randomProductState } from '../../atoms';
 import ProductList from '@Components/Products/ProductList';
 import ProductTools from '@Components/Products/ProductTools';
-import { IProduct } from '../../interfaces/index';
+import { IProduct } from '@Interfaces/index';
 
 const UpgradeLayout = () => {
 	const frontendItems = useRecoilValue(currentUserGameData).items[0].upgrades;

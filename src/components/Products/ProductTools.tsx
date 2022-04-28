@@ -1,3 +1,7 @@
+/** contributors
+ * Tobias Maneschijn
+ */
+
 import React from 'react';
 
 type Props = {

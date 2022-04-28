@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
-
+/** contributors
+ * Loui
+ */
 import defaultGameData from '../../src/utils/defaultGameData';
 
-const userId = '03790a26-a8e8-40da-b53d-02665c31c2dd';
-const upgradeId = 33;
+const userId = '3396f761-994d-460f-8911-ed398a20a900';
+const upgradeId = 69;
 
 describe('Upgrade items', () => {
 	beforeEach(() => {
@@ -18,7 +20,7 @@ describe('Upgrade items', () => {
 		cy.get('[data-cy="currentMultiplier"]').should('contain', '0.025');
 	});
 
-	it('should upgrade Ads -> Adblocker', () => {
+	it('should upgrade Adds -> Adblocker', () => {
 		cy.intercept({ url: '/api/buy*', query: { uuid: userId } }).as('buy');
 		cy.get('[data-cy="Ads"]').click();
 		cy.get('[data-cy="Adblocker"]').click({ force: true });

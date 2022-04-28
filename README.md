@@ -1,4 +1,5 @@
 # Members
+- Oliver Ro Møltoft Christensen (S176352)
 - Tobias Nyholm Maneschijn (S205422)
 # TypeScript Next.js example
 

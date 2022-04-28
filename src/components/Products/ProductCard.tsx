@@ -1,15 +1,16 @@
+/** contributors
+ * Tobias Maneschijn
+ */
+
 import React from 'react';
 import { IProduct } from '@Interfaces/index';
 import Image from 'next/image';
-import { useRecoilValue } from 'recoil';
-import { currentWebshopColorState } from 'src/selectors';
 
 type IProps = {
 	product: IProduct;
 };
 
 const ProductCard: React.FC<IProps> = ({ product }) => {
-	const color1 = useRecoilValue(currentWebshopColorState).toLowerCase().trim();
 	const color = "red"
 	return (
 		<div
@@ -19,7 +20,7 @@ const ProductCard: React.FC<IProps> = ({ product }) => {
 				`hover:cursor-pointer`
 			}
 		>
-		
+
 			<Image
 				className='rounded-tl-lg rounded-br-lg transition duration-150 ease-in-out  group-hover:brightness-125'
 				alt='Product'

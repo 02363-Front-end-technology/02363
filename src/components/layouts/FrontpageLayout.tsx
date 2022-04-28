@@ -1,3 +1,7 @@
+/** contributors
+ * Oliver Christensen
+ */
+
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import style from '@Styles/FrontpageLayout.module.css';
