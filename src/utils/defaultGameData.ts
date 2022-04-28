@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import { IGameData } from '@Interfaces/index';
 
 const defaultGameData: Partial<IGameData> = {

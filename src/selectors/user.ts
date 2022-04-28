@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import { selector } from 'recoil';
 import { currentUserGameData } from '../atoms';
 import { IGameData } from '@Interfaces/index';

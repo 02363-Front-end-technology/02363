@@ -1,3 +1,7 @@
+/** contributors
+ * Loui
+ */
+
 import { EWebshopUpgrades } from '@Interfaces/enums';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';

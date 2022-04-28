@@ -1,7 +1,10 @@
+/** contributors
+ * Loui
+ */
 import React from 'react';
 import SingleUpgrade from '@Components/upgrades/SingleUpgrade';
 import { useRecoilValue } from 'recoil';
-import { filteredUpgradesState } from '../../selectors/upgrades';
+import { filteredUpgradesState } from '../../selectors';
 
 const UpgradeList = () => {
 	const selectedUpgradesTab = useRecoilValue(filteredUpgradesState);

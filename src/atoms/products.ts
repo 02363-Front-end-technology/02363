@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import { IProduct } from '@Interfaces/index';
 import faker from '@faker-js/faker';
 import { atom } from 'recoil';

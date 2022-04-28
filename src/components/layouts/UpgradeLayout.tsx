@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import React from 'react';
 import TopGameBar from '@Components/topGameBar/TopGameBar';
 import Categories from '@Components/Categories';

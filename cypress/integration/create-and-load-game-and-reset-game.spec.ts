@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
-
+/** contributors
+ * Loui
+ */
 
 describe('Create and load game', () => {
 

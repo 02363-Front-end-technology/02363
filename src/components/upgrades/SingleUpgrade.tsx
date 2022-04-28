@@ -1,8 +1,11 @@
+/** contributors
+ * Loui
+ */
 import React from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { currentUserGameData, currentUserIdState, upgradeFilterState } from '../../atoms';
 import { axiosInstance } from '@Utils/axiosInstance';
-import { currentUserBalanceQuery } from '../../selectors/upgrades';
+import { currentUserBalanceQuery } from '../../selectors';
 
 type IProps = {
 	title: string;
