@@ -69,7 +69,7 @@ const IndexPage = () => {
 		<div className='relative h-screen max-h-screen overflow-y-hidden'>
 			{selectedView === EView.UPGRADELAYOUT && <UpgradeLayout />}
 			{selectedView === EView.WEBSITELAYOUT && <WebsiteLayout />}
-			<button className='fixed bottom-6 right-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center' onClick={onClick}>
+			<button data-cy='change-layout' className='fixed bottom-6 right-6 z-0 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-2 border-black text-center' onClick={onClick}>
 				{selectedView === EView.WEBSITELAYOUT && <FiShoppingCart className='z-10 h-6 w-6' />}
 				{selectedView === EView.UPGRADELAYOUT && <CgWebsite className='z-10 h-6 w-6' />}
 			</button>

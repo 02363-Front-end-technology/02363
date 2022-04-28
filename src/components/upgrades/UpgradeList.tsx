@@ -10,7 +10,7 @@ const UpgradeList = () => {
 	const selectedUpgradesTab = useRecoilValue(filteredUpgradesState);
 
 	return (
-		<div className='flex flex-col space-y-6 divide-y rounded-xl bg-white p-6 shadow-lg'>
+		<div className='flex flex-col space-y-6 divide-y rounded-xl bg-white p-6 shadow-lg h-full overflow-y-scroll'>
 			{selectedUpgradesTab.map((u) => (
 				<SingleUpgrade key={u.label} id={u.id} title={u.label} price={u.price} isBought={u.isBought} level={u.level} />
 			))}

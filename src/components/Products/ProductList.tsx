@@ -1,5 +1,6 @@
 /** contributors
  * Tobias Maneschijn
+ * Loui
  */
 
 import React from 'react';

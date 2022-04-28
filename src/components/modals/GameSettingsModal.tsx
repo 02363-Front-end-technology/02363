@@ -49,7 +49,7 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 						<button data-cy='reset-game' className='danger btn' onClick={onResetGameData}>
 							Reset Game
 						</button>
-						<button data-cy='delete-game' className='danger btn' disabled={true}>
+						<button data-cy='delete-game' className='danger btn cursor-not-allowed' disabled={true}>
 							Delete Game
 						</button>
 					</Stack>

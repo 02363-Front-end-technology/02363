@@ -20,14 +20,14 @@ const NavBar = () => {
 			<div className={style.title}>02363 Shop</div>
 			<div className={style.search}>
 				<input type='text' className={style.input} placeholder='Search'/>
-				<button className='btn small alternative'  style={{backgroundColor: color}} >Search</button>
+				<button className='btn small alternative'  style={{backgroundColor: color}} data-cy='search-button'>Search</button>
 			</div>
 			<div className={style.flexEnd}>
 				<div className={style.item}>
-					<button className={`btn`} style={{backgroundColor: color}}>Sign in</button>
+					<button className={`btn`} style={{backgroundColor: color}} data-cy='sign-in-button'>Sign in</button>
 				</div>
 				<div className={style.item}>
-					<button className='btn'  style={{backgroundColor: color}}>My Cart</button>
+					<button className='btn' style={{backgroundColor: color}} data-cy='cart-button'>My Cart</button>
 				</div>
 			</div>
 		</div>

@@ -11,7 +11,7 @@ const Categories: React.FC = ({ children }) => {
 	const [activeTab, setActiveTab] = useRecoilState(upgradeFilterState);
 
 	return (
-		<div className='categories'>
+		<div className='h-3/4'>
 			<div className='flex justify-evenly'>
 				<button data-cy={ETab.Frontend} className={`btn medium ${activeTab === ETab.Frontend && 'active'}`} onClick={() => setActiveTab(ETab.Frontend)}>
 					{ETab.Frontend}
