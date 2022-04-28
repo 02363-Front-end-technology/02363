@@ -2,6 +2,8 @@
 /** contributors
  * Loui
  */
+const userId = '3396f761-994d-460f-8911-ed398a20a900';
+const upgradeId = 69;
 
 describe('Create and load game', () => {
 
@@ -52,8 +54,7 @@ describe('Create and load game', () => {
 
 	it('Should reset game', () => {
 		// Update balance and reset game
-		const userId = '03790a26-a8e8-40da-b53d-02665c31c2dd';
-		cy.request('PATCH', '/api/upgrades/33', { gameData: { balance: 10000 } });
+		cy.request('PATCH', `/api/upgrades/${upgradeId}`, { gameData: { balance: 10000 } });
 		cy.visit(`game/?uuid=${userId}`);
 		cy.get('[data-cy="currentBalance"]').should('contain', '10000');
 		cy.get('[data-cy="settings"]').click();
