@@ -17,7 +17,6 @@ type IProps = {
 
 const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = undefined }) => {
 	const filter = useRecoilValue(upgradeFilterState);
-	const currentUserId = useRecoilValue(currentUserIdState);
 	const setCurrentUserBalance = useSetRecoilState(currentUserBalanceQuery);
 	const [currentGameData, setCurrentGameData] = useRecoilState(currentUserGameData);
 	const onBuy = (id: number) => {
@@ -25,7 +24,7 @@ const SingleUpgrade: React.FC<IProps> = ({ title, price, isBought, id, level = u
 		axiosInstance.patch(`api/upgrades/${currentGameData.id}`, { gameData: currentGameData });
 
 		axiosInstance
-			.get(`api/buy?uuid=${currentUserId}&category=${filter}&itemId=${id}`)
+			.get(`api/buy?uuid=${currentGameData.userId}&category=${filter}&itemId=${id}`)
 			.then((res) => {
 				if (res.data) {
 					setCurrentUserBalance(res.data.balance);
