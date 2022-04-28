@@ -1,12 +1,6 @@
 import Image from 'next/image';
 
-type IProps = {
-	src: string;
-	title: string;
-	width: number;
-	height: number;
-};
-/** 
+/**
  *	author: @tobiasmaneschijn
 */
 function Ad({ src, title }) {

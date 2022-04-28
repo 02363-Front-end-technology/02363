@@ -34,17 +34,6 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 		});
 	};
 
-	const onDeleteGame = () => {
-		axiosInstance
-			.delete(`api/upgrades/${currentUserGamedata.id}`)
-			.then(() => {
-
-			})
-			.catch(() => {
-				router.replace('/');
-			});
-	};
-
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} isCentered>
 			<ModalOverlay />
@@ -59,7 +48,7 @@ const GameSettingsModal: React.FC<IProps> = ({ isOpen, onClose }) => {
 						<button data-cy='reset-game' className='danger btn' onClick={onResetGameData}>
 							Reset Game
 						</button>
-						<button data-cy='reset-game' className='danger btn' onClick={onDeleteGame}>
+						<button data-cy='reset-game' className='danger btn' disabled={true}>
 							Delete Game
 						</button>
 					</Stack>

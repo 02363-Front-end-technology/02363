@@ -2,7 +2,7 @@
  * Loui
  */
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IGameData, IUpgradeItem, IUser } from '@Interfaces/index';
+import { IGameData, IUser } from '@Interfaces/index';
 import { supabase } from '@Utils/supabaseClient';
 import defaultGameData from '@Utils/defaultGameData';
 import dayjs from 'dayjs';

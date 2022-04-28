@@ -1,8 +1,6 @@
 import React from 'react';
 import { IProduct } from '@Interfaces/index';
 import Image from 'next/image';
-import { useRecoilValue } from 'recoil';
-import { currentWebshopColorState } from 'src/selectors';
 
 type IProps = {
 	product: IProduct;
