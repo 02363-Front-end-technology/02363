@@ -1,3 +1,7 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ */
 import FrontpageLayout from '@Components/layouts/FrontpageLayout';
 import { axiosInstance } from '@Utils/axiosInstance';
 import React from 'react';
@@ -6,12 +10,16 @@ import { useRouter } from 'next/router';
 import { IUser } from '@Interfaces/index';
 import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
+import { useSetRecoilState } from 'recoil';
+import { currentUserIdState } from '../../atoms';
 
 interface IFormInput {
 	name: string;
 }
 
 const IndexPage = () => {
+	const setCurrentUserId = useSetRecoilState(currentUserIdState);
+
 	const {
 		handleSubmit,
 		register,
@@ -24,6 +32,7 @@ const IndexPage = () => {
 		axiosInstance
 			.post<IUser>('/api/users', { name: name })
 			.then((r) => {
+				setCurrentUserId(r.data.id);
 				router.push({ pathname: '/game', query: { uuid: r.data.id } });
 			})
 			.catch((err) => console.error(err));

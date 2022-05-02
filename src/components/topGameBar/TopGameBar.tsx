@@ -1,3 +1,8 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ * Tobias Maneschijn
+ */
 import React, { useEffect } from 'react';
 import style from '@Styles/TopBar.module.css';
 import { useRecoilState, useRecoilValue } from 'recoil';

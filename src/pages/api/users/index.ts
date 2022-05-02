@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IGameData, IUser } from '@Interfaces/index';
 import { supabase } from '@Utils/supabaseClient';
@@ -25,29 +28,31 @@ const getAllUsersResolver = async (res: NextApiResponse) => {
 
 const createUserResolver = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { name } = req.body;
-	const { data, error } = await supabase
-		.from<IUser>('users')
-		.insert([
-			{
-				name: name,
-				last_login: dayjs().toDate()
-			}
-		])
-		.single();
-	if (data) {
-		const upgradeRes = await supabase.from<IGameData>('upgrades').insert({
-			userId: data.id,
-			items: defaultGameData.items,
-			balance: 100
-		}).single();
-		console.log(upgradeRes.data);
-		await supabase.from('users').update({
-			upgrades_id: upgradeRes.data.id
-		}).match({
-			id: data.id
-		}).single();
-		return res.status(201).json(data);
+
+	try {
+		const upgradeRes = await supabase
+			.from<IGameData>('upgrades')
+			.insert({
+				items: defaultGameData.items,
+				balance: 100
+			})
+			.single();
+
+		const userRes = await supabase
+			.from<IUser>('users')
+			.insert([
+				{
+					name: name,
+					last_login: dayjs().toDate(),
+					upgrades_id: upgradeRes.data.id
+				}
+			])
+			.single();
+
+		await supabase.from<IGameData>('upgrades').update({ userId: userRes.data.id }).match({ id: upgradeRes.data.id });
+		return res.status(201).json(userRes.data);
+	} catch (error) {
+		return res.status(500).json({ message: error.message });
 	}
-	return res.status(500).json({ message: error.message });
 };
 export default handler;

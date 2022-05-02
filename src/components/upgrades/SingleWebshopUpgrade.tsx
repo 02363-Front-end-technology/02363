@@ -1,3 +1,8 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ * Tobias Maneschijn
+ */
 import React from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { currentUserGameData, currentUserIdState, upgradeFilterWebshopState } from '../../atoms';

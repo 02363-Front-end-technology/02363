@@ -1,3 +1,8 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ * Tobias Maneschijn
+ */
 import { supabase } from '@Utils/supabaseClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -32,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 		const upgrades = categories.find((i) => i.label === category).upgrades;
 		const upgrade = upgrades.find((i) => i.id === Number(itemId));
-		if (upgrade == undefined) return res.status(503).send({message: 'Item not found'});
+		if (upgrade == undefined) return res.status(503).send({ message: 'Item not found' });
 
 		//TODO User har ikke balance
 		if (balance < upgrade.price) return res.send({ message: 'Not enough balance', balance });

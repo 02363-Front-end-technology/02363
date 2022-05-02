@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import { NextApiRequest, NextApiResponse } from 'next';
 import { supabase } from '@Utils/supabaseClient';
 import { IGameData } from '@Interfaces/index';

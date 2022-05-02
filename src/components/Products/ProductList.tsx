@@ -1,3 +1,8 @@
+/** contributors
+ * Tobias Maneschijn
+ * Loui
+ */
+
 import React from 'react';
 import { IProduct } from '@Interfaces/index';
 import ProductCard from './ProductCard';

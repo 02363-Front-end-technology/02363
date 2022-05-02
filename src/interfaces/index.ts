@@ -1,9 +1,13 @@
+/** contributors
+ * Loui
+ */
 export type IUser = {
 	id: string;
 	name: string;
 	createdAt: Date;
 	last_login?: Date;
 	balance?: number;
+	upgrades_id: number;
 };
 
 export type IGameData = {

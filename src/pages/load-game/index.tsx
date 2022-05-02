@@ -1,3 +1,7 @@
+/** contributors
+ * Oliver Christensen
+ * Loui
+ */
 import FrontpageLayout from '@Components/layouts/FrontpageLayout';
 import React from 'react';
 import { GetStaticProps } from 'next';
@@ -9,7 +13,7 @@ import { useRouter } from 'next/router';
 import style from '@Styles/FrontpageLayout.module.css';
 import Link from 'next/link';
 import { useSetRecoilState } from 'recoil';
-import { currentUserIdState } from '../../atoms/user';
+import { currentUserIdState } from '../../atoms';
 
 interface IFormInput {
 	uuid: string;
@@ -20,7 +24,7 @@ type Props = {
 };
 
 const LoadGame: React.FC<Props> = ({ users }) => {
-	const setUserId = useSetRecoilState(currentUserIdState);
+	const setCurrentUserId = useSetRecoilState(currentUserIdState);
 	const {
 		handleSubmit,
 		register,
@@ -30,7 +34,7 @@ const LoadGame: React.FC<Props> = ({ users }) => {
 	const router = useRouter();
 
 	const onSubmit: SubmitHandler<IFormInput> = ({ uuid }) => {
-		setUserId(uuid);
+		setCurrentUserId(uuid);
 		router.push({ pathname: '/game', query: { uuid: uuid } });
 	};
 

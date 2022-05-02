@@ -1,6 +1,8 @@
+/** contributors
+ * Loui
+ */
 import { selector } from 'recoil';
 import { webshopColorState } from '../atoms/color';
-
 
 export const currentWebshopColorState = selector<string>({
 	key: 'currentWebshopColor',

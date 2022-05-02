@@ -1,3 +1,6 @@
+/** contributors
+ * Loui
+ */
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { filteredUpgradesWebshopState } from '../../selectors';
@@ -11,6 +14,7 @@ const UpgradeList = () => {
 			{selectedUpgradesTab.map((u) => (
 				<SingleWebshopUpgrade key={u.label} id={u.id} title={u.label} price={u.price} isBought={u.isBought} />
 			))}
+
 		</div>
 	);
 };

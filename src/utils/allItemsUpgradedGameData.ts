@@ -4,7 +4,7 @@
  */
 import { IGameData } from '@Interfaces/index';
 
-const defaultGameData: Partial<IGameData> = {
+const allItemsUpgradedGameData: Partial<IGameData> = {
 	balance: 100,
 	items: [
 		{
@@ -13,42 +13,42 @@ const defaultGameData: Partial<IGameData> = {
 				{
 					id: 0,
 					label: 'Webshop',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.020,
 					price: 125
 				},
 				{
 					id: 1,
 					label: 'Navigation Bar',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.025,
 					price: 150
 				},
 				{
 					id: 2,
 					label: 'User Profile',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.05,
 					price: 300
 				},
 				{
 					id: 3,
 					label: 'Sidebar',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.05,
 					price: 300
 				},
 				{
 					id: 4,
 					label: 'Footer',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.05,
 					price: 300
 				},
 				{
 					id: 5,
 					label: 'Product Sorting',
-					isBought: false,
+					isBought: true,
 					multiplier: 0.05,
 					price: 450
 				}
@@ -86,28 +86,28 @@ const defaultGameData: Partial<IGameData> = {
 				{
 					id: 0,
 					label: 'Adblocker',
-					isBought: false,
+					isBought: true,
 					cps: 1.5,
 					price: 100
 				},
 				{
 					id: 1,
 					label: 'Ad 2',
-					isBought: false,
+					isBought: true,
 					cps: 2,
 					price: 150
 				},
 				{
 					id: 2,
 					label: 'Ad 3',
-					isBought: false,
+					isBought: true,
 					cps: 3,
 					price: 200
 				},
 				{
 					id: 3,
 					label: 'Ad 4',
-					isBought: false,
+					isBought: true,
 					cps: 4,
 					price: 300
 				}
@@ -119,28 +119,28 @@ const defaultGameData: Partial<IGameData> = {
 				{
 					id: 0,
 					label: 'Red',
-					isBought: false,
+					isBought: true,
 					cps: 0.2,
 					price: 100
 				},
 				{
 					id: 1,
 					label: 'Green',
-					isBought: false,
+					isBought: true,
 					cps: 0.2,
 					price: 100
 				},
 				{
 					id: 2,
 					label: 'Blue',
-					isBought: false,
+					isBought: true,
 					cps: 0.2,
 					price: 100
 				},
 				{
 					id: 3,
 					label: 'Yellow',
-					isBought: false,
+					isBought: true,
 					cps: 0.2,
 					price: 100
 				}
@@ -149,4 +149,4 @@ const defaultGameData: Partial<IGameData> = {
 	]
 };
 
-export default defaultGameData;
+export default allItemsUpgradedGameData;
