@@ -21,7 +21,6 @@ describe('Upgrade items', () => {
 	});
 
 	it('should upgrade Adds -> Adblocker', () => {
-		cy.intercept({ url: '/api/buy*', query: { uuid: userId } }).as('buy');
 		cy.get('[data-cy="Ads"]').click();
 		cy.get('[data-cy="Adblocker"]').click({ force: true });
 		cy.get('[data-cy="Adblocker"]').should('be.disabled');
