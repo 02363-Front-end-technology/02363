@@ -1,6 +1,7 @@
 /** contributors
  * Oliver Christensen
  * Loui
+ * Gülsen
  */
 import Link from 'next/link';
 import FrontpageLayout from '@Components/layouts/FrontpageLayout';
