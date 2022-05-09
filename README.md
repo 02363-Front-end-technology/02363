@@ -3,6 +3,7 @@
 - Tobias Nyholm Maneschijn (S205422)
 - Loui Nissen-Petersen (s194294)
 - Gülsen Dilan Tasci (s194612)
+- Jakob Ole Mortensen - (s185134)
 # TypeScript Next.js example
 
 This is a really simple project that shows the usage of Next.js with TypeScript.
